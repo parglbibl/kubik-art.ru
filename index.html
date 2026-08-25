@@ -1,0 +1,2749 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Егор Черняков — картины из кубиков Рубика для компаний</title>
+
+    <meta name="description" content="Егор Черняков создаёт картины, логотипы и мозаики из кубиков Рубика для компаний, ресторанов, офисов, фестивалей и общественных пространств.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ink: #1c2638;
+            --ink-soft: #40506a;
+            --muted: #788397;
+
+            --cream: #f7f4ee;
+            --white: #fff;
+            --soft: #eef1f5;
+            --line: #dfe4eb;
+
+            --blue: #526b9e;
+            --blue-dark: #3e547f;
+            --yellow: #e9be45;
+            --coral: #d9786d;
+            --mint: #73a98d;
+            --violet: #887bae;
+
+            --shadow-sm: 0 8px 25px rgba(35,45,70,.07);
+            --shadow: 0 22px 65px rgba(35,45,70,.13);
+
+            --radius: 24px;
+            --container: 1180px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-width: 320px;
+            overflow-x: hidden;
+            background:
+                radial-gradient(circle at 95% 0%, rgba(233,190,69,.18), transparent 25rem),
+                radial-gradient(circle at 0% 38%, rgba(82,107,158,.1), transparent 28rem),
+                var(--cream);
+            color: var(--ink);
+            font-family: Inter, Arial, sans-serif;
+            line-height: 1.65;
+        }
+
+        body.locked {
+            overflow: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .container {
+            width: min(var(--container), calc(100% - 64px));
+            margin: 0 auto;
+        }
+
+        .cube {
+            position: fixed;
+            z-index: -1;
+            width: 18px;
+            height: 18px;
+            border-radius: 5px;
+            opacity: .22;
+            transform: rotate(45deg);
+            pointer-events: none;
+        }
+
+        .cube-1 {
+            top: 18%;
+            left: 5%;
+            background: var(--blue);
+        }
+
+        .cube-2 {
+            top: 42%;
+            right: 6%;
+            background: var(--coral);
+        }
+
+        .cube-3 {
+            top: 70%;
+            left: 8%;
+            background: var(--yellow);
+        }
+
+        .cube-4 {
+            top: 86%;
+            right: 12%;
+            background: var(--mint);
+        }
+
+        /* ===== HEADER ===== */
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            padding: 18px 0;
+            background: rgba(247,244,238,.86);
+            border-bottom: 1px solid transparent;
+            backdrop-filter: blur(18px);
+            transition: .3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(255,255,255,.95);
+            border-color: var(--line);
+            box-shadow: 0 5px 25px rgba(35,45,70,.06);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            min-height: 42px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--ink);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: .07em;
+            white-space: nowrap;
+        }
+
+        .brand-icon {
+            display: grid;
+            grid-template-columns: repeat(3, 7px);
+            gap: 2px;
+            transform: rotate(-10deg);
+        }
+
+        .brand-icon span {
+            width: 7px;
+            height: 7px;
+            border-radius: 2px;
+            background: var(--blue);
+        }
+
+        .brand-icon span:nth-child(2),
+        .brand-icon span:nth-child(5) {
+            background: var(--yellow);
+        }
+
+        .brand-icon span:nth-child(3),
+        .brand-icon span:nth-child(8) {
+            background: var(--coral);
+        }
+
+        .brand-icon span:nth-child(6) {
+            background: var(--mint);
+        }
+
+        .nav {
+            display: flex;
+            gap: 26px;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .nav a {
+            transition: .25s ease;
+        }
+
+        .nav a:hover {
+            color: var(--blue-dark);
+        }
+
+        .header-button {
+            padding: 10px 17px;
+            border: 0;
+            border-radius: 100px;
+            background: var(--blue);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .25s ease;
+        }
+
+        .header-button:hover {
+            background: var(--blue-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ===== ОБЩИЕ БЛОКИ ===== */
+
+        .section {
+            position: relative;
+            padding: 120px 0;
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--blue);
+            font-family: "DM Mono", monospace;
+            font-size: 11px;
+            letter-spacing: .1em;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: "";
+            width: 30px;
+            height: 3px;
+            border-radius: 20px;
+            background: var(--yellow);
+        }
+
+        .section-title {
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--ink);
+            font-size: clamp(40px, 6vw, 76px);
+            font-weight: 800;
+            line-height: .98;
+            letter-spacing: -.075em;
+            text-align: center;
+        }
+
+        .section-title em {
+            color: var(--blue);
+            font-style: normal;
+        }
+
+        .section-description {
+            max-width: 680px;
+            margin: 22px auto 0;
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.75;
+            text-align: center;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 55px;
+            padding: 0 25px;
+            border: 0;
+            border-radius: 15px;
+            background: var(--blue);
+            color: white;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 9px 22px rgba(82,107,158,.2);
+            transition: .3s ease;
+        }
+
+        .btn:hover {
+            background: var(--blue-dark);
+            transform: translateY(-3px);
+        }
+
+        .btn-yellow {
+            background: var(--yellow);
+            color: var(--ink);
+        }
+
+        .btn-yellow:hover {
+            background: #dcae2f;
+            color: var(--ink);
+        }
+
+        .btn-outline {
+            background: white;
+            color: var(--ink);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--blue-dark);
+            border-color: var(--blue);
+            box-shadow: none;
+        }
+
+        /* ===== HERO ===== */
+
+        .hero {
+            min-height: 930px;
+            display: flex;
+            align-items: center;
+            padding: 150px 0 105px;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .hero-kicker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            color: var(--blue);
+            font-family: "DM Mono", monospace;
+            font-size: 12px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .hero-kicker i {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--coral);
+        }
+
+        .hero-name {
+            margin-bottom: 10px;
+            color: var(--ink);
+            font-size: clamp(25px, 4vw, 38px);
+            font-weight: 800;
+            letter-spacing: -.05em;
+        }
+
+        .hero-role {
+            margin-bottom: 28px;
+            color: var(--blue);
+            font-size: clamp(15px, 2vw, 20px);
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: clamp(50px, 8vw, 105px);
+            line-height: .91;
+            letter-spacing: -.09em;
+            text-align: center;
+        }
+
+        .hero h1 span {
+            color: var(--blue);
+        }
+
+        .hero-text {
+            max-width: 700px;
+            margin: 30px auto;
+            color: var(--muted);
+            font-size: 19px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hero-visual {
+            position: relative;
+            width: min(710px, 100%);
+            margin: 75px auto 0;
+        }
+
+        .hero-photo {
+            position: relative;
+            height: 430px;
+            border-radius: 32px;
+            background: white;
+            box-shadow: var(--shadow);
+            transform: rotate(1deg);
+        }
+
+        .hero-photo::before {
+            content: "";
+            position: absolute;
+            inset: 16px -18px -18px 18px;
+            border: 3px solid var(--yellow);
+            border-radius: 32px;
+            transform: rotate(-4deg);
+        }
+
+        .hero-photo img {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 32px;
+        }
+
+        .hero-tag {
+            position: absolute;
+            right: -18px;
+            bottom: 22px;
+            z-index: 3;
+            padding: 17px;
+            border-radius: 17px;
+            background: var(--ink);
+            color: white;
+            font-size: 12px;
+            text-align: left;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-tag strong {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--yellow);
+            font-size: 25px;
+            line-height: 1;
+        }
+
+        /* ===== КЕЙС ===== */
+
+        .case-section {
+            background: white;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 38px;
+            margin-top: 58px;
+        }
+
+        .case-image {
+            position: relative;
+            min-height: 610px;
+            overflow: hidden;
+            border-radius: var(--radius);
+            background: #e8edf4;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+        }
+
+        .case-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .6s ease;
+        }
+
+        .case-image:hover img {
+            transform: scale(1.04);
+        }
+
+        .case-caption {
+            position: absolute;
+            left: 22px;
+            bottom: 22px;
+            padding: 11px 16px;
+            border-radius: 100px;
+            background: rgba(255,255,255,.95);
+            color: var(--ink);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .case-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 48px;
+            border: 1px solid #f0df91;
+            border-radius: var(--radius);
+            background: linear-gradient(145deg, #fff8d9, #fffdf3);
+            text-align: center;
+        }
+
+        .case-info h3 {
+            margin-bottom: 23px;
+            font-size: clamp(34px, 4vw, 53px);
+            line-height: 1;
+            letter-spacing: -.07em;
+        }
+
+        .case-info p {
+            margin-bottom: 16px;
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .case-facts {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0 28px;
+        }
+
+        .fact {
+            padding: 15px;
+            border: 1px solid rgba(222,202,111,.35);
+            border-radius: 15px;
+            background: rgba(255,255,255,.72);
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .fact strong {
+            display: block;
+            color: var(--ink);
+            font-size: 22px;
+        }
+
+        /* ===== ЧТО МОЖНО СОБРАТЬ ===== */
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 58px;
+        }
+
+        .option-card {
+            padding: 30px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: white;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: .3s ease;
+        }
+
+        .option-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .option-icon {
+            display: grid;
+            place-items: center;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 22px;
+            border-radius: 18px;
+            background: #edf3ff;
+            color: var(--blue);
+        }
+
+        .option-card:nth-child(2) .option-icon {
+            background: #fff5ce;
+            color: #b08400;
+        }
+
+        .option-card:nth-child(3) .option-icon {
+            background: #ffebea;
+            color: var(--coral);
+        }
+
+        .option-card:nth-child(4) .option-icon {
+            background: #eaf8f0;
+            color: var(--mint);
+        }
+
+        .option-card:nth-child(5) .option-icon {
+            background: #eeeaff;
+            color: var(--violet);
+        }
+
+        .option-card:nth-child(6) .option-icon {
+            background: #fff1e9;
+            color: #d17a43;
+        }
+
+        .option-card h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .option-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .svg-icon {
+            width: 30px;
+            height: 30px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.7;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ===== РАЗМЕРЫ ===== */
+
+        .size-section {
+            background: #fffdf8;
+            border-top: 1px solid #f0eadb;
+            border-bottom: 1px solid #f0eadb;
+        }
+
+        .sizes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 58px;
+        }
+
+        .size-card {
+            padding: 27px 20px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: white;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .size-card.featured {
+            border: 2px solid var(--yellow);
+            transform: translateY(-10px);
+        }
+
+        .size-card h3 {
+            margin-bottom: 14px;
+            font-size: 18px;
+        }
+
+        .size-number {
+            color: var(--blue);
+            font-family: "DM Mono", monospace;
+            font-size: 19px;
+            font-weight: 500;
+        }
+
+        .size-card strong {
+            display: block;
+            margin: 15px 0 5px;
+            color: var(--ink);
+            font-size: 28px;
+        }
+
+        .size-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .size-note {
+            max-width: 760px;
+            margin: 30px auto 0;
+            color: var(--muted);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* ===== ПОРТФОЛИО ===== */
+
+        .portfolio-section {
+            background: #eef2f8;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .portfolio-note {
+            max-width: 700px;
+            margin: 20px auto 0;
+            padding: 15px 18px;
+            border-radius: 15px;
+            background: rgba(255,255,255,.78);
+            color: var(--muted);
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .latest-work {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 30px;
+            max-width: 950px;
+            margin: 48px auto 55px;
+            padding: 20px;
+            border: 1px solid rgba(82,107,158,.2);
+            border-radius: var(--radius);
+            background: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .latest-image {
+            position: relative;
+            overflow: hidden;
+            min-height: 360px;
+            border-radius: 18px;
+            cursor: pointer;
+        }
+
+        .latest-image img {
+            width: 100%;
+            height: 100%;
+            min-height: 360px;
+            object-fit: cover;
+            transition: .5s ease;
+        }
+
+        .latest-image:hover img {
+            transform: scale(1.04);
+        }
+
+        .latest-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 9px 13px;
+            border-radius: 100px;
+            background: var(--yellow);
+            color: var(--ink);
+            font-family: "DM Mono", monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        .latest-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .latest-date {
+            margin-bottom: 12px;
+            color: var(--coral);
+            font-family: "DM Mono", monospace;
+            font-size: 11px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .latest-content h3 {
+            margin-bottom: 17px;
+            font-size: clamp(30px, 4vw, 48px);
+            line-height: 1;
+            letter-spacing: -.06em;
+        }
+
+        .latest-content p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin: 28px 0 42px;
+        }
+
+        .filter {
+            min-height: 40px;
+            padding: 0 17px;
+            border: 1px solid #d9e0ec;
+            border-radius: 100px;
+            background: white;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 12px;
+            transition: .25s ease;
+        }
+
+        .filter:hover,
+        .filter.active {
+            border-color: var(--blue);
+            background: var(--blue);
+            color: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .artwork {
+            position: relative;
+            grid-column: span 3;
+            height: 280px;
+            overflow: hidden;
+            border: 5px solid white;
+            border-radius: 20px;
+            background: #dce2eb;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: .4s ease;
+        }
+
+        .artwork:nth-child(1),
+        .artwork:nth-child(10) {
+            grid-column: span 6;
+            height: 390px;
+        }
+
+        .artwork:nth-child(5),
+        .artwork:nth-child(15) {
+            grid-column: span 4;
+            height: 340px;
+        }
+
+        .artwork:hover {
+            box-shadow: var(--shadow);
+        }
+
+        .artwork img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s ease;
+        }
+
+        .artwork:hover img {
+            transform: scale(1.08);
+        }
+
+        .artwork-info {
+            position: absolute;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            padding: 13px 15px;
+            border-radius: 15px;
+            background: rgba(255,255,255,.94);
+            box-shadow: var(--shadow-sm);
+            opacity: 0;
+            transform: translateY(9px);
+            transition: .3s ease;
+        }
+
+        .artwork:hover .artwork-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .artwork-info strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .artwork-info span {
+            color: var(--blue);
+            font-family: "DM Mono", monospace;
+            font-size: 10px;
+        }
+
+        /* ===== ПРОЦЕСС ===== */
+
+        .process {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 58px;
+        }
+
+        .process-item {
+            min-height: 245px;
+            padding: 29px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: white;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .process-item:nth-child(1) { border-top: 5px solid var(--blue); }
+        .process-item:nth-child(2) { border-top: 5px solid var(--yellow); }
+        .process-item:nth-child(3) { border-top: 5px solid var(--coral); }
+        .process-item:nth-child(4) { border-top: 5px solid var(--mint); }
+
+        .process-number {
+            margin-bottom: 32px;
+            color: var(--blue);
+            font-family: "DM Mono", monospace;
+            font-size: 13px;
+        }
+
+        .process-item h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .process-item p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* ===== ОБО МНЕ ===== */
+
+        .about-section {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            align-items: center;
+            gap: 75px;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image::before {
+            content: "";
+            position: absolute;
+            inset: 18px -15px -15px 18px;
+            border-radius: var(--radius);
+            background: var(--mint);
+        }
+
+        .about-image img {
+            position: relative;
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .about-text {
+            text-align: center;
+        }
+
+        .about-text p {
+            max-width: 650px;
+            margin: 19px auto 0;
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .numbers {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding-top: 28px;
+            margin-top: 35px;
+            border-top: 1px solid var(--line);
+        }
+
+        .number strong {
+            display: block;
+            color: var(--blue);
+            font-size: 31px;
+        }
+
+        .number span {
+            display: block;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* ===== FAQ ===== */
+
+        .faq {
+            max-width: 850px;
+            margin: 50px auto 0;
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: white;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 19px 21px;
+            border: 0;
+            background: white;
+            color: var(--ink);
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .faq-question span {
+            color: var(--blue);
+            font-size: 22px;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 21px 20px;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* ===== CTA ===== */
+
+        .cta {
+            padding: 105px 35px;
+            border-radius: 32px;
+            background: linear-gradient(135deg, #526b9e, #667fae 55%, #887bae);
+            color: white;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .cta .section-label {
+            color: var(--yellow);
+        }
+
+        .cta .section-label::before,
+        .cta .section-label::after {
+            background: var(--yellow);
+        }
+
+        .cta h2 {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: clamp(42px, 6vw, 76px);
+            line-height: 1;
+            letter-spacing: -.075em;
+        }
+
+        .cta h2 em {
+            color: var(--yellow);
+            font-style: normal;
+        }
+
+        .cta p {
+            max-width: 620px;
+            margin: 0 auto 30px;
+            color: rgba(255,255,255,.84);
+            font-size: 18px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 26px;
+        }
+
+        .contact-link {
+            padding: 11px 17px;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 100px;
+            color: white;
+            font-size: 13px;
+        }
+
+        footer {
+            padding: 32px 0 90px;
+            color: var(--muted);
+            text-align: center;
+            font-size: 12px;
+        }
+
+        /* ===== ОКНО СВЯЗИ ===== */
+
+        .contact-modal,
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(23,32,51,.72);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-modal.active,
+        .lightbox.active {
+            display: flex;
+        }
+
+        .contact-modal-box {
+            position: relative;
+            width: min(470px, 100%);
+            padding: 35px;
+            border-radius: var(--radius);
+            background: white;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .contact-modal-box h2 {
+            margin-bottom: 10px;
+            font-size: 30px;
+        }
+
+        .contact-modal-box > p {
+            margin-bottom: 24px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 17px;
+            border: 0;
+            background: transparent;
+            color: var(--muted);
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .contact-options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .contact-option {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px;
+            border: 1px solid var(--line);
+            border-radius: 15px;
+            background: white;
+            color: var(--ink);
+            text-align: left;
+            transition: .25s ease;
+        }
+
+        .contact-option:hover {
+            border-color: var(--blue);
+            background: #f5f7fb;
+            transform: translateY(-2px);
+        }
+
+        .contact-option-icon {
+            display: grid;
+            place-items: center;
+            width: 38px;
+            height: 38px;
+            flex: 0 0 auto;
+            border-radius: 12px;
+            background: #edf3ff;
+            color: var(--blue);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .contact-option strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .contact-option small {
+            display: block;
+            margin-top: 2px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .copy-message {
+            min-height: 20px;
+            margin-top: 15px;
+            color: var(--mint);
+            font-size: 12px;
+        }
+
+        /* ===== LIGHTBOX ===== */
+
+        .lightbox-image {
+            max-width: 93vw;
+            max-height: 86vh;
+            object-fit: contain;
+            border-radius: 14px;
+        }
+
+        .lightbox-close,
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            z-index: 2;
+            display: grid;
+            place-items: center;
+            width: 50px;
+            height: 50px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,.16);
+            color: white;
+            cursor: pointer;
+            font-size: 25px;
+        }
+
+        .lightbox-close {
+            top: 22px;
+            right: 22px;
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            top: 50%;
+        }
+
+        .lightbox-prev {
+            left: 25px;
+        }
+
+        .lightbox-next {
+            right: 25px;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            max-width: 75%;
+            padding: 10px 17px;
+            border-radius: 100px;
+            background: rgba(255,255,255,.14);
+            color: white;
+            font-size: 12px;
+            transform: translateX(-50%);
+        }
+
+        .mobile-contact {
+            display: none;
+        }
+
+        /* ===== ADAPTIVE ===== */
+
+        @media (max-width: 1050px) {
+            .case-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-visual {
+                margin-top: 70px;
+            }
+
+            .case-image {
+                min-height: 480px;
+            }
+
+            .sizes {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 850px) {
+            .container {
+                width: calc(100% - 40px);
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .services,
+            .options-grid,
+            .process {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .latest-work {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .artwork,
+            .artwork:nth-child(1),
+            .artwork:nth-child(5),
+            .artwork:nth-child(10),
+            .artwork:nth-child(15) {
+                grid-column: span 1;
+                height: 270px;
+            }
+
+            .artwork:nth-child(1),
+            .artwork:nth-child(10) {
+                grid-column: span 2;
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .container {
+                width: calc(100% - 32px);
+            }
+
+            .header {
+                padding: 13px 0;
+            }
+
+            .brand {
+                font-size: 10px;
+            }
+
+            .header-button {
+                padding: 10px 12px;
+                font-size: 10px;
+            }
+
+            .section {
+                padding: 78px 0;
+            }
+
+            .section-title {
+                font-size: 43px;
+            }
+
+            .section-description {
+                font-size: 16px;
+                line-height: 1.7;
+            }
+
+            .hero {
+                padding: 112px 0 85px;
+            }
+
+            .hero-name {
+                font-size: 24px;
+            }
+
+            .hero-role {
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .hero-text {
+                font-size: 16px;
+                line-height: 1.7;
+            }
+
+            .hero-actions {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+            }
+
+            .hero-visual {
+                width: calc(100% - 8px);
+                margin-top: 65px;
+            }
+
+            .hero-photo,
+            .hero-photo img {
+                height: 350px;
+                border-radius: 25px;
+            }
+
+            .hero-photo::before {
+                inset: 10px -9px -10px 9px;
+                border-width: 2px;
+                border-radius: 25px;
+            }
+
+            .hero-tag {
+                right: 3px;
+                bottom: -31px;
+                padding: 14px;
+                font-size: 11px;
+            }
+
+            .case-info {
+                padding: 27px 20px;
+            }
+
+            .case-info h3 {
+                font-size: 38px;
+            }
+
+            .services,
+            .options-grid,
+            .process,
+            .sizes,
+            .numbers,
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .latest-work {
+                margin-top: 38px;
+                padding: 10px;
+            }
+
+            .latest-image,
+            .latest-image img {
+                min-height: 320px;
+            }
+
+            .latest-content {
+                padding: 20px 12px 25px;
+            }
+
+            .latest-content h3 {
+                font-size: 37px;
+            }
+
+            .filters {
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 7px;
+                scrollbar-width: none;
+            }
+
+            .filters::-webkit-scrollbar {
+                display: none;
+            }
+
+            .filter {
+                flex: 0 0 auto;
+                white-space: nowrap;
+            }
+
+            .portfolio-grid {
+                gap: 9px;
+            }
+
+            .artwork,
+            .artwork:nth-child(1),
+            .artwork:nth-child(10) {
+                height: 220px;
+                border-width: 3px;
+                border-radius: 15px;
+            }
+
+            .artwork:nth-child(1),
+            .artwork:nth-child(10) {
+                height: 290px;
+            }
+
+            .artwork-info {
+                left: 7px;
+                right: 7px;
+                bottom: 7px;
+                padding: 9px;
+                opacity: 1;
+                transform: none;
+            }
+
+            .artwork-info strong {
+                font-size: 10px;
+            }
+
+            .artwork-info span {
+                font-size: 8px;
+            }
+
+            .size-card.featured {
+                transform: none;
+            }
+
+            .calculator-box {
+                padding: 27px 20px;
+            }
+
+            .calculator-box h3 {
+                font-size: 27px;
+            }
+
+            .cta {
+                padding: 70px 18px;
+                border-radius: 24px;
+            }
+
+            .cta h2 {
+                font-size: 44px;
+            }
+
+            .cta p {
+                font-size: 15px;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .contact-link {
+                text-align: center;
+            }
+
+            .contact-modal-box {
+                padding: 30px 20px;
+            }
+
+            .mobile-contact {
+                position: fixed;
+                left: 16px;
+                right: 16px;
+                bottom: 14px;
+                z-index: 40;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 52px;
+                border-radius: 16px;
+                background: var(--blue);
+                color: white;
+                font-size: 14px;
+                font-weight: 800;
+                box-shadow: 0 10px 30px rgba(82,107,158,.3);
+            }
+
+            .lightbox-prev,
+            .lightbox-next {
+                top: auto;
+                bottom: 22px;
+            }
+
+            .lightbox-prev {
+                left: 22px;
+            }
+
+            .lightbox-next {
+                right: 22px;
+            }
+
+            .lightbox-caption {
+                bottom: 35px;
+                max-width: 50%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="cube cube-1"></div>
+<div class="cube cube-2"></div>
+<div class="cube cube-3"></div>
+<div class="cube cube-4"></div>
+
+<header class="header" id="header">
+    <div class="container header-inner">
+
+        <a class="brand" href="#top">
+            <span class="brand-icon">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </span>
+            ЕГОР ЧЕРНЯКОВ
+        </a>
+
+        <nav class="nav">
+            <a href="#works">Картины</a>
+            <a href="#options">Что собрать</a>
+            <a href="#sizes">Размеры</a>
+            <a href="#portfolio">Портфолио</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+
+        <button class="header-button open-contact">
+            Обсудить проект
+        </button>
+
+    </div>
+</header>
+
+<main id="top">
+
+    <!-- HERO -->
+
+    <section class="hero">
+        <div class="container">
+
+            <div class="hero-content reveal">
+
+                <div class="hero-kicker">
+                    <i></i>
+                    Авторские картины для компаний
+                </div>
+
+                <div class="hero-name">
+                    Егор Черняков
+                </div>
+
+                <div class="hero-role">
+                    Автор картин из кубиков Рубика · спидкубер · педагог
+                </div>
+
+                <h1>
+                    Вашу идею<br>
+                    соберу в <span>картину.</span>
+                </h1>
+
+                <p class="hero-text">
+                    Я создаю логотипы, портреты и фирменные мозаики
+                    из кубиков Рубика для ресторанов, офисов,
+                    фестивалей и общественных пространств.
+                </p>
+
+                <div class="hero-actions">
+                    <button class="btn open-contact">
+                        Обсудить проект ↗
+                    </button>
+
+                    <a class="btn btn-outline" href="#portfolio">
+                        Смотреть работы
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="hero-visual reveal">
+                <div class="hero-photo">
+                    <img
+                        src="images/kartini/kartina4.webp"
+                        alt="Авторская картина из кубиков Рубика для Додо"
+                    >
+                </div>
+
+                <div class="hero-tag">
+                    <strong>27</strong>
+                    работ доступны<br>
+                    для просмотра
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="color-strip">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- КЕЙС ДОДО -->
+
+    <section class="section case-section" id="works">
+        <div class="container">
+
+            <div class="section-label reveal">
+                Реализованный кейс / 001
+            </div>
+
+            <h2 class="section-title reveal">
+                Картина для <em>«Додо»</em>
+            </h2>
+
+            <p class="section-description reveal">
+                Созданная работа стала частью интерьера пиццерии
+                и показала, как фирменный образ может превратиться
+                в необычный арт-объект.
+            </p>
+
+            <div class="case-grid">
+
+                <div class="case-image reveal" data-index="3">
+                    <img
+                        src="images/kartini/kartina4.webp"
+                        alt="Картина из кубиков Рубика для Додо"
+                    >
+
+                    <div class="case-caption">
+                        Авторская работа · «Додо»
+                    </div>
+                </div>
+
+                <div class="case-info reveal">
+
+                    <div class="section-label">
+                        Картина для бренда
+                    </div>
+
+                    <h3>
+                        Ваш бренд получит собственный визуальный образ.
+                    </h3>
+
+                    <p>
+                        Создам картину по логотипу, фотографии,
+                        фирменному персонажу или индивидуальному эскизу.
+                    </p>
+
+                    <p>
+                        Готовая работа сможет стать частью интерьера,
+                        подарком партнёрам, элементом рекламной кампании
+                        или центром внимания на мероприятии.
+                    </p>
+
+                    <div class="case-facts">
+                        <div class="fact">
+                            <strong>Логотип</strong>
+                            для интерьера
+                        </div>
+
+                        <div class="fact">
+                            <strong>Портрет</strong>
+                            для подарка
+                        </div>
+
+                        <div class="fact">
+                            <strong>Мозаика</strong>
+                            для события
+                        </div>
+
+                        <div class="fact">
+                            <strong>Эскиз</strong>
+                            под задачу бренда
+                        </div>
+                    </div>
+
+                    <button class="btn btn-yellow open-contact">
+                        Заказать картину
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ЧТО МОЖНО СОБРАТЬ -->
+
+    <section class="section" id="options">
+        <div class="container">
+
+            <div class="section-label reveal">
+                Возможности проекта
+            </div>
+
+            <h2 class="section-title reveal">
+                Что можно <em>собрать.</em>
+            </h2>
+
+            <p class="section-description reveal">
+                Подберу идею, которая будет связана с Вашим брендом,
+                пространством, событием или задачей.
+            </p>
+
+            <div class="options-grid">
+
+                <article class="option-card reveal">
+                    <div class="option-icon">
+                        <svg class="svg-icon" viewBox="0 0 24 24">
+                            <rect x="4" y="4" width="16" height="16" rx="2"/>
+                            <path d="M8 8h8M8 12h8M8 16h5"/>
+                        </svg>
+                    </div>
+
+                    <h3>Логотип компании</h3>
+
+                    <p>
+                        Соберу фирменный знак для офиса,
+                        ресторана, ресепшена или выставочного пространства.
+                    </p>
+                </article>
+
+                <article class="option-card reveal">
+                    <div class="option-icon">
+                        <svg class="svg-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="3"/>
+                            <path d="M5 20c.8-4 3-6 7-6s6.2 2 7 6"/>
+                        </svg>
+                    </div>
+
+                    <h3>Портрет</h3>
+
+                    <p>
+                        Создам портрет человека, исторической личности,
+                        писателя, учёного или героя.
+                    </p>
+                </article>
+
+                <article class="option-card reveal">
+                    <div class="option-icon">
+                        <svg class="svg-icon" viewBox="0 0 24 24">
+                            <path d="M5 5h14v14H5z"/>
+                            <path d="M8 15l3-3 2 2 2-3 2 4"/>
+                        </svg>
+                    </div>
+
+                    <h3>Фирменный персонаж</h3>
+
+                    <p>
+                        Соберу талисман, персонажа или образ,
+                        связанный с компанией и её аудиторией.
+                    </p>
+                </article>
+
+                <article class="option-card reveal">
+                    <div class="option-icon">
+                        <svg class="svg-icon" viewBox="0 0 24 24">
+                            <path d="M4 19h16"/>
+                            <path d="M6 19V7h12v12"/>
+                            <path d="M9 7V4h6v3"/>
+                        </svg>
+                    </div>
+
+                    <h3>Картина для интерьера</h3>
+
+                    <p>
+                        Подберу композицию, которая будет хорошо смотреться
+                        в конкретном помещении.
+                    </p>
+                </article>
+
+                <article class="option-card reveal">
+                    <div class="option-icon">
+                        <svg class="svg-icon" viewBox="0 0 24 24">
+                            <path d="M4 7h16v12H4z"/>
+                            <path d="M8 7V4h8v3"/>
+                            <path d="M8 13h8"/>
+                        </svg>
+                    </div>
+
+                    <h3>Подарок для компании</h3>
+
+                    <p>
+                        Создам персональную работу для партнёра,
+                        сотрудника, руководителя или памятной даты.
+                    </p>
+                </article>
+
+                <article class="option-card reveal">
+                    <div class="option-icon">
+                        <svg class="svg-icon" viewBox="0 0 24 24">
+                            <path d="M3 6h18v12H3z"/>
+                            <path d="M7 10h10M7 14h6"/>
+                        </svg>
+                    </div>
+
+                    <h3>Большая мозаика</h3>
+
+                    <p>
+                        Соберу масштабное панно для фестиваля,
+                        библиотеки, выставки или общественного пространства.
+                    </p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗМЕРЫ -->
+
+    <section class="section size-section" id="sizes">
+        <div class="container">
+
+            <div class="section-label reveal">
+                Размер и детализация
+            </div>
+
+            <h2 class="section-title reveal">
+                Чем больше кубиков —<br>
+                тем больше <em>деталей.</em>
+            </h2>
+
+            <p class="section-description reveal">
+                Один кубик имеет размер 56 × 56 мм.
+                Ниже указаны ориентировочные форматы полотна
+                без учёта рамки.
+            </p>
+
+            <div class="sizes">
+
+                <article class="size-card reveal">
+                    <h3>Небольшой логотип</h3>
+                    <div class="size-number">10 × 12</div>
+                    <strong>120 кубиков</strong>
+                    <p>
+                        56 × 67,2 см<br>
+                        Для простого логотипа или символа
+                    </p>
+                </article>
+
+                <article class="size-card featured reveal">
+                    <h3>Средний формат</h3>
+                    <div class="size-number">15 × 20</div>
+                    <strong>300 кубиков</strong>
+                    <p>
+                        84 × 112 см<br>
+                        Для портретов и обычных картин
+                    </p>
+                </article>
+
+                <article class="size-card reveal">
+                    <h3>Большая картина</h3>
+                    <div class="size-number">20 × 30</div>
+                    <strong>600 кубиков</strong>
+                    <p>
+                        112 × 168 см<br>
+                        Для сложных изображений
+                    </p>
+                </article>
+
+                <article class="size-card reveal">
+                    <h3>Масштабная мозаика</h3>
+                    <div class="size-number">30 × 40</div>
+                    <strong>1200 кубиков</strong>
+                    <p>
+                        168 × 224 см<br>
+                        Для выставок и больших пространств
+                    </p>
+                </article>
+
+            </div>
+
+            <p class="size-note reveal">
+                Помогу подобрать нужный формат по исходному изображению,
+                месту размещения и желаемой детализации.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- ПОРТФОЛИО -->
+
+    <section class="section portfolio-section" id="portfolio">
+        <div class="container">
+
+            <div class="section-label reveal">
+                Авторское портфолио
+            </div>
+
+            <h2 class="section-title reveal">
+                Избранные <em>работы.</em>
+            </h2>
+
+            <p class="section-description reveal">
+                Здесь представлена часть портфолио —
+                картины, фотографии которых сейчас доступны для просмотра.
+            </p>
+
+            <div class="portfolio-note reveal">
+                Часть работ находится у заказчиков, на выставках
+                или представлена в архиве.
+            </div>
+
+            <!-- Последняя работа -->
+
+            <div class="latest-work reveal">
+
+                <div class="latest-image" data-index="26">
+                    <img
+                        src="images/kartini/Gagarin.webp"
+                        alt="Портрет Юрия Гагарина из кубиков Рубика"
+                    >
+
+                    <div class="latest-badge">
+                        Новая работа
+                    </div>
+                </div>
+
+                <div class="latest-content">
+
+                    <div class="latest-date">
+                        Август 2026
+                    </div>
+
+                    <h3>
+                        Портрет<br>
+                        Юрия Гагарина
+                    </h3>
+
+                    <p>
+                        В августе 2026 года я собрал эту картину
+                        для фестиваля в библиотеке. Работа стала самой
+                        новой в моём портфолио.
+                    </p>
+
+                    <button class="btn btn-yellow" data-latest-open style="margin-top: 24px;">
+                        Рассмотреть работу
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="filters reveal">
+                <button class="filter active" data-filter="all">
+                    Все работы
+                </button>
+
+                <button class="filter" data-filter="business">
+                    Компании
+                </button>
+
+                <button class="filter" data-filter="portraits">
+                    Портреты
+                </button>
+
+                <button class="filter" data-filter="events">
+                    События
+                </button>
+            </div>
+
+            <div class="portfolio-grid" id="portfolioGrid"></div>
+
+            <div class="archive-box reveal">
+                <h3>Архив созданных проектов</h3>
+
+                <p>
+                    В архиве находятся картины, переданные заказчикам,
+                    фотографии с мероприятий и проекты прошлых лет.
+                    <span>Новые материалы будут добавляться постепенно.</span>
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ПРОЦЕСС -->
+
+    <section class="section">
+        <div class="container">
+
+            <div class="section-label reveal">
+                Как будет проходить работа
+            </div>
+
+            <h2 class="section-title reveal">
+                От идеи<br>
+                до <em>готовой картины.</em>
+            </h2>
+
+            <div class="process">
+
+                <article class="process-item reveal">
+                    <div class="process-number">01 / ОБСУЖДЕНИЕ</div>
+                    <h3>Обсудим задачу</h3>
+                    <p>
+                        Вы расскажете о компании, пространстве,
+                        мероприятии и желаемом результате.
+                    </p>
+                </article>
+
+                <article class="process-item reveal">
+                    <div class="process-number">02 / ИДЕЯ</div>
+                    <h3>Подберём образ</h3>
+                    <p>
+                        Выберем логотип, фотографию, портрет,
+                        персонажа или авторский эскиз.
+                    </p>
+                </article>
+
+                <article class="process-item reveal">
+                    <div class="process-number">03 / СОЗДАНИЕ</div>
+                    <h3>Соберу мозаику</h3>
+                    <p>
+                        Подберу цвета, рассчитаю композицию
+                        и соберу изображение из кубиков.
+                    </p>
+                </article>
+
+                <article class="process-item reveal">
+                    <div class="process-number">04 / РЕЗУЛЬТАТ</div>
+                    <h3>Картина появится в пространстве</h3>
+                    <p>
+                        Готовая работа станет частью интерьера,
+                        подарком или центром внимания на событии.
+                    </p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ОБО МНЕ -->
+
+    <section class="section about-section" id="about">
+        <div class="container about-grid">
+
+            <div class="about-image reveal">
+                <img
+                    src="images/kartini/kartina10.webp"
+                    alt="Большая мозаика из кубиков Рубика"
+                >
+            </div>
+
+            <div class="about-text">
+
+                <div class="section-label reveal">
+                    Опыт и авторский подход
+                </div>
+
+                <h2 class="section-title reveal">
+                    Кубик Рубика<br>
+                    станет <em>искусством.</em>
+                </h2>
+
+                <p class="reveal">
+                    Спидкубингом занимаюсь с 2014 года.
+                    За это время созданы картины, проведены мастер-классы
+                    и реализованы образовательные и социальные проекты.
+                </p>
+
+                <p class="reveal">
+                    В работе соединяются точность, цвет, логика
+                    и внимание к деталям. Благодаря этому головоломка
+                    превращается в выразительную картину.
+                </p>
+
+                <p class="reveal">
+                    Также развивается социальный проект «Кубик добра»,
+                    который помогает знакомить людей с миром головоломок
+                    и творческого обучения.
+                </p>
+
+                <div class="numbers reveal">
+                    <div class="number">
+                        <strong>12+</strong>
+                        <span>лет в спидкубинге</span>
+                    </div>
+
+                    <div class="number">
+                        <strong>100+</strong>
+                        <span>мастер-классов</span>
+                    </div>
+
+                    <div class="number">
+                        <strong>30+</strong>
+                        <span>картин и мозаик</span>
+                    </div>
+
+                    <div class="number">
+                        <strong>TOP-100</strong>
+                        <span>библиотечных практик России</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+
+    <section class="section">
+        <div class="container">
+
+            <div class="section-label reveal">
+                Частые вопросы
+            </div>
+
+            <h2 class="section-title reveal">
+                Перед началом <em>проекта.</em>
+            </h2>
+
+            <div class="faq">
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Сколько кубиков понадобится для картины?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        Для небольшого простого логотипа может быть достаточно
+                        примерно 120 кубиков. Для портрета или обычной картины
+                        чаще подойдёт формат около 300 кубиков. Чем больше
+                        кубиков используется, тем выше детализация.
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Можно ли создать картину по логотипу?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        Да. Подойдёт логотип, фотография, фирменный персонаж,
+                        портрет или индивидуальный эскиз.
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Можно ли подобрать размер картины?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        Да. Помогу выбрать размер с учётом помещения,
+                        расстояния просмотра, сложности изображения
+                        и необходимого уровня детализации.
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Сколько будет стоить проект?
+                        <span>+</span>
+                    </button>
+
+                    <div class="faq-answer">
+                        Стоимость рассчитывается индивидуально после обсуждения
+                        изображения, размера, количества кубиков, рамы,
+                        сроков и других особенностей проекта.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+
+    <section class="section" id="contacts">
+        <div class="container">
+
+            <div class="cta reveal">
+
+                <div class="section-label">
+                    Обсудим будущий проект
+                </div>
+
+                <h2>
+                    Соберём идею<br>
+                    Вашей <em>компании.</em>
+                </h2>
+
+                <p>
+                    Расскажите о компании, пространстве или мероприятии.
+                    Я предложу подходящий формат картины,
+                    мастер-класса или интерактивного проекта.
+                </p>
+
+                <button class="btn btn-yellow open-contact">
+                    Выбрать способ связи ↗
+                </button>
+
+                <div class="contact-links">
+                    <a class="contact-link" href="mailto:cherniakov-egor@yandex.ru">
+                        Почта
+                    </a>
+
+                    <a class="contact-link" href="tel:+79214089944">
+                        Телефон
+                    </a>
+
+                    <a class="contact-link" href="https://vk.com/che_egor" target="_blank">
+                        ВКонтакте
+                    </a>
+
+                    <a class="contact-link" href="https://t.me/espeedcuber" target="_blank">
+                        Telegram
+                    </a>
+
+                    <a class="contact-link" href="https://max.ru/u/f9LHodD0cOKYeNDN_fK5W_vjtNJ2-1oHZKi_bjzNkFE8CbE98yosq2eLEsA" target="_blank">
+                        MAX
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        © <span id="year"></span> Егор Черняков · Картины из кубиков Рубика для компаний
+    </div>
+</footer>
+
+<a class="mobile-contact open-contact" href="#contacts">
+    Выбрать способ связи
+</a>
+
+<!-- ОКНО ВЫБОРА СПОСОБА СВЯЗИ -->
+
+<div class="contact-modal" id="contactModal">
+    <div class="contact-modal-box">
+
+        <button class="modal-close" id="modalClose">
+            ×
+        </button>
+
+        <h2>
+            Выберите способ связи
+        </h2>
+
+        <p>
+            Вы сами выберете удобный канал общения.
+            Сайт не собирает и не хранит данные посетителей.
+        </p>
+
+        <div class="contact-options">
+
+            <a class="contact-option" href="mailto:cherniakov-egor@yandex.ru">
+                <span class="contact-option-icon">✉</span>
+
+                <span>
+                    <strong>Написать на почту</strong>
+                    <small>cherniakov-egor@yandex.ru</small>
+                </span>
+            </a>
+
+            <a class="contact-option" href="https://vk.com/che_egor" target="_blank">
+                <span class="contact-option-icon">ВК</span>
+
+                <span>
+                    <strong>Написать во ВКонтакте</strong>
+                    <small>Открыть страницу ВКонтакте</small>
+                </span>
+            </a>
+
+            <a class="contact-option" href="https://t.me/espeedcuber" target="_blank">
+                <span class="contact-option-icon">ТГ</span>
+
+                <span>
+                    <strong>Написать в Telegram</strong>
+                    <small>@espeedcuber</small>
+                </span>
+            </a>
+
+            <a class="contact-option" href="https://max.ru/u/f9LHodD0cOKYeNDN_fK5W_vjtNJ2-1oHZKi_bjzNkFE8CbE98yosq2eLEsA" target="_blank">
+                <span class="contact-option-icon">М</span>
+
+                <span>
+                    <strong>Написать в MAX</strong>
+                    <small>Открыть профиль MAX</small>
+                </span>
+            </a>
+
+            <a class="contact-option" href="tel:+79214089944">
+                <span class="contact-option-icon">☎</span>
+
+                <span>
+                    <strong>Позвонить</strong>
+                    <small>+7 921 408-99-44</small>
+                </span>
+            </a>
+
+            <button class="contact-option" id="copyContacts" type="button">
+                <span class="contact-option-icon">К</span>
+
+                <span>
+                    <strong>Скопировать контакты</strong>
+                    <small>Телефон и электронная почта</small>
+                </span>
+            </button>
+
+        </div>
+
+        <div class="copy-message" id="copyMessage"></div>
+
+    </div>
+</div>
+
+<!-- ПРОСМОТР ИЗОБРАЖЕНИЙ -->
+
+<div class="lightbox" id="lightbox">
+
+    <button class="lightbox-close" id="lightboxClose">
+        ×
+    </button>
+
+    <button class="lightbox-prev" id="lightboxPrev">
+        ‹
+    </button>
+
+    <img class="lightbox-image" id="lightboxImage" src="" alt="">
+
+    <button class="lightbox-next" id="lightboxNext">
+        ›
+    </button>
+
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+
+</div>
+
+<script>
+    const artworks = [
+        ["kartina1.webp", "Карельский орнамент", "events", "Орнамент"],
+        ["kartina2.webp", "Авторский портрет", "portraits", "Портрет"],
+        ["kartina3.webp", "Портрет", "portraits", "Портрет"],
+        ["kartina4.webp", "Логотип «Додо»", "business", "Работа для компании"],
+        ["kartina5.webp", "Серия тематических картин", "events", "Выставочный проект"],
+        ["kartina6.webp", "Картины для мероприятия", "events", "Мероприятие"],
+        ["kartina7.webp", "Портрет Чарльза Дарвина", "portraits", "Портрет"],
+        ["kartina8.webp", "Портрет Гарри Поттера", "portraits", "Портрет"],
+        ["kartina9.webp", "Рик и Морти", "events", "Тематическая работа"],
+        ["kartina10.webp", "We Are All Africans", "events", "Большая мозаика"],
+        ["kartina11.webp", "Портрет Иосифа Бродского", "portraits", "Портрет"],
+        ["kartina12.webp", "Портрет Альберта Эйнштейна", "portraits", "Портрет"],
+        ["kartina13.webp", "Енот из «Стражей Галактики»", "events", "Персонаж"],
+        ["kartina14.webp", "Губка Боб Квадратные Штаны", "events", "Персонаж"],
+        ["kartina15.webp", "Портрет Олега Роя", "portraits", "Портрет"],
+        ["kartina16.webp", "Работа ко Дню Победы", "events", "Городское мероприятие"],
+        ["kartina17.webp", "Санта-Клаус", "events", "Праздничная работа"],
+        ["kartina18.webp", "Тематическая композиция", "events", "Мозаика"],
+        ["kartina19.webp", "Портрет в интерьере", "portraits", "Портрет"],
+        ["kartina20.webp", "Портрет Юрия Слепухина", "portraits", "Портрет"],
+        ["kartina21.webp", "Занятие по созданию мозаики", "events", "Образовательный проект"],
+        ["kartina22.webp", "Картина ко Дню защиты детей", "events", "Мероприятие"],
+        ["kartina23.webp", "Сердце", "events", "Тематическая работа"],
+        ["kartina24.webp", "Герб Всеволожского района", "business", "Герб"],
+        ["kartina25.webp", "Масленица", "events", "Праздничная работа"],
+        ["kartina26.webp", "Портрет", "portraits", "Портрет"],
+        ["Gagarin.webp", "Портрет Юрия Гагарина", "events", "Август 2026"]
+    ];
+
+    const portfolioGrid = document.getElementById("portfolioGrid");
+
+    function renderPortfolio(filter = "all") {
+        portfolioGrid.innerHTML = "";
+
+        artworks.forEach((artwork, index) => {
+            const [file, title, category, type] = artwork;
+
+            if (filter !== "all" && category !== filter) {
+                return;
+            }
+
+            const item = document.createElement("article");
+            item.className = "artwork reveal";
+
+            item.innerHTML = `
+                <img
+                    src="images/kartini/${file}"
+                    alt="${title}"
+                    loading="lazy"
+                >
+
+                <div class="artwork-info">
+                    <strong>${title}</strong>
+                    <span>${type}</span>
+                </div>
+            `;
+
+            item.addEventListener("click", () => {
+                openLightbox(index);
+            });
+
+            portfolioGrid.appendChild(item);
+
+            setTimeout(() => {
+                item.classList.add("visible");
+            }, 30);
+        });
+    }
+
+    renderPortfolio();
+
+    document.querySelectorAll(".filter").forEach(button => {
+        button.addEventListener("click", () => {
+            document.querySelectorAll(".filter").forEach(item => {
+                item.classList.remove("active");
+            });
+
+            button.classList.add("active");
+            renderPortfolio(button.dataset.filter);
+        });
+    });
+
+    /* Последняя работа */
+
+    document.querySelector(".latest-image")
+        .addEventListener("click", () => {
+            openLightbox(26);
+        });
+
+    document.querySelector("[data-latest-open]")
+        .addEventListener("click", () => {
+            openLightbox(26);
+        });
+
+    /* Калькулятор */
+
+    const widthCubes = document.getElementById("widthCubes");
+    const heightCubes = document.getElementById("heightCubes");
+
+    if (widthCubes && heightCubes) {
+        const cubeCount = document.getElementById("cubeCount");
+        const pictureSize = document.getElementById("pictureSize");
+
+        function updateCalculator() {
+            const width = Math.max(1, Number(widthCubes.value) || 1);
+            const height = Math.max(1, Number(heightCubes.value) || 1);
+
+            const total = width * height;
+            const widthCm = (width * 5.6).toFixed(1);
+            const heightCm = (height * 5.6).toFixed(1);
+
+            cubeCount.textContent =
+                total.toLocaleString("ru-RU") + " кубиков";
+
+            pictureSize.textContent =
+                `Размер полотна: ${widthCm} × ${heightCm} см`;
+        }
+
+        widthCubes.addEventListener("input", updateCalculator);
+        heightCubes.addEventListener("input", updateCalculator);
+
+        updateCalculator();
+    }
+
+    /* FAQ */
+
+    document.querySelectorAll(".faq-question").forEach(button => {
+        button.addEventListener("click", () => {
+            button.closest(".faq-item").classList.toggle("open");
+        });
+    });
+
+    /* Окно выбора связи */
+
+    const contactModal = document.getElementById("contactModal");
+
+    function openContactModal() {
+        contactModal.classList.add("active");
+        document.body.classList.add("locked");
+    }
+
+    function closeContactModal() {
+        contactModal.classList.remove("active");
+        document.body.classList.remove("locked");
+    }
+
+    document.querySelectorAll(".open-contact").forEach(button => {
+        button.addEventListener("click", event => {
+            event.preventDefault();
+            openContactModal();
+        });
+    });
+
+    document.getElementById("modalClose")
+        .addEventListener("click", closeContactModal);
+
+    contactModal.addEventListener("click", event => {
+        if (event.target === contactModal) {
+            closeContactModal();
+        }
+    });
+
+    /* Копирование контактов */
+
+    document.getElementById("copyContacts")
+        .addEventListener("click", async () => {
+            const contacts =
+                "Егор Черняков\n" +
+                "Телефон: +7 921 408-99-44\n" +
+                "Почта: cherniakov-egor@yandex.ru";
+
+            const message = document.getElementById("copyMessage");
+
+            try {
+                await navigator.clipboard.writeText(contacts);
+                message.textContent = "Контакты скопированы";
+            } catch {
+                message.textContent =
+                    "Скопируйте контакты вручную";
+            }
+
+            setTimeout(() => {
+                message.textContent = "";
+            }, 2500);
+        });
+
+    /* Lightbox */
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+        currentIndex = index;
+
+        const [file, title, category, type] = artworks[currentIndex];
+
+        lightboxImage.src = `images/kartini/${file}`;
+        lightboxImage.alt = title;
+        lightboxCaption.textContent = `${title} · ${type}`;
+
+        lightbox.classList.add("active");
+        document.body.classList.add("locked");
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove("active");
+        document.body.classList.remove("locked");
+    }
+
+    function changeArtwork(direction) {
+        currentIndex += direction;
+
+        if (currentIndex < 0) {
+            currentIndex = artworks.length - 1;
+        }
+
+        if (currentIndex >= artworks.length) {
+            currentIndex = 0;
+        }
+
+        openLightbox(currentIndex);
+    }
+
+    document.getElementById("lightboxClose")
+        .addEventListener("click", closeLightbox);
+
+    document.getElementById("lightboxPrev")
+        .addEventListener("click", () => changeArtwork(-1));
+
+    document.getElementById("lightboxNext")
+        .addEventListener("click", () => changeArtwork(1));
+
+    lightbox.addEventListener("click", event => {
+        if (event.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener("keydown", event => {
+        if (lightbox.classList.contains("active")) {
+            if (event.key === "Escape") closeLightbox();
+            if (event.key === "ArrowLeft") changeArtwork(-1);
+            if (event.key === "ArrowRight") changeArtwork(1);
+        }
+
+        if (contactModal.classList.contains("active")) {
+            if (event.key === "Escape") closeContactModal();
+        }
+    });
+
+    /* Свайпы */
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    lightbox.addEventListener("touchstart", event => {
+        touchStartX = event.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener("touchend", event => {
+        touchEndX = event.changedTouches[0].screenX;
+
+        if (touchEndX < touchStartX - 50) {
+            changeArtwork(1);
+        }
+
+        if (touchEndX > touchStartX + 50) {
+            changeArtwork(-1);
+        }
+    }, { passive: true });
+
+    /* Анимация и шапка */
+
+    const header = document.getElementById("header");
+
+    window.addEventListener("scroll", () => {
+        header.classList.toggle("scrolled", window.scrollY > 30);
+    });
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: .1
+    });
+
+    document.querySelectorAll(".reveal").forEach(element => {
+        observer.observe(element);
+    });
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+</script>
+
+</body>
+</html>
