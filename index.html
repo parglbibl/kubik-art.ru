@@ -6,18 +6,7 @@
 
     <title>KUBIK ART — Егор Черняков | Картины из кубиков Рубика</title>
 
-    <meta
-        name="description"
-        content="Егор Черняков создаёт картины, логотипы и мозаики из кубиков Рубика для компаний, ресторанов, офисов, фестивалей и общественных пространств."
-    >
-
-    <meta property="og:title" content="KUBIK ART — картины из кубиков Рубика">
-    <meta
-        property="og:description"
-        content="Авторские картины, логотипы и мозаики из кубиков Рубика для компаний и мероприятий."
-    >
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="logo.webp">
+    <meta name="description" content="Егор Черняков создаёт картины, логотипы и мозаики из кубиков Рубика для компаний, ресторанов, офисов, фестивалей и общественных пространств.">
 
     <link rel="icon" href="logo.webp" type="image/webp">
 
@@ -47,8 +36,8 @@
             --mint: #73a98d;
             --violet: #887bae;
 
-            --shadow-small: 0 8px 25px rgba(35, 45, 70, .07);
-            --shadow: 0 22px 65px rgba(35, 45, 70, .13);
+            --shadow-soft: 0 8px 25px rgba(35,45,70,.07);
+            --shadow: 0 22px 65px rgba(35,45,70,.14);
 
             --radius: 24px;
             --container: 1180px;
@@ -109,8 +98,8 @@
             width: 18px;
             height: 18px;
             border-radius: 5px;
-            opacity: .2;
             transform: rotate(45deg);
+            opacity: .22;
             pointer-events: none;
         }
 
@@ -138,7 +127,7 @@
             background: var(--mint);
         }
 
-        /* ===== ШАПКА ===== */
+        /* ===== HEADER ===== */
 
         .header {
             position: fixed;
@@ -201,7 +190,6 @@
         }
 
         .header-button {
-            flex: 0 0 auto;
             min-height: 45px;
             padding: 0 18px;
             border: 0;
@@ -325,7 +313,7 @@
             background: white;
             color: var(--ink);
             border: 1px solid var(--line);
-            box-shadow: var(--shadow-small);
+            box-shadow: var(--shadow-soft);
         }
 
         .btn-outline:hover {
@@ -335,7 +323,7 @@
             box-shadow: none;
         }
 
-        /* ===== ПЕРВЫЙ ЭКРАН ===== */
+        /* ===== HERO ===== */
 
         .hero {
             min-height: calc(100svh - 88px);
@@ -346,7 +334,7 @@
 
         .hero-grid {
             display: grid;
-            grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+            grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr);
             align-items: center;
             gap: 58px;
         }
@@ -358,7 +346,6 @@
         .hero-kicker {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
             gap: 10px;
             margin-bottom: 17px;
             color: var(--blue);
@@ -373,13 +360,12 @@
             height: 9px;
             border-radius: 50%;
             background: var(--coral);
-            flex: 0 0 auto;
         }
 
         .hero-name {
             margin-bottom: 5px;
             color: var(--ink);
-            font-size: clamp(25px, 3vw, 35px);
+            font-size: clamp(25px,3vw,35px);
             font-weight: 800;
             letter-spacing: -.05em;
         }
@@ -387,14 +373,14 @@
         .hero-role {
             margin-bottom: 21px;
             color: var(--blue);
-            font-size: clamp(14px, 1.7vw, 18px);
+            font-size: clamp(14px,1.7vw,18px);
             font-weight: 700;
         }
 
         .hero h1 {
-            max-width: 600px;
+            max-width: 620px;
             color: var(--ink);
-            font-size: clamp(48px, 6.6vw, 91px);
+            font-size: clamp(48px,6.6vw,91px);
             font-weight: 800;
             line-height: .9;
             letter-spacing: -.09em;
@@ -425,7 +411,7 @@
 
         .hero-photo {
             position: relative;
-            height: min(62vh, 510px);
+            height: min(62vh,510px);
             min-height: 350px;
             border-radius: 30px;
             background: white;
@@ -500,7 +486,7 @@
 
         .case-grid {
             display: grid;
-            grid-template-columns: 1.08fr .92fr;
+            grid-template-columns: 1.1fr .9fr;
             gap: 35px;
             margin-top: 55px;
         }
@@ -542,17 +528,17 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 45px;
+            padding: 42px;
             border: 1px solid #f0df91;
             border-radius: var(--radius);
-            background: linear-gradient(145deg, #fff8d9, #fffdf3);
+            background: linear-gradient(145deg,#fff8d9,#fffdf3);
             text-align: center;
         }
 
         .case-info h3 {
-            margin-bottom: 21px;
+            margin-bottom: 20px;
             color: var(--ink);
-            font-size: clamp(32px, 4vw, 50px);
+            font-size: clamp(32px,4vw,50px);
             line-height: 1;
             letter-spacing: -.07em;
         }
@@ -566,9 +552,9 @@
 
         .case-facts {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2,1fr);
             gap: 10px;
-            margin: 18px 0 26px;
+            margin: 18px 0 25px;
         }
 
         .fact {
@@ -586,11 +572,11 @@
             font-size: 20px;
         }
 
-        /* ===== ЧТО МОЖНО СОБРАТЬ ===== */
+        /* ===== ЧТО СОБРАТЬ ===== */
 
         .options-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3,1fr);
             gap: 18px;
             margin-top: 55px;
         }
@@ -600,7 +586,7 @@
             border: 1px solid var(--line);
             border-radius: var(--radius);
             background: white;
-            box-shadow: var(--shadow-small);
+            box-shadow: var(--shadow-soft);
             text-align: center;
             transition: .3s ease;
         }
@@ -677,7 +663,7 @@
 
         .sizes {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(4,1fr);
             gap: 15px;
             margin-top: 55px;
         }
@@ -687,7 +673,7 @@
             border: 1px solid var(--line);
             border-radius: var(--radius);
             background: white;
-            box-shadow: var(--shadow-small);
+            box-shadow: var(--shadow-soft);
             text-align: center;
         }
 
@@ -757,7 +743,7 @@
             border: 1px solid rgba(82,107,158,.2);
             border-radius: var(--radius);
             background: white;
-            box-shadow: var(--shadow-small);
+            box-shadow: var(--shadow-soft);
         }
 
         .latest-image {
@@ -810,7 +796,7 @@
         .latest-content h3 {
             margin-bottom: 17px;
             color: var(--ink);
-            font-size: clamp(30px, 4vw, 48px);
+            font-size: clamp(30px,4vw,48px);
             line-height: 1;
             letter-spacing: -.06em;
         }
@@ -826,7 +812,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 9px;
-            margin-bottom: 40px;
+            margin-bottom: 38px;
         }
 
         .filter {
@@ -848,38 +834,64 @@
             color: white;
         }
 
+        /*
+            НОВАЯ СЕТКА:
+            12 колонок + плотное заполнение.
+            Благодаря grid-auto-flow: dense
+            свободные места автоматически заполняются.
+        */
+
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(12, minmax(0, 1fr));
-            gap: 15px;
+            grid-auto-rows: 115px;
+            grid-auto-flow: dense;
+            gap: 16px;
         }
 
         .artwork {
             position: relative;
             grid-column: span 3;
-            height: 280px;
+            grid-row: span 3;
+            min-width: 0;
+            min-height: 0;
             overflow: hidden;
             border: 5px solid white;
             border-radius: 20px;
             background: #dce2eb;
-            box-shadow: var(--shadow-small);
+            box-shadow: var(--shadow-soft);
             cursor: pointer;
-            transition: .4s ease;
+            transition: .35s ease;
         }
 
-        .artwork:nth-child(1),
-        .artwork:nth-child(10) {
+        .artwork:nth-child(1) {
             grid-column: span 6;
-            height: 390px;
+            grid-row: span 5;
         }
 
+        .artwork:nth-child(2),
+        .artwork:nth-child(3) {
+            grid-column: span 3;
+            grid-row: span 3;
+        }
+
+        .artwork:nth-child(4),
         .artwork:nth-child(5),
-        .artwork:nth-child(15) {
+        .artwork:nth-child(6),
+        .artwork:nth-child(7) {
+            grid-column: span 3;
+            grid-row: span 3;
+        }
+
+        .artwork:nth-child(8),
+        .artwork:nth-child(9),
+        .artwork:nth-child(10) {
             grid-column: span 4;
-            height: 340px;
+            grid-row: span 4;
         }
 
         .artwork:hover {
+            transform: translateY(-5px);
             box-shadow: var(--shadow);
         }
 
@@ -891,7 +903,7 @@
         }
 
         .artwork:hover img {
-            transform: scale(1.08);
+            transform: scale(1.07);
         }
 
         .artwork-info {
@@ -902,7 +914,7 @@
             padding: 12px 14px;
             border-radius: 14px;
             background: rgba(255,255,255,.94);
-            box-shadow: var(--shadow-small);
+            box-shadow: var(--shadow-soft);
             opacity: 0;
             transform: translateY(9px);
             transition: .3s ease;
@@ -948,48 +960,6 @@
         .archive-box span {
             color: var(--blue);
             font-weight: 700;
-        }
-
-        /* ===== ПРОЦЕСС ===== */
-
-        .process {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-            margin-top: 55px;
-        }
-
-        .process-item {
-            min-height: 240px;
-            padding: 27px;
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            background: white;
-            box-shadow: var(--shadow-small);
-            text-align: center;
-        }
-
-        .process-item:nth-child(1) { border-top: 5px solid var(--blue); }
-        .process-item:nth-child(2) { border-top: 5px solid var(--yellow); }
-        .process-item:nth-child(3) { border-top: 5px solid var(--coral); }
-        .process-item:nth-child(4) { border-top: 5px solid var(--mint); }
-
-        .process-number {
-            margin-bottom: 29px;
-            color: var(--blue);
-            font-family: "DM Mono", monospace;
-            font-size: 12px;
-        }
-
-        .process-item h3 {
-            margin-bottom: 10px;
-            font-size: 19px;
-        }
-
-        .process-item p {
-            color: var(--muted);
-            font-size: 14px;
-            line-height: 1.7;
         }
 
         /* ===== ОБО МНЕ ===== */
@@ -1038,7 +1008,7 @@
 
         .numbers {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(4,1fr);
             gap: 18px;
             padding-top: 27px;
             margin-top: 34px;
@@ -1110,7 +1080,7 @@
         .cta {
             padding: 105px 35px;
             border-radius: 32px;
-            background: linear-gradient(135deg, #526b9e, #667fae 55%, #887bae);
+            background: linear-gradient(135deg,#526b9e,#667fae 55%,#887bae);
             color: white;
             text-align: center;
             box-shadow: var(--shadow);
@@ -1129,7 +1099,7 @@
             max-width: 800px;
             margin: 0 auto 20px;
             color: white;
-            font-size: clamp(42px, 6vw, 76px);
+            font-size: clamp(42px,6vw,76px);
             line-height: 1;
             letter-spacing: -.075em;
         }
@@ -1197,7 +1167,7 @@
 
         .contact-modal-box {
             position: relative;
-            width: min(470px, 100%);
+            width: min(470px,100%);
             padding: 35px;
             border-radius: var(--radius);
             background: white;
@@ -1285,75 +1255,11 @@
             font-size: 12px;
         }
 
-        /* ===== LIGHTBOX ===== */
-
-        .lightbox-image {
-            max-width: 93vw;
-            max-height: 86vh;
-            object-fit: contain;
-            border-radius: 14px;
-        }
-
-        .lightbox-close,
-        .lightbox-prev,
-        .lightbox-next {
-            position: absolute;
-            z-index: 2;
-            display: grid;
-            place-items: center;
-            width: 50px;
-            height: 50px;
-            border: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,.16);
-            color: white;
-            cursor: pointer;
-            font-size: 25px;
-        }
-
-        .lightbox-close {
-            top: 22px;
-            right: 22px;
-        }
-
-        .lightbox-prev,
-        .lightbox-next {
-            top: 50%;
-        }
-
-        .lightbox-prev {
-            left: 25px;
-        }
-
-        .lightbox-next {
-            right: 25px;
-        }
-
-        .lightbox-caption {
-            position: absolute;
-            bottom: 24px;
-            left: 50%;
-            max-width: 75%;
-            padding: 10px 17px;
-            border-radius: 100px;
-            background: rgba(255,255,255,.14);
-            color: white;
-            font-size: 12px;
-            text-align: center;
-            transform: translateX(-50%);
-        }
-
-        /* ===== ПЛАНШЕТ ===== */
+        /* ===== MOBILE ===== */
 
         @media (max-width: 1050px) {
-            .hero {
-                min-height: auto;
-                padding: 125px 0 65px;
-            }
-
             .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 55px;
+                display: block;
             }
 
             .hero-content {
@@ -1376,13 +1282,8 @@
             }
 
             .hero-visual {
-                width: min(720px, 100%);
-                margin: 0 auto;
-            }
-
-            .hero-photo,
-            .hero-photo img {
-                height: 500px;
+                width: min(720px,100%);
+                margin: 60px auto 0;
             }
 
             .case-grid,
@@ -1391,7 +1292,7 @@
             }
 
             .about-image {
-                width: min(600px, 100%);
+                width: min(600px,100%);
                 margin: 0 auto;
             }
 
@@ -1405,11 +1306,9 @@
             }
 
             .sizes {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2,1fr);
             }
         }
-
-        /* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
 
         @media (max-width: 850px) {
             .container {
@@ -1423,26 +1322,36 @@
             .services,
             .options-grid,
             .process {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2,1fr);
             }
 
             .portfolio-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns: repeat(6,minmax(0,1fr));
+                grid-auto-rows: 120px;
             }
 
             .artwork,
-            .artwork:nth-child(1),
+            .artwork:nth-child(2),
+            .artwork:nth-child(3),
+            .artwork:nth-child(4),
             .artwork:nth-child(5),
-            .artwork:nth-child(10),
-            .artwork:nth-child(15) {
-                grid-column: span 1;
-                height: 270px;
+            .artwork:nth-child(6),
+            .artwork:nth-child(7) {
+                grid-column: span 2;
+                grid-row: span 2;
+                height: auto;
             }
 
-            .artwork:nth-child(1),
+            .artwork:nth-child(1) {
+                grid-column: span 6;
+                grid-row: span 3;
+            }
+
+            .artwork:nth-child(8),
+            .artwork:nth-child(9),
             .artwork:nth-child(10) {
-                grid-column: span 2;
-                height: 350px;
+                grid-column: span 3;
+                grid-row: span 3;
             }
         }
 
@@ -1453,7 +1362,6 @@
 
             .header {
                 height: 67px;
-                padding: 3px 0;
             }
 
             .header-inner {
@@ -1463,8 +1371,8 @@
             }
 
             .site-logo {
-                height: 58px;
-                max-width: 215px;
+                height: 57px;
+                max-width: 210px;
             }
 
             .header-button {
@@ -1475,10 +1383,6 @@
 
             .section {
                 padding: 78px 0;
-            }
-
-            .section-label {
-                font-size: 10px;
             }
 
             .section-title {
@@ -1492,19 +1396,11 @@
 
             .hero {
                 min-height: auto;
-                padding: 93px 0 70px;
+                padding: 92px 0 70px;
             }
 
-            .hero-grid {
-                gap: 55px;
-            }
-
-            .hero-kicker {
-                font-size: 10px;
-            }
-
-            .hero-name {
-                font-size: 24px;
+            .hero h1 {
+                font-size: 54px;
             }
 
             .hero-role {
@@ -1512,13 +1408,7 @@
                 line-height: 1.45;
             }
 
-            .hero h1 {
-                font-size: 54px;
-                line-height: .94;
-            }
-
             .hero-text {
-                margin: 24px auto;
                 font-size: 16px;
                 line-height: 1.7;
             }
@@ -1535,7 +1425,7 @@
 
             .hero-visual {
                 width: calc(100% - 8px);
-                margin-top: 0;
+                margin-top: 58px;
             }
 
             .hero-photo,
@@ -1560,11 +1450,6 @@
 
             .hero-tag strong {
                 font-size: 22px;
-            }
-
-            .case-grid {
-                gap: 24px;
-                margin-top: 38px;
             }
 
             .case-image {
@@ -1606,12 +1491,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .service,
-            .option-card {
-                min-height: auto;
-                padding: 27px;
-            }
-
             .size-card.featured {
                 transform: none;
             }
@@ -1634,13 +1513,9 @@
                 font-size: 37px;
             }
 
-            .latest-content p {
-                font-size: 15px;
-            }
-
             .filters {
-                flex-wrap: nowrap;
                 justify-content: flex-start;
+                flex-wrap: nowrap;
                 overflow-x: auto;
                 padding-bottom: 7px;
                 scrollbar-width: none;
@@ -1656,27 +1531,38 @@
             }
 
             .portfolio-grid {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+                grid-auto-rows: 110px;
                 gap: 9px;
             }
 
             .artwork,
-            .artwork:nth-child(1),
+            .artwork:nth-child(2),
+            .artwork:nth-child(3),
+            .artwork:nth-child(4),
+            .artwork:nth-child(5),
+            .artwork:nth-child(6),
+            .artwork:nth-child(7),
+            .artwork:nth-child(8),
+            .artwork:nth-child(9),
             .artwork:nth-child(10) {
-                height: 220px;
+                grid-column: span 1;
+                grid-row: span 2;
+                height: auto;
                 border-width: 3px;
                 border-radius: 15px;
             }
 
-            .artwork:nth-child(1),
-            .artwork:nth-child(10) {
-                height: 290px;
+            .artwork:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 3;
             }
 
             .artwork-info {
                 left: 7px;
                 right: 7px;
                 bottom: 7px;
-                padding: 9px;
+                padding: 8px;
                 opacity: 1;
                 transform: none;
             }
@@ -1690,11 +1576,11 @@
             }
 
             .archive-box {
-                padding: 25px 18px;
+                padding: 24px 17px;
             }
 
             .about-grid {
-                gap: 55px;
+                gap: 52px;
             }
 
             .about-text p {
@@ -1721,7 +1607,6 @@
 
             .contact-link {
                 text-align: center;
-                font-size: 12px;
             }
 
             .contact-modal-box {
@@ -2190,7 +2075,7 @@
                         новой в моём портфолио.
                     </p>
 
-                    <button class="btn btn-yellow" data-latest-open style="margin-top: 24px;">
+                    <button class="btn btn-yellow" data-latest-open style="margin-top:24px;">
                         Рассмотреть работу
                     </button>
 
@@ -2199,7 +2084,6 @@
             </div>
 
             <div class="filters reveal">
-
                 <button class="filter active" data-filter="all">
                     Все работы
                 </button>
@@ -2215,7 +2099,6 @@
                 <button class="filter" data-filter="events">
                     События
                 </button>
-
             </div>
 
             <div class="portfolio-grid" id="portfolioGrid"></div>
@@ -2464,30 +2347,15 @@
                         Телефон
                     </a>
 
-                    <a
-                        class="contact-link"
-                        href="https://vk.com/che_egor"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+                    <a class="contact-link" href="https://vk.com/che_egor" target="_blank">
                         ВКонтакте
                     </a>
 
-                    <a
-                        class="contact-link"
-                        href="https://t.me/espeedcuber"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+                    <a class="contact-link" href="https://t.me/espeedcuber" target="_blank">
                         Telegram
                     </a>
 
-                    <a
-                        class="contact-link"
-                        href="https://max.ru/u/f9LHodD0cOKYeNDN_fK5W_vjtNJ2-1oHZKi_bjzNkFE8CbE98yosq2eLEsA"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+                    <a class="contact-link" href="https://max.ru/u/f9LHodD0cOKYeNDN_fK5W_vjtNJ2-1oHZKi_bjzNkFE8CbE98yosq2eLEsA" target="_blank">
                         MAX
                     </a>
                 </div>
@@ -2779,18 +2647,39 @@
         .addEventListener("click", closeLightbox);
 
     document.getElementById("lightboxPrev")
-        .addEventListener("click", () => {
-            changeArtwork(-1);
-        });
+        .addEventListener("click", () => changeArtwork(-1));
 
     document.getElementById("lightboxNext")
-        .addEventListener("click", () => {
-            changeArtwork(1);
-        });
+        .addEventListener("click", () => changeArtwork(1));
 
     lightbox.addEventListener("click", event => {
         if (event.target === lightbox) {
             closeLightbox();
+        }
+    });
+
+    /* Клавиатура */
+
+    document.addEventListener("keydown", event => {
+        if (lightbox.classList.contains("active")) {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+
+            if (event.key === "ArrowLeft") {
+                changeArtwork(-1);
+            }
+
+            if (event.key === "ArrowRight") {
+                changeArtwork(1);
+            }
+        }
+
+        if (
+            document.getElementById("contactModal").classList.contains("active") &&
+            event.key === "Escape"
+        ) {
+            closeContactModal();
         }
     });
 
@@ -2876,23 +2765,7 @@
             }, 2500);
         });
 
-    /* Закрытие окон клавишей Escape */
-
-    document.addEventListener("keydown", event => {
-        if (event.key !== "Escape") {
-            return;
-        }
-
-        if (lightbox.classList.contains("active")) {
-            closeLightbox();
-        }
-
-        if (contactModal.classList.contains("active")) {
-            closeContactModal();
-        }
-    });
-
-    /* Фиксация шапки */
+    /* Шапка */
 
     const header = document.getElementById("header");
 
@@ -2900,7 +2773,7 @@
         header.classList.toggle("scrolled", window.scrollY > 30);
     });
 
-    /* Появление блоков */
+    /* Анимация появления */
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -2917,7 +2790,7 @@
         observer.observe(element);
     });
 
-    /* Текущий год */
+    /* Год */
 
     document.getElementById("year").textContent =
         new Date().getFullYear();
