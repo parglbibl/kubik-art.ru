@@ -11,14 +11,6 @@
         content="Егор Черняков создаёт картины, логотипы и мозаики из кубиков Рубика для компаний, ресторанов, офисов, фестивалей и общественных пространств."
     >
 
-    <meta property="og:title" content="KUBIK ART — картины из кубиков Рубика">
-    <meta
-        property="og:description"
-        content="Авторские картины и мозаики из кубиков Рубика для компаний и мероприятий."
-    >
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="logo.webp">
-
     <link rel="icon" href="logo.webp" type="image/webp">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,7 +39,7 @@
             --mint: #73a98d;
             --violet: #887bae;
 
-            --shadow-soft: 0 8px 25px rgba(35,45,70,.07);
+            --shadow-small: 0 8px 25px rgba(35,45,70,.07);
             --shadow: 0 22px 65px rgba(35,45,70,.13);
 
             --radius: 24px;
@@ -138,7 +130,7 @@
             background: var(--mint);
         }
 
-        /* ===== HEADER ===== */
+        /* ===== ШАПКА ===== */
 
         .header {
             position: fixed;
@@ -170,12 +162,11 @@
         .logo-link {
             display: flex;
             align-items: center;
-            flex: 0 0 auto;
             height: 100%;
+            flex: 0 0 auto;
         }
 
         .site-logo {
-            display: block;
             width: auto;
             height: 76px;
             max-width: 310px;
@@ -201,7 +192,6 @@
         }
 
         .header-button {
-            flex: 0 0 auto;
             min-height: 45px;
             padding: 0 18px;
             border: 0;
@@ -212,19 +202,13 @@
             font-weight: 700;
             cursor: pointer;
             box-shadow: 0 7px 20px rgba(82,107,158,.2);
-            transition: .25s ease;
-        }
-
-        .header-button:hover {
-            background: var(--blue-dark);
-            transform: translateY(-2px);
         }
 
         /* ===== ОБЩИЕ СТИЛИ ===== */
 
         .section {
             position: relative;
-            padding: 120px 0;
+            padding: 110px 0;
         }
 
         .section-label {
@@ -232,7 +216,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 18px;
+            margin-bottom: 17px;
             color: var(--blue);
             font-family: "DM Mono", monospace;
             font-size: 11px;
@@ -268,19 +252,17 @@
 
         .section-description {
             max-width: 680px;
-            margin: 22px auto 0;
+            margin: 20px auto 0;
             color: var(--muted);
-            font-size: 18px;
-            line-height: 1.75;
+            font-size: 17px;
+            line-height: 1.7;
             text-align: center;
         }
 
         .reveal {
             opacity: 0;
-            transform: translateY(24px);
-            transition:
-                opacity .7s ease,
-                transform .7s cubic-bezier(.2,.8,.2,1);
+            transform: translateY(22px);
+            transition: opacity .7s ease, transform .7s ease;
         }
 
         .reveal.visible {
@@ -293,8 +275,8 @@
             align-items: center;
             justify-content: center;
             gap: 9px;
-            min-height: 55px;
-            padding: 0 25px;
+            min-height: 54px;
+            padding: 0 24px;
             border: 0;
             border-radius: 15px;
             background: var(--blue);
@@ -325,7 +307,7 @@
             background: white;
             color: var(--ink);
             border: 1px solid var(--line);
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-small);
         }
 
         .btn-outline:hover {
@@ -339,7 +321,7 @@
 
         .hero {
             min-height: calc(100svh - 88px);
-            padding: 108px 0 42px;
+            padding: 105px 0 42px;
             display: flex;
             align-items: center;
         }
@@ -359,7 +341,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 17px;
+            margin-bottom: 16px;
             color: var(--blue);
             font-family: "DM Mono", monospace;
             font-size: 11px;
@@ -383,7 +365,7 @@
         }
 
         .hero-role {
-            margin-bottom: 21px;
+            margin-bottom: 20px;
             color: var(--blue);
             font-size: clamp(14px,1.7vw,18px);
             font-weight: 700;
@@ -392,7 +374,7 @@
         .hero h1 {
             max-width: 620px;
             color: var(--ink);
-            font-size: clamp(48px,6.6vw,91px);
+            font-size: clamp(47px,6.4vw,88px);
             font-weight: 800;
             line-height: .9;
             letter-spacing: -.09em;
@@ -404,7 +386,7 @@
 
         .hero-text {
             max-width: 550px;
-            margin: 23px 0 25px;
+            margin: 22px 0 24px;
             color: var(--muted);
             font-size: 16px;
             line-height: 1.7;
@@ -472,7 +454,7 @@
             line-height: 1;
         }
 
-        /* ===== ЦВЕТНАЯ ПОЛОСА ===== */
+        /* ===== ПОЛОСА ===== */
 
         .color-strip {
             display: flex;
@@ -493,7 +475,6 @@
 
         .case-section {
             background: white;
-            border-bottom: 1px solid var(--line);
         }
 
         .case-grid {
@@ -505,7 +486,7 @@
 
         .case-image {
             position: relative;
-            min-height: 560px;
+            min-height: 550px;
             overflow: hidden;
             border-radius: var(--radius);
             background: #e8edf4;
@@ -544,7 +525,6 @@
 
         .case-info h3 {
             margin-bottom: 20px;
-            color: var(--ink);
             font-size: clamp(32px,4vw,50px);
             line-height: 1;
             letter-spacing: -.07em;
@@ -579,7 +559,7 @@
             font-size: 20px;
         }
 
-        /* ===== OPTIONS ===== */
+        /* ===== КАРТОЧКИ ===== */
 
         .options-grid {
             display: grid;
@@ -593,7 +573,7 @@
             border: 1px solid var(--line);
             border-radius: var(--radius);
             background: white;
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-small);
             text-align: center;
             transition: .3s ease;
         }
@@ -606,12 +586,13 @@
         .option-icon {
             display: grid;
             place-items: center;
-            width: 56px;
-            height: 56px;
-            margin: 0 auto 21px;
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 20px;
             border-radius: 17px;
             background: #edf3ff;
             color: var(--blue);
+            font-size: 25px;
         }
 
         .option-card:nth-child(2) .option-icon {
@@ -639,16 +620,6 @@
             color: #d17a43;
         }
 
-        .svg-icon {
-            width: 28px;
-            height: 28px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 1.7;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
         .option-card h3 {
             margin-bottom: 9px;
             font-size: 19px;
@@ -664,8 +635,6 @@
 
         .size-section {
             background: #fffdf8;
-            border-top: 1px solid #f0eadb;
-            border-bottom: 1px solid #f0eadb;
         }
 
         .sizes {
@@ -680,13 +649,13 @@
             border: 1px solid var(--line);
             border-radius: var(--radius);
             background: white;
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-small);
             text-align: center;
         }
 
         .size-card.featured {
             border: 2px solid var(--yellow);
-            transform: translateY(-9px);
+            transform: translateY(-8px);
         }
 
         .size-card h3 {
@@ -713,30 +682,10 @@
             line-height: 1.5;
         }
 
-        .size-note {
-            max-width: 760px;
-            margin: 28px auto 0;
-            color: var(--muted);
-            font-size: 13px;
-            text-align: center;
-        }
-
         /* ===== ПОРТФОЛИО ===== */
 
         .portfolio-section {
             background: #eef2f8;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .portfolio-note {
-            max-width: 700px;
-            margin: 20px auto 0;
-            padding: 14px 18px;
-            border-radius: 15px;
-            background: rgba(255,255,255,.8);
-            color: var(--muted);
-            font-size: 14px;
-            text-align: center;
         }
 
         .latest-work {
@@ -750,7 +699,7 @@
             border: 1px solid rgba(82,107,158,.2);
             border-radius: var(--radius);
             background: white;
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-small);
         }
 
         .latest-image {
@@ -792,7 +741,6 @@
             color: var(--coral);
             font-family: "DM Mono", monospace;
             font-size: 11px;
-            letter-spacing: .08em;
             text-transform: uppercase;
         }
 
@@ -807,7 +755,6 @@
         .latest-content p {
             color: var(--muted);
             font-size: 15px;
-            line-height: 1.75;
         }
 
         .filters {
@@ -827,26 +774,18 @@
             color: var(--muted);
             cursor: pointer;
             font-size: 12px;
-            transition: .25s ease;
         }
 
-        .filter:hover,
-        .filter.active {
+        .filter.active,
+        .filter:hover {
             border-color: var(--blue);
             background: var(--blue);
             color: white;
         }
 
-        /*
-            РОВНАЯ СЕТКА ПОРТФОЛИО
-
-            Все карточки имеют одинаковую высоту.
-            Изображения показываются целиком через contain.
-        */
-
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0,1fr));
+            grid-template-columns: repeat(4,minmax(0,1fr));
             gap: 18px;
         }
 
@@ -857,7 +796,7 @@
             border: 5px solid white;
             border-radius: 20px;
             background: #f8fafc;
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-small);
             cursor: pointer;
             transition: .35s ease;
         }
@@ -873,11 +812,6 @@
             padding: 8px;
             object-fit: contain;
             background: #f8fafc;
-            transition: .5s ease;
-        }
-
-        .artwork:hover img {
-            transform: scale(1.04);
         }
 
         .artwork-info {
@@ -888,7 +822,6 @@
             padding: 11px 13px;
             border-radius: 13px;
             background: rgba(255,255,255,.95);
-            box-shadow: var(--shadow-soft);
             opacity: 0;
             transform: translateY(8px);
             transition: .3s ease;
@@ -901,7 +834,6 @@
 
         .artwork-info strong {
             display: block;
-            color: var(--ink);
             font-size: 13px;
         }
 
@@ -909,6 +841,31 @@
             color: var(--blue);
             font-family: "DM Mono", monospace;
             font-size: 10px;
+        }
+
+        .archive-box {
+            max-width: 850px;
+            margin: 45px auto 0;
+            padding: 28px;
+            border: 1px dashed #cbd4e2;
+            border-radius: var(--radius);
+            background: rgba(255,255,255,.62);
+            text-align: center;
+        }
+
+        .archive-box h3 {
+            margin-bottom: 9px;
+            font-size: 24px;
+        }
+
+        .archive-box p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .archive-box span {
+            color: var(--blue);
+            font-weight: 700;
         }
 
         /* ===== ПРОЦЕСС ===== */
@@ -920,17 +877,17 @@
         .process-track {
             position: relative;
             display: grid;
-            grid-template-columns: repeat(4, minmax(0,1fr));
+            grid-template-columns: repeat(4,1fr);
             gap: 18px;
-            margin-top: 60px;
+            margin-top: 55px;
         }
 
         .process-track::before {
             content: "";
             position: absolute;
             top: 31px;
-            left: 11%;
-            right: 11%;
+            left: 10%;
+            right: 10%;
             height: 2px;
             background: linear-gradient(
                 90deg,
@@ -945,23 +902,23 @@
         .process-card {
             position: relative;
             z-index: 1;
-            min-height: 270px;
-            padding: 60px 25px 27px;
+            min-height: 260px;
+            padding: 62px 24px 26px;
             border: 1px solid var(--line);
             border-radius: var(--radius);
             background: white;
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-small);
             text-align: center;
         }
 
         .process-dot {
             position: absolute;
-            top: 18px;
+            top: 17px;
             left: 50%;
             display: grid;
             place-items: center;
-            width: 28px;
-            height: 28px;
+            width: 29px;
+            height: 29px;
             border: 5px solid var(--cream);
             border-radius: 50%;
             background: var(--blue);
@@ -985,8 +942,7 @@
         }
 
         .process-card h3 {
-            margin-bottom: 11px;
-            color: var(--ink);
+            margin-bottom: 10px;
             font-size: 19px;
         }
 
@@ -1026,7 +982,6 @@
             width: 100%;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            object-fit: cover;
         }
 
         .about-text {
@@ -1060,14 +1015,13 @@
             display: block;
             color: var(--muted);
             font-size: 11px;
-            line-height: 1.35;
         }
 
         /* ===== FAQ ===== */
 
         .faq {
             max-width: 850px;
-            margin: 50px auto 0;
+            margin: 48px auto 0;
         }
 
         .faq-item {
@@ -1083,7 +1037,7 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            padding: 19px 21px;
+            padding: 18px 21px;
             border: 0;
             background: white;
             color: var(--ink);
@@ -1100,10 +1054,9 @@
 
         .faq-answer {
             display: none;
-            padding: 0 21px 20px;
+            padding: 0 21px 19px;
             color: var(--muted);
             font-size: 15px;
-            line-height: 1.7;
         }
 
         .faq-item.open .faq-answer {
@@ -1113,8 +1066,8 @@
         /* ===== CTA ===== */
 
         .cta {
-            padding: 105px 35px;
-            border-radius: 32px;
+            padding: 66px 30px;
+            border-radius: 30px;
             background: linear-gradient(135deg,#526b9e,#667fae 55%,#887bae);
             color: white;
             text-align: center;
@@ -1122,6 +1075,7 @@
         }
 
         .cta .section-label {
+            margin-bottom: 13px;
             color: var(--yellow);
         }
 
@@ -1132,11 +1086,11 @@
 
         .cta h2 {
             max-width: 800px;
-            margin: 0 auto 20px;
+            margin: 0 auto 14px;
             color: white;
-            font-size: clamp(42px,6vw,76px);
+            font-size: clamp(38px,5vw,62px);
             line-height: 1;
-            letter-spacing: -.075em;
+            letter-spacing: -.07em;
         }
 
         .cta h2 em {
@@ -1145,210 +1099,70 @@
         }
 
         .cta p {
-            max-width: 620px;
-            margin: 0 auto 30px;
+            max-width: 600px;
+            margin: 0 auto 22px;
             color: rgba(255,255,255,.84);
-            font-size: 18px;
+            font-size: 16px;
+        }
+
+        .cta .contact-links {
+            margin-top: 20px;
         }
 
         .contact-links {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 26px;
+            gap: 9px;
         }
 
         .contact-link {
-            padding: 11px 17px;
+            padding: 10px 15px;
             border: 1px solid rgba(255,255,255,.35);
             border-radius: 100px;
             color: white;
-            font-size: 13px;
-            transition: .25s ease;
-        }
-
-        .contact-link:hover {
-            border-color: var(--yellow);
-            background: rgba(255,255,255,.13);
-        }
-
-        footer {
-            padding: 32px 0;
-            color: var(--muted);
-            text-align: center;
             font-size: 12px;
         }
 
-        /* ===== CONTACT MODAL ===== */
+        /* ===== КНОПКА НАВЕРХ ===== */
 
-        .contact-modal,
-        .lightbox {
+        .back-to-top {
             position: fixed;
-            inset: 0;
-            z-index: 100;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background: rgba(23,32,51,.78);
-            backdrop-filter: blur(10px);
-        }
-
-        .contact-modal.active,
-        .lightbox.active {
-            display: flex;
-        }
-
-        .contact-modal-box {
-            position: relative;
-            width: min(470px,100%);
-            padding: 35px;
-            border-radius: var(--radius);
-            background: white;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-
-        .contact-modal-box h2 {
-            margin-bottom: 10px;
-            font-size: 30px;
-        }
-
-        .contact-modal-box > p {
-            margin-bottom: 24px;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 12px;
-            right: 17px;
-            border: 0;
-            background: transparent;
-            color: var(--muted);
-            font-size: 30px;
-            cursor: pointer;
-        }
-
-        .contact-options {
-            display: grid;
-            gap: 10px;
-        }
-
-        .contact-option {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            width: 100%;
-            padding: 14px;
-            border: 1px solid var(--line);
-            border-radius: 15px;
-            background: white;
-            color: var(--ink);
-            cursor: pointer;
-            text-align: left;
-            transition: .25s ease;
-        }
-
-        .contact-option:hover {
-            border-color: var(--blue);
-            background: #f5f7fb;
-            transform: translateY(-2px);
-        }
-
-        .contact-option-icon {
-            display: grid;
-            place-items: center;
-            width: 38px;
-            height: 38px;
-            flex: 0 0 auto;
-            border-radius: 12px;
-            background: #edf3ff;
-            color: var(--blue);
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .contact-option strong {
-            display: block;
-            font-size: 14px;
-        }
-
-        .contact-option small {
-            display: block;
-            margin-top: 2px;
-            color: var(--muted);
-            font-size: 11px;
-        }
-
-        .copy-message {
-            min-height: 20px;
-            margin-top: 15px;
-            color: var(--mint);
-            font-size: 12px;
-        }
-
-        /* ===== LIGHTBOX ===== */
-
-        .lightbox-image {
-            max-width: 93vw;
-            max-height: 86vh;
-            object-fit: contain;
-            border-radius: 14px;
-        }
-
-        .lightbox-close,
-        .lightbox-prev,
-        .lightbox-next {
-            position: absolute;
-            z-index: 2;
-            display: grid;
-            place-items: center;
-            width: 50px;
-            height: 50px;
-            border: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,.16);
-            color: white;
-            cursor: pointer;
-            font-size: 25px;
-        }
-
-        .lightbox-close {
-            top: 22px;
-            right: 22px;
-        }
-
-        .lightbox-prev,
-        .lightbox-next {
-            top: 50%;
-        }
-
-        .lightbox-prev {
-            left: 25px;
-        }
-
-        .lightbox-next {
-            right: 25px;
-        }
-
-        .lightbox-caption {
-            position: absolute;
+            right: 24px;
             bottom: 24px;
-            left: 50%;
-            max-width: 75%;
-            padding: 10px 17px;
-            border-radius: 100px;
-            background: rgba(255,255,255,.14);
-            color: white;
-            font-size: 12px;
-            text-align: center;
-            transform: translateX(-50%);
+            z-index: 45;
+            display: grid;
+            place-items: center;
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(82,107,158,.45);
+            border-radius: 50%;
+            background: rgba(255,255,255,.9);
+            color: var(--blue);
+            font-size: 22px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            box-shadow: var(--shadow-small);
+            backdrop-filter: blur(10px);
+            transition: .3s ease;
         }
 
-        /* ===== ПЛАНШЕТ ===== */
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--blue);
+            color: white;
+            border-color: var(--blue);
+            transform: translateY(-3px);
+        }
+
+        /* ===== ADAPTIVE ===== */
 
         @media (max-width: 1050px) {
             .hero {
@@ -1394,21 +1208,44 @@
                 margin: 0 auto;
             }
 
-            .services,
-            .options-grid {
+            .options-grid,
+            .services {
                 grid-template-columns: repeat(2,1fr);
+            }
+
+            .process-track {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .process-track::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                width: calc(100% - 40px);
+            }
+
+            .nav {
+                display: none;
             }
 
             .portfolio-grid {
                 grid-template-columns: repeat(3,minmax(0,1fr));
             }
 
-            .process-track {
-                grid-template-columns: repeat(2,minmax(0,1fr));
+            .artwork {
+                height: 245px;
             }
 
-            .process-track::before {
-                display: none;
+            .latest-work {
+                grid-template-columns: 1fr;
+            }
+
+            .latest-image,
+            .latest-image img {
+                min-height: 380px;
             }
 
             .sizes {
@@ -1416,9 +1253,7 @@
             }
         }
 
-        /* ===== МОБИЛЬНЫЕ УСТРОЙСТВА ===== */
-
-        @media (max-width: 560px) {
+        @media (max-width: 480px) {
             .container {
                 width: calc(100% - 32px);
             }
@@ -1445,29 +1280,19 @@
             }
 
             .section {
-                padding: 78px 0;
-            }
-
-            .section-label {
-                font-size: 10px;
+                padding: 75px 0;
             }
 
             .section-title {
-                font-size: 43px;
+                font-size: 42px;
             }
 
             .section-description {
                 font-size: 16px;
-                line-height: 1.7;
             }
 
             .hero {
-                min-height: auto;
-                padding: 92px 0 70px;
-            }
-
-            .hero-kicker {
-                font-size: 10px;
+                padding: 92px 0 65px;
             }
 
             .hero-name {
@@ -1480,20 +1305,16 @@
             }
 
             .hero h1 {
-                font-size: 54px;
-                line-height: .94;
+                font-size: 52px;
             }
 
             .hero-text {
-                margin: 24px auto;
                 font-size: 16px;
-                line-height: 1.7;
             }
 
             .hero-actions {
                 display: grid;
                 grid-template-columns: 1fr;
-                gap: 10px;
             }
 
             .hero-actions .btn {
@@ -1502,86 +1323,130 @@
 
             .hero-visual {
                 width: calc(100% - 8px);
-                margin-top: 58px;
+                margin-top: 56px;
             }
 
             .hero-photo,
             .hero-photo img {
-                height: 330px;
-                min-height: 330px;
-                border-radius: 25px;
-            }
-
-            .hero-photo::before {
-                inset: 10px -9px -10px 9px;
-                border-width: 2px;
-                border-radius: 25px;
+                height: 325px;
+                min-height: 325px;
+                border-radius: 24px;
             }
 
             .hero-tag {
                 right: 3px;
                 bottom: -30px;
-                padding: 14px;
+                padding: 13px;
                 font-size: 10px;
             }
 
             .hero-tag strong {
-                font-size: 22px;
-            }
-
-            .case-grid {
-                gap: 24px;
-                margin-top: 38px;
+                font-size: 21px;
             }
 
             .case-image {
-                min-height: 350px;
-                border-radius: 20px;
+                min-height: 340px;
             }
 
             .case-info {
-                padding: 27px 20px;
-                border-radius: 20px;
+                padding: 25px 18px;
             }
 
             .case-info h3 {
-                font-size: 38px;
+                font-size: 36px;
             }
 
             .case-info p {
                 font-size: 15px;
             }
 
-            .case-facts {
-                gap: 8px;
-            }
-
-            .fact {
-                padding: 12px;
-                font-size: 10px;
-            }
-
-            .fact strong {
-                font-size: 18px;
-            }
-
-            .services,
             .options-grid,
+            .services,
             .process-track,
             .sizes,
             .numbers {
                 grid-template-columns: 1fr;
             }
 
+            .size-card.featured {
+                transform: none;
+            }
+
+            .latest-work {
+                margin-top: 35px;
+                padding: 10px;
+            }
+
+            .latest-image,
+            .latest-image img {
+                min-height: 300px;
+            }
+
+            .latest-content {
+                padding: 20px 10px 25px;
+            }
+
+            .latest-content h3 {
+                font-size: 36px;
+            }
+
+            .filters {
+                justify-content: flex-start;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 7px;
+                scrollbar-width: none;
+            }
+
+            .filters::-webkit-scrollbar {
+                display: none;
+            }
+
+            .filter {
+                flex: 0 0 auto;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+                gap: 9px;
+            }
+
+            .artwork {
+                height: 215px;
+                border-width: 3px;
+                border-radius: 15px;
+            }
+
+            .artwork img {
+                padding: 4px;
+            }
+
+            .artwork-info {
+                left: 6px;
+                right: 6px;
+                bottom: 6px;
+                padding: 8px;
+                opacity: 1;
+                transform: none;
+            }
+
+            .artwork-info strong {
+                font-size: 9px;
+            }
+
+            .artwork-info span {
+                font-size: 8px;
+            }
+
             .process-track {
-                gap: 14px;
-                margin-top: 42px;
+                gap: 13px;
+                margin-top: 40px;
             }
 
             .process-track::before {
                 display: block;
-                top: 26px;
-                bottom: 26px;
+                top: 27px;
+                bottom: 27px;
                 left: 28px;
                 right: auto;
                 width: 2px;
@@ -1597,103 +1462,20 @@
 
             .process-card {
                 min-height: auto;
-                padding: 58px 24px 25px;
+                padding: 57px 22px 24px;
             }
 
             .process-dot {
                 left: 28px;
-                transform: translateX(-50%);
-            }
-
-            .latest-work {
-                grid-template-columns: 1fr;
-                margin-top: 38px;
-                padding: 10px;
-            }
-
-            .latest-image,
-            .latest-image img {
-                min-height: 315px;
-            }
-
-            .latest-content {
-                padding: 20px 12px 25px;
-            }
-
-            .latest-content h3 {
-                font-size: 37px;
-            }
-
-            .filters {
-                justify-content: flex-start;
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                margin-bottom: 30px;
-                padding-bottom: 7px;
-                scrollbar-width: none;
-            }
-
-            .filters::-webkit-scrollbar {
-                display: none;
-            }
-
-            .filter {
-                flex: 0 0 auto;
-                white-space: nowrap;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: repeat(2,minmax(0,1fr));
-                gap: 10px;
-            }
-
-            .artwork {
-                height: 210px;
-                border-width: 3px;
-                border-radius: 15px;
-            }
-
-            .artwork img {
-                padding: 4px;
-            }
-
-            .artwork-info {
-                left: 7px;
-                right: 7px;
-                bottom: 7px;
-                padding: 8px;
-                opacity: 1;
-                transform: none;
-                border-radius: 10px;
-            }
-
-            .artwork-info strong {
-                font-size: 9px;
-            }
-
-            .artwork-info span {
-                font-size: 8px;
-            }
-
-            .size-card.featured {
-                transform: none;
-            }
-
-            .about-grid {
-                gap: 52px;
-            }
-
-            .about-text p {
-                font-size: 16px;
             }
 
             .cta {
-                padding: 70px 18px;
-                border-radius: 24px;
+                padding: 62px 17px;
+                border-radius: 23px;
             }
 
             .cta h2 {
-                font-size: 44px;
+                font-size: 42px;
             }
 
             .cta p {
@@ -1707,11 +1489,17 @@
 
             .contact-link {
                 text-align: center;
-                font-size: 12px;
             }
 
             .contact-modal-box {
-                padding: 30px 20px;
+                padding: 28px 18px;
+            }
+
+            .back-to-top {
+                right: 16px;
+                bottom: 16px;
+                width: 45px;
+                height: 45px;
             }
 
             .lightbox-prev,
@@ -1775,7 +1563,7 @@
 
 <main id="top">
 
-    <!-- ===== ПЕРВЫЙ ЭКРАН ===== -->
+    <!-- ===== HERO ===== -->
 
     <section class="hero">
         <div class="container hero-grid">
@@ -1950,15 +1738,8 @@
             <div class="options-grid">
 
                 <article class="option-card reveal">
-                    <div class="option-icon">
-                        <svg class="svg-icon" viewBox="0 0 24 24">
-                            <rect x="4" y="4" width="16" height="16" rx="2"/>
-                            <path d="M8 8h8M8 12h8M8 16h5"/>
-                        </svg>
-                    </div>
-
+                    <div class="option-icon">▦</div>
                     <h3>Логотип компании</h3>
-
                     <p>
                         Соберу фирменный знак для офиса,
                         ресторана, ресепшена или выставочного пространства.
@@ -1966,15 +1747,8 @@
                 </article>
 
                 <article class="option-card reveal">
-                    <div class="option-icon">
-                        <svg class="svg-icon" viewBox="0 0 24 24">
-                            <circle cx="12" cy="8" r="3"/>
-                            <path d="M5 20c.8-4 3-6 7-6s6.2 2 7 6"/>
-                        </svg>
-                    </div>
-
+                    <div class="option-icon">◉</div>
                     <h3>Портрет</h3>
-
                     <p>
                         Создам портрет человека, исторической личности,
                         писателя, учёного или героя.
@@ -1982,15 +1756,8 @@
                 </article>
 
                 <article class="option-card reveal">
-                    <div class="option-icon">
-                        <svg class="svg-icon" viewBox="0 0 24 24">
-                            <path d="M5 5h14v14H5z"/>
-                            <path d="M8 15l3-3 2 2 2-3 2 4"/>
-                        </svg>
-                    </div>
-
+                    <div class="option-icon">◇</div>
                     <h3>Фирменный персонаж</h3>
-
                     <p>
                         Соберу талисман, персонажа или образ,
                         связанный с компанией и её аудиторией.
@@ -1998,16 +1765,8 @@
                 </article>
 
                 <article class="option-card reveal">
-                    <div class="option-icon">
-                        <svg class="svg-icon" viewBox="0 0 24 24">
-                            <path d="M4 19h16"/>
-                            <path d="M6 19V7h12v12"/>
-                            <path d="M9 7V4h6v3"/>
-                        </svg>
-                    </div>
-
+                    <div class="option-icon">□</div>
                     <h3>Картина для интерьера</h3>
-
                     <p>
                         Подберу композицию, которая будет хорошо смотреться
                         в конкретном помещении.
@@ -2015,16 +1774,8 @@
                 </article>
 
                 <article class="option-card reveal">
-                    <div class="option-icon">
-                        <svg class="svg-icon" viewBox="0 0 24 24">
-                            <path d="M4 7h16v12H4z"/>
-                            <path d="M8 7V4h8v3"/>
-                            <path d="M8 13h8"/>
-                        </svg>
-                    </div>
-
+                    <div class="option-icon">▣</div>
                     <h3>Подарок для компании</h3>
-
                     <p>
                         Создам персональную работу для партнёра,
                         сотрудника, руководителя или памятной даты.
@@ -2032,15 +1783,8 @@
                 </article>
 
                 <article class="option-card reveal">
-                    <div class="option-icon">
-                        <svg class="svg-icon" viewBox="0 0 24 24">
-                            <path d="M3 6h18v12H3z"/>
-                            <path d="M7 10h10M7 14h6"/>
-                        </svg>
-                    </div>
-
+                    <div class="option-icon">▤</div>
                     <h3>Большая мозаика</h3>
-
                     <p>
                         Соберу масштабное панно для фестиваля,
                         библиотеки, выставки или общественного пространства.
@@ -2088,7 +1832,7 @@
                     <strong>300 кубиков</strong>
                     <p>
                         84 × 112 см<br>
-                        Для портретов и обычных картин
+                        Для портретов и картин
                     </p>
                 </article>
 
@@ -2108,7 +1852,7 @@
                     <strong>1200 кубиков</strong>
                     <p>
                         168 × 224 см<br>
-                        Для выставок и больших пространств
+                        Для выставок и пространств
                     </p>
                 </article>
 
@@ -2176,7 +1920,7 @@
                         новой в моём портфолио.
                     </p>
 
-                    <button class="btn btn-yellow" data-latest-open style="margin-top:24px;">
+                    <button class="btn btn-yellow" data-latest-open style="margin-top:22px;">
                         Рассмотреть работу
                     </button>
 
@@ -2242,11 +1986,7 @@
 
                 <article class="process-card reveal">
                     <div class="process-dot">01</div>
-
-                    <h3>
-                        Обсудим задачу
-                    </h3>
-
+                    <h3>Обсудим задачу</h3>
                     <p>
                         Вы расскажете о компании, пространстве,
                         мероприятии и желаемом результате.
@@ -2255,11 +1995,7 @@
 
                 <article class="process-card reveal">
                     <div class="process-dot">02</div>
-
-                    <h3>
-                        Подберём образ
-                    </h3>
-
+                    <h3>Подберём образ</h3>
                     <p>
                         Выберем логотип, фотографию, портрет,
                         персонажа или авторский эскиз.
@@ -2268,11 +2004,7 @@
 
                 <article class="process-card reveal">
                     <div class="process-dot">03</div>
-
-                    <h3>
-                        Соберу мозаику
-                    </h3>
-
+                    <h3>Соберу мозаику</h3>
                     <p>
                         Подберу цвета, рассчитаю композицию
                         и соберу изображение из кубиков.
@@ -2281,11 +2013,7 @@
 
                 <article class="process-card reveal">
                     <div class="process-dot">04</div>
-
-                    <h3>
-                        Работа появится в пространстве
-                    </h3>
-
+                    <h3>Работа появится в пространстве</h3>
                     <p>
                         Готовая картина станет частью интерьера,
                         подарком или центром внимания на событии.
@@ -2496,7 +2224,17 @@
     </div>
 </footer>
 
-<!-- ===== МОДАЛЬНОЕ ОКНО СВЯЗИ ===== -->
+<!-- Кнопка наверх -->
+
+<button
+    class="back-to-top"
+    id="backToTop"
+    aria-label="Вернуться наверх"
+>
+    ↑
+</button>
+
+<!-- ОКНО СВЯЗИ -->
 
 <div class="contact-modal" id="contactModal">
     <div class="contact-modal-box">
@@ -2592,7 +2330,7 @@
     </div>
 </div>
 
-<!-- ===== LIGHTBOX ===== -->
+<!-- LIGHTBOX -->
 
 <div class="lightbox" id="lightbox">
 
@@ -2686,13 +2424,13 @@
 
             setTimeout(() => {
                 item.classList.add("visible");
-            }, 30);
+            }, 20);
         });
     }
 
     renderPortfolio();
 
-    /* ===== ФИЛЬТРЫ ===== */
+    /* Фильтры */
 
     document.querySelectorAll(".filter").forEach(button => {
         button.addEventListener("click", () => {
@@ -2705,19 +2443,7 @@
         });
     });
 
-    /* ===== ПОСЛЕДНЯЯ РАБОТА ===== */
-
-    document.querySelector(".latest-image")
-        .addEventListener("click", () => {
-            openLightbox(26);
-        });
-
-    document.querySelector("[data-latest-open]")
-        .addEventListener("click", () => {
-            openLightbox(26);
-        });
-
-    /* ===== LIGHTBOX ===== */
+    /* Lightbox */
 
     const lightbox = document.getElementById("lightbox");
     const lightboxImage = document.getElementById("lightboxImage");
@@ -2757,14 +2483,33 @@
         openLightbox(currentIndex);
     }
 
+    document.querySelector(".case-image")
+        .addEventListener("click", () => {
+            openLightbox(3);
+        });
+
+    document.querySelector(".latest-image")
+        .addEventListener("click", () => {
+            openLightbox(26);
+        });
+
+    document.querySelector("[data-latest-open]")
+        .addEventListener("click", () => {
+            openLightbox(26);
+        });
+
     document.getElementById("lightboxClose")
         .addEventListener("click", closeLightbox);
 
     document.getElementById("lightboxPrev")
-        .addEventListener("click", () => changeArtwork(-1));
+        .addEventListener("click", () => {
+            changeArtwork(-1);
+        });
 
     document.getElementById("lightboxNext")
-        .addEventListener("click", () => changeArtwork(1));
+        .addEventListener("click", () => {
+            changeArtwork(1);
+        });
 
     lightbox.addEventListener("click", event => {
         if (event.target === lightbox) {
@@ -2772,7 +2517,7 @@
         }
     });
 
-    /* ===== СВАЙПЫ ===== */
+    /* Свайпы */
 
     let touchStartX = 0;
     let touchEndX = 0;
@@ -2793,7 +2538,7 @@
         }
     }, { passive: true });
 
-    /* ===== FAQ ===== */
+    /* FAQ */
 
     document.querySelectorAll(".faq-question").forEach(button => {
         button.addEventListener("click", () => {
@@ -2801,7 +2546,7 @@
         });
     });
 
-    /* ===== КОНТАКТЫ ===== */
+    /* Окно связи */
 
     const contactModal = document.getElementById("contactModal");
 
@@ -2831,7 +2576,7 @@
         }
     });
 
-    /* ===== КОПИРОВАНИЕ КОНТАКТОВ ===== */
+    /* Копирование контактов */
 
     document.getElementById("copyContacts")
         .addEventListener("click", async () => {
@@ -2854,7 +2599,26 @@
             }, 2500);
         });
 
-    /* ===== ШАПКА ===== */
+    /* Кнопка «Наверх» */
+
+    const backToTop = document.getElementById("backToTop");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 500) {
+            backToTop.classList.add("visible");
+        } else {
+            backToTop.classList.remove("visible");
+        }
+    });
+
+    backToTop.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
+    /* Шапка */
 
     const header = document.getElementById("header");
 
@@ -2862,7 +2626,7 @@
         header.classList.toggle("scrolled", window.scrollY > 30);
     });
 
-    /* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
+    /* Анимация появления */
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -2879,7 +2643,7 @@
         observer.observe(element);
     });
 
-    /* ===== КЛАВИША ESC ===== */
+    /* Клавиша Escape */
 
     document.addEventListener("keydown", event => {
         if (event.key !== "Escape") {
@@ -2895,7 +2659,7 @@
         }
     });
 
-    /* ===== ГОД ===== */
+    /* Год */
 
     document.getElementById("year").textContent =
         new Date().getFullYear();
