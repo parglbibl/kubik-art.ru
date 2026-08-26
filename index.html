@@ -192,6 +192,8 @@
         .section {
             position: relative;
             padding: 110px 0;
+            /* Добавляем отступ при якорной прокрутке, чтобы заголовки не прятались */
+            scroll-margin-top: 140px; 
         }
 
         .section-label {
@@ -1357,6 +1359,7 @@
 
             .section {
                 padding: 72px 0;
+                scroll-margin-top: 180px; /* Увеличиваем отступ при якорной прокрутке на мобиле */
             }
 
             .section-title {
