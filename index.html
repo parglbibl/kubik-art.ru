@@ -6,7 +6,18 @@
 
     <title>KUBIK ART — Егор Черняков | Картины из кубиков Рубика</title>
 
-    <meta name="description" content="Егор Черняков создаёт картины, логотипы и мозаики из кубиков Рубика для компаний, ресторанов, офисов, фестивалей и общественных пространств.">
+    <meta
+        name="description"
+        content="Егор Черняков создаёт картины, логотипы и мозаики из кубиков Рубика для компаний, ресторанов, офисов, фестивалей и общественных пространств."
+    >
+
+    <meta property="og:title" content="KUBIK ART — картины из кубиков Рубика">
+    <meta
+        property="og:description"
+        content="Авторские картины и мозаики из кубиков Рубика для компаний и мероприятий."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="logo.webp">
 
     <link rel="icon" href="logo.webp" type="image/webp">
 
@@ -37,7 +48,7 @@
             --violet: #887bae;
 
             --shadow-soft: 0 8px 25px rgba(35,45,70,.07);
-            --shadow: 0 22px 65px rgba(35,45,70,.14);
+            --shadow: 0 22px 65px rgba(35,45,70,.13);
 
             --radius: 24px;
             --container: 1180px;
@@ -57,7 +68,7 @@
             min-width: 320px;
             overflow-x: hidden;
             background:
-                radial-gradient(circle at 95% 0%, rgba(233,190,69,.18), transparent 25rem),
+                radial-gradient(circle at 95% 0%, rgba(233,190,69,.17), transparent 25rem),
                 radial-gradient(circle at 0% 40%, rgba(82,107,158,.10), transparent 28rem),
                 var(--cream);
             color: var(--ink);
@@ -98,8 +109,8 @@
             width: 18px;
             height: 18px;
             border-radius: 5px;
+            opacity: .2;
             transform: rotate(45deg);
-            opacity: .22;
             pointer-events: none;
         }
 
@@ -190,6 +201,7 @@
         }
 
         .header-button {
+            flex: 0 0 auto;
             min-height: 45px;
             padding: 0 18px;
             border: 0;
@@ -434,7 +446,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 28%;
+            object-position: center 25%;
             border-radius: 30px;
         }
 
@@ -460,7 +472,7 @@
             line-height: 1;
         }
 
-        /* ===== ПОЛОСА ===== */
+        /* ===== ЦВЕТНАЯ ПОЛОСА ===== */
 
         .color-strip {
             display: flex;
@@ -486,7 +498,7 @@
 
         .case-grid {
             display: grid;
-            grid-template-columns: 1.1fr .9fr;
+            grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr);
             gap: 35px;
             margin-top: 55px;
         }
@@ -505,11 +517,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: .5s ease;
-        }
-
-        .case-image:hover img {
-            transform: scale(1.04);
         }
 
         .case-caption {
@@ -572,7 +579,7 @@
             font-size: 20px;
         }
 
-        /* ===== ЧТО СОБРАТЬ ===== */
+        /* ===== OPTIONS ===== */
 
         .options-grid {
             display: grid;
@@ -758,12 +765,8 @@
             width: 100%;
             height: 100%;
             min-height: 350px;
-            object-fit: cover;
-            transition: .5s ease;
-        }
-
-        .latest-image:hover img {
-            transform: scale(1.04);
+            object-fit: contain;
+            background: #f4f6f9;
         }
 
         .latest-badge {
@@ -835,59 +838,28 @@
         }
 
         /*
-            НОВАЯ СЕТКА:
-            12 колонок + плотное заполнение.
-            Благодаря grid-auto-flow: dense
-            свободные места автоматически заполняются.
+            РОВНАЯ СЕТКА ПОРТФОЛИО
+
+            Все карточки имеют одинаковую высоту.
+            Изображения показываются целиком через contain.
         */
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(12, minmax(0, 1fr));
-            grid-auto-rows: 115px;
-            grid-auto-flow: dense;
-            gap: 16px;
+            grid-template-columns: repeat(4, minmax(0,1fr));
+            gap: 18px;
         }
 
         .artwork {
             position: relative;
-            grid-column: span 3;
-            grid-row: span 3;
-            min-width: 0;
-            min-height: 0;
+            height: 270px;
             overflow: hidden;
             border: 5px solid white;
             border-radius: 20px;
-            background: #dce2eb;
+            background: #f8fafc;
             box-shadow: var(--shadow-soft);
             cursor: pointer;
             transition: .35s ease;
-        }
-
-        .artwork:nth-child(1) {
-            grid-column: span 6;
-            grid-row: span 5;
-        }
-
-        .artwork:nth-child(2),
-        .artwork:nth-child(3) {
-            grid-column: span 3;
-            grid-row: span 3;
-        }
-
-        .artwork:nth-child(4),
-        .artwork:nth-child(5),
-        .artwork:nth-child(6),
-        .artwork:nth-child(7) {
-            grid-column: span 3;
-            grid-row: span 3;
-        }
-
-        .artwork:nth-child(8),
-        .artwork:nth-child(9),
-        .artwork:nth-child(10) {
-            grid-column: span 4;
-            grid-row: span 4;
         }
 
         .artwork:hover {
@@ -898,25 +870,27 @@
         .artwork img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            padding: 8px;
+            object-fit: contain;
+            background: #f8fafc;
             transition: .5s ease;
         }
 
         .artwork:hover img {
-            transform: scale(1.07);
+            transform: scale(1.04);
         }
 
         .artwork-info {
             position: absolute;
-            left: 14px;
-            right: 14px;
-            bottom: 14px;
-            padding: 12px 14px;
-            border-radius: 14px;
-            background: rgba(255,255,255,.94);
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            padding: 11px 13px;
+            border-radius: 13px;
+            background: rgba(255,255,255,.95);
             box-shadow: var(--shadow-soft);
             opacity: 0;
-            transform: translateY(9px);
+            transform: translateY(8px);
             transition: .3s ease;
         }
 
@@ -937,29 +911,89 @@
             font-size: 10px;
         }
 
-        .archive-box {
-            max-width: 850px;
-            margin: 45px auto 0;
-            padding: 28px;
-            border: 1px dashed #cbd4e2;
+        /* ===== ПРОЦЕСС ===== */
+
+        .process-section {
+            background: var(--cream);
+        }
+
+        .process-track {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0,1fr));
+            gap: 18px;
+            margin-top: 60px;
+        }
+
+        .process-track::before {
+            content: "";
+            position: absolute;
+            top: 31px;
+            left: 11%;
+            right: 11%;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                var(--blue),
+                var(--yellow),
+                var(--coral),
+                var(--mint)
+            );
+            opacity: .55;
+        }
+
+        .process-card {
+            position: relative;
+            z-index: 1;
+            min-height: 270px;
+            padding: 60px 25px 27px;
+            border: 1px solid var(--line);
             border-radius: var(--radius);
-            background: rgba(255,255,255,.62);
+            background: white;
+            box-shadow: var(--shadow-soft);
             text-align: center;
         }
 
-        .archive-box h3 {
-            margin-bottom: 9px;
-            font-size: 24px;
+        .process-dot {
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            display: grid;
+            place-items: center;
+            width: 28px;
+            height: 28px;
+            border: 5px solid var(--cream);
+            border-radius: 50%;
+            background: var(--blue);
+            color: white;
+            font-family: "DM Mono", monospace;
+            font-size: 9px;
+            transform: translateX(-50%);
         }
 
-        .archive-box p {
+        .process-card:nth-child(2) .process-dot {
+            background: var(--yellow);
+            color: var(--ink);
+        }
+
+        .process-card:nth-child(3) .process-dot {
+            background: var(--coral);
+        }
+
+        .process-card:nth-child(4) .process-dot {
+            background: var(--mint);
+        }
+
+        .process-card h3 {
+            margin-bottom: 11px;
+            color: var(--ink);
+            font-size: 19px;
+        }
+
+        .process-card p {
             color: var(--muted);
             font-size: 14px;
-        }
-
-        .archive-box span {
-            color: var(--blue);
-            font-weight: 700;
+            line-height: 1.7;
         }
 
         /* ===== ОБО МНЕ ===== */
@@ -992,6 +1026,7 @@
             width: 100%;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
+            object-fit: cover;
         }
 
         .about-text {
@@ -1145,7 +1180,7 @@
             font-size: 12px;
         }
 
-        /* ===== МОДАЛЬНОЕ ОКНО СВЯЗИ ===== */
+        /* ===== CONTACT MODAL ===== */
 
         .contact-modal,
         .lightbox {
@@ -1255,11 +1290,74 @@
             font-size: 12px;
         }
 
-        /* ===== MOBILE ===== */
+        /* ===== LIGHTBOX ===== */
+
+        .lightbox-image {
+            max-width: 93vw;
+            max-height: 86vh;
+            object-fit: contain;
+            border-radius: 14px;
+        }
+
+        .lightbox-close,
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            z-index: 2;
+            display: grid;
+            place-items: center;
+            width: 50px;
+            height: 50px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,.16);
+            color: white;
+            cursor: pointer;
+            font-size: 25px;
+        }
+
+        .lightbox-close {
+            top: 22px;
+            right: 22px;
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            top: 50%;
+        }
+
+        .lightbox-prev {
+            left: 25px;
+        }
+
+        .lightbox-next {
+            right: 25px;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            max-width: 75%;
+            padding: 10px 17px;
+            border-radius: 100px;
+            background: rgba(255,255,255,.14);
+            color: white;
+            font-size: 12px;
+            text-align: center;
+            transform: translateX(-50%);
+        }
+
+        /* ===== ПЛАНШЕТ ===== */
 
         @media (max-width: 1050px) {
+            .hero {
+                min-height: auto;
+            }
+
             .hero-grid {
-                display: block;
+                grid-template-columns: 1fr;
+                gap: 55px;
             }
 
             .hero-content {
@@ -1283,7 +1381,7 @@
 
             .hero-visual {
                 width: min(720px,100%);
-                margin: 60px auto 0;
+                margin: 0 auto;
             }
 
             .case-grid,
@@ -1296,13 +1394,21 @@
                 margin: 0 auto;
             }
 
-            .latest-work {
-                grid-template-columns: 1fr;
+            .services,
+            .options-grid {
+                grid-template-columns: repeat(2,1fr);
             }
 
-            .latest-image,
-            .latest-image img {
-                min-height: 420px;
+            .portfolio-grid {
+                grid-template-columns: repeat(3,minmax(0,1fr));
+            }
+
+            .process-track {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+            }
+
+            .process-track::before {
+                display: none;
             }
 
             .sizes {
@@ -1310,50 +1416,7 @@
             }
         }
 
-        @media (max-width: 850px) {
-            .container {
-                width: calc(100% - 40px);
-            }
-
-            .nav {
-                display: none;
-            }
-
-            .services,
-            .options-grid,
-            .process {
-                grid-template-columns: repeat(2,1fr);
-            }
-
-            .portfolio-grid {
-                grid-template-columns: repeat(6,minmax(0,1fr));
-                grid-auto-rows: 120px;
-            }
-
-            .artwork,
-            .artwork:nth-child(2),
-            .artwork:nth-child(3),
-            .artwork:nth-child(4),
-            .artwork:nth-child(5),
-            .artwork:nth-child(6),
-            .artwork:nth-child(7) {
-                grid-column: span 2;
-                grid-row: span 2;
-                height: auto;
-            }
-
-            .artwork:nth-child(1) {
-                grid-column: span 6;
-                grid-row: span 3;
-            }
-
-            .artwork:nth-child(8),
-            .artwork:nth-child(9),
-            .artwork:nth-child(10) {
-                grid-column: span 3;
-                grid-row: span 3;
-            }
-        }
+        /* ===== МОБИЛЬНЫЕ УСТРОЙСТВА ===== */
 
         @media (max-width: 560px) {
             .container {
@@ -1385,6 +1448,10 @@
                 padding: 78px 0;
             }
 
+            .section-label {
+                font-size: 10px;
+            }
+
             .section-title {
                 font-size: 43px;
             }
@@ -1399,8 +1466,12 @@
                 padding: 92px 0 70px;
             }
 
-            .hero h1 {
-                font-size: 54px;
+            .hero-kicker {
+                font-size: 10px;
+            }
+
+            .hero-name {
+                font-size: 24px;
             }
 
             .hero-role {
@@ -1408,7 +1479,13 @@
                 line-height: 1.45;
             }
 
+            .hero h1 {
+                font-size: 54px;
+                line-height: .94;
+            }
+
             .hero-text {
+                margin: 24px auto;
                 font-size: 16px;
                 line-height: 1.7;
             }
@@ -1452,6 +1529,11 @@
                 font-size: 22px;
             }
 
+            .case-grid {
+                gap: 24px;
+                margin-top: 38px;
+            }
+
             .case-image {
                 min-height: 350px;
                 border-radius: 20px;
@@ -1485,17 +1567,46 @@
 
             .services,
             .options-grid,
-            .process,
+            .process-track,
             .sizes,
             .numbers {
                 grid-template-columns: 1fr;
             }
 
-            .size-card.featured {
-                transform: none;
+            .process-track {
+                gap: 14px;
+                margin-top: 42px;
+            }
+
+            .process-track::before {
+                display: block;
+                top: 26px;
+                bottom: 26px;
+                left: 28px;
+                right: auto;
+                width: 2px;
+                height: auto;
+                background: linear-gradient(
+                    180deg,
+                    var(--blue),
+                    var(--yellow),
+                    var(--coral),
+                    var(--mint)
+                );
+            }
+
+            .process-card {
+                min-height: auto;
+                padding: 58px 24px 25px;
+            }
+
+            .process-dot {
+                left: 28px;
+                transform: translateX(-50%);
             }
 
             .latest-work {
+                grid-template-columns: 1fr;
                 margin-top: 38px;
                 padding: 10px;
             }
@@ -1517,6 +1628,7 @@
                 justify-content: flex-start;
                 flex-wrap: nowrap;
                 overflow-x: auto;
+                margin-bottom: 30px;
                 padding-bottom: 7px;
                 scrollbar-width: none;
             }
@@ -1532,30 +1644,17 @@
 
             .portfolio-grid {
                 grid-template-columns: repeat(2,minmax(0,1fr));
-                grid-auto-rows: 110px;
-                gap: 9px;
+                gap: 10px;
             }
 
-            .artwork,
-            .artwork:nth-child(2),
-            .artwork:nth-child(3),
-            .artwork:nth-child(4),
-            .artwork:nth-child(5),
-            .artwork:nth-child(6),
-            .artwork:nth-child(7),
-            .artwork:nth-child(8),
-            .artwork:nth-child(9),
-            .artwork:nth-child(10) {
-                grid-column: span 1;
-                grid-row: span 2;
-                height: auto;
+            .artwork {
+                height: 210px;
                 border-width: 3px;
                 border-radius: 15px;
             }
 
-            .artwork:nth-child(1) {
-                grid-column: span 2;
-                grid-row: span 3;
+            .artwork img {
+                padding: 4px;
             }
 
             .artwork-info {
@@ -1565,18 +1664,19 @@
                 padding: 8px;
                 opacity: 1;
                 transform: none;
+                border-radius: 10px;
             }
 
             .artwork-info strong {
-                font-size: 10px;
+                font-size: 9px;
             }
 
             .artwork-info span {
                 font-size: 8px;
             }
 
-            .archive-box {
-                padding: 24px 17px;
+            .size-card.featured {
+                transform: none;
             }
 
             .about-grid {
@@ -1607,6 +1707,7 @@
 
             .contact-link {
                 text-align: center;
+                font-size: 12px;
             }
 
             .contact-modal-box {
@@ -2120,7 +2221,7 @@
 
     <!-- ===== ПРОЦЕСС ===== -->
 
-    <section class="section">
+    <section class="section process-section">
         <div class="container">
 
             <div class="section-label reveal">
@@ -2132,40 +2233,61 @@
                 до <em>готовой картины.</em>
             </h2>
 
-            <div class="process">
+            <p class="section-description reveal">
+                Каждый проект начнётся с обсуждения задачи
+                и закончится готовой работой для Вашего пространства.
+            </p>
 
-                <article class="process-item reveal">
-                    <div class="process-number">01 / ОБСУЖДЕНИЕ</div>
-                    <h3>Обсудим задачу</h3>
+            <div class="process-track">
+
+                <article class="process-card reveal">
+                    <div class="process-dot">01</div>
+
+                    <h3>
+                        Обсудим задачу
+                    </h3>
+
                     <p>
                         Вы расскажете о компании, пространстве,
                         мероприятии и желаемом результате.
                     </p>
                 </article>
 
-                <article class="process-item reveal">
-                    <div class="process-number">02 / ИДЕЯ</div>
-                    <h3>Подберём образ</h3>
+                <article class="process-card reveal">
+                    <div class="process-dot">02</div>
+
+                    <h3>
+                        Подберём образ
+                    </h3>
+
                     <p>
                         Выберем логотип, фотографию, портрет,
                         персонажа или авторский эскиз.
                     </p>
                 </article>
 
-                <article class="process-item reveal">
-                    <div class="process-number">03 / СОЗДАНИЕ</div>
-                    <h3>Соберу мозаику</h3>
+                <article class="process-card reveal">
+                    <div class="process-dot">03</div>
+
+                    <h3>
+                        Соберу мозаику
+                    </h3>
+
                     <p>
                         Подберу цвета, рассчитаю композицию
                         и соберу изображение из кубиков.
                     </p>
                 </article>
 
-                <article class="process-item reveal">
-                    <div class="process-number">04 / РЕЗУЛЬТАТ</div>
-                    <h3>Картина появится в пространстве</h3>
+                <article class="process-card reveal">
+                    <div class="process-dot">04</div>
+
+                    <h3>
+                        Работа появится в пространстве
+                    </h3>
+
                     <p>
-                        Готовая работа станет частью интерьера,
+                        Готовая картина станет частью интерьера,
                         подарком или центром внимания на событии.
                     </p>
                 </article>
@@ -2216,6 +2338,7 @@
                 </p>
 
                 <div class="numbers reveal">
+
                     <div class="number">
                         <strong>12+</strong>
                         <span>лет в спидкубинге</span>
@@ -2235,6 +2358,7 @@
                         <strong>TOP-100</strong>
                         <span>библиотечных практик России</span>
                     </div>
+
                 </div>
 
             </div>
@@ -2392,10 +2516,7 @@
 
         <div class="contact-options">
 
-            <a
-                class="contact-option"
-                href="mailto:cherniakov-egor@yandex.ru"
-            >
+            <a class="contact-option" href="mailto:cherniakov-egor@yandex.ru">
                 <span class="contact-option-icon">✉</span>
 
                 <span>
@@ -2446,10 +2567,7 @@
                 </span>
             </a>
 
-            <a
-                class="contact-option"
-                href="tel:+79214089944"
-            >
+            <a class="contact-option" href="tel:+79214089944">
                 <span class="contact-option-icon">☎</span>
 
                 <span>
@@ -2458,11 +2576,7 @@
                 </span>
             </a>
 
-            <button
-                class="contact-option"
-                id="copyContacts"
-                type="button"
-            >
+            <button class="contact-option" id="copyContacts" type="button">
                 <span class="contact-option-icon">К</span>
 
                 <span>
@@ -2578,7 +2692,7 @@
 
     renderPortfolio();
 
-    /* Фильтры */
+    /* ===== ФИЛЬТРЫ ===== */
 
     document.querySelectorAll(".filter").forEach(button => {
         button.addEventListener("click", () => {
@@ -2591,7 +2705,7 @@
         });
     });
 
-    /* Последняя работа */
+    /* ===== ПОСЛЕДНЯЯ РАБОТА ===== */
 
     document.querySelector(".latest-image")
         .addEventListener("click", () => {
@@ -2603,7 +2717,7 @@
             openLightbox(26);
         });
 
-    /* Lightbox */
+    /* ===== LIGHTBOX ===== */
 
     const lightbox = document.getElementById("lightbox");
     const lightboxImage = document.getElementById("lightboxImage");
@@ -2658,32 +2772,7 @@
         }
     });
 
-    /* Клавиатура */
-
-    document.addEventListener("keydown", event => {
-        if (lightbox.classList.contains("active")) {
-            if (event.key === "Escape") {
-                closeLightbox();
-            }
-
-            if (event.key === "ArrowLeft") {
-                changeArtwork(-1);
-            }
-
-            if (event.key === "ArrowRight") {
-                changeArtwork(1);
-            }
-        }
-
-        if (
-            document.getElementById("contactModal").classList.contains("active") &&
-            event.key === "Escape"
-        ) {
-            closeContactModal();
-        }
-    });
-
-    /* Свайпы */
+    /* ===== СВАЙПЫ ===== */
 
     let touchStartX = 0;
     let touchEndX = 0;
@@ -2704,7 +2793,7 @@
         }
     }, { passive: true });
 
-    /* FAQ */
+    /* ===== FAQ ===== */
 
     document.querySelectorAll(".faq-question").forEach(button => {
         button.addEventListener("click", () => {
@@ -2712,7 +2801,7 @@
         });
     });
 
-    /* Окно выбора связи */
+    /* ===== КОНТАКТЫ ===== */
 
     const contactModal = document.getElementById("contactModal");
 
@@ -2742,7 +2831,7 @@
         }
     });
 
-    /* Копирование контактов */
+    /* ===== КОПИРОВАНИЕ КОНТАКТОВ ===== */
 
     document.getElementById("copyContacts")
         .addEventListener("click", async () => {
@@ -2765,7 +2854,7 @@
             }, 2500);
         });
 
-    /* Шапка */
+    /* ===== ШАПКА ===== */
 
     const header = document.getElementById("header");
 
@@ -2773,7 +2862,7 @@
         header.classList.toggle("scrolled", window.scrollY > 30);
     });
 
-    /* Анимация появления */
+    /* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -2790,7 +2879,23 @@
         observer.observe(element);
     });
 
-    /* Год */
+    /* ===== КЛАВИША ESC ===== */
+
+    document.addEventListener("keydown", event => {
+        if (event.key !== "Escape") {
+            return;
+        }
+
+        if (lightbox.classList.contains("active")) {
+            closeLightbox();
+        }
+
+        if (contactModal.classList.contains("active")) {
+            closeContactModal();
+        }
+    });
+
+    /* ===== ГОД ===== */
 
     document.getElementById("year").textContent =
         new Date().getFullYear();
