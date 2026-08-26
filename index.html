@@ -8,7 +8,7 @@
 
     <meta
         name="description"
-        content="Егор Черняков — автор картин из кубиков Рубика, спидкубер и педагог. Создание логотипов, портретов и мозаик для компаний, ресторанов, офисов и мероприятий."
+        content="Егор Черняков создаёт картины, логотипы и мозаики из кубиков Рубика для компаний, ресторанов, офисов, фестивалей и общественных пространств."
     >
 
     <meta property="og:title" content="KUBIK ART — картины из кубиков Рубика">
@@ -68,16 +68,8 @@
             min-width: 320px;
             overflow-x: hidden;
             background:
-                radial-gradient(
-                    circle at 95% 0%,
-                    rgba(233, 190, 69, .18),
-                    transparent 25rem
-                ),
-                radial-gradient(
-                    circle at 0% 40%,
-                    rgba(82, 107, 158, .10),
-                    transparent 28rem
-                ),
+                radial-gradient(circle at 95% 0%, rgba(233,190,69,.18), transparent 25rem),
+                radial-gradient(circle at 0% 40%, rgba(82,107,158,.10), transparent 28rem),
                 var(--cream);
             color: var(--ink);
             font-family: Inter, Arial, sans-serif;
@@ -117,7 +109,7 @@
             width: 18px;
             height: 18px;
             border-radius: 5px;
-            opacity: .22;
+            opacity: .2;
             transform: rotate(45deg);
             pointer-events: none;
         }
@@ -146,7 +138,7 @@
             background: var(--mint);
         }
 
-        /* ===== HEADER ===== */
+        /* ===== ШАПКА ===== */
 
         .header {
             position: fixed;
@@ -154,17 +146,17 @@
             left: 0;
             right: 0;
             z-index: 50;
-            padding: 5px 0;
-            background: rgba(247, 244, 238, .88);
+            height: 88px;
+            background: rgba(247,244,238,.9);
             border-bottom: 1px solid transparent;
             backdrop-filter: blur(18px);
             transition: .3s ease;
         }
 
         .header.scrolled {
-            background: rgba(255, 255, 255, .96);
+            background: rgba(255,255,255,.96);
             border-color: var(--line);
-            box-shadow: 0 5px 25px rgba(35, 45, 70, .06);
+            box-shadow: 0 5px 25px rgba(35,45,70,.06);
         }
 
         .header-inner {
@@ -172,13 +164,14 @@
             align-items: center;
             justify-content: space-between;
             gap: 24px;
-            min-height: 78px;
+            height: 88px;
         }
 
         .logo-link {
             display: flex;
             align-items: center;
             flex: 0 0 auto;
+            height: 100%;
         }
 
         .site-logo {
@@ -209,7 +202,8 @@
 
         .header-button {
             flex: 0 0 auto;
-            padding: 12px 18px;
+            min-height: 45px;
+            padding: 0 18px;
             border: 0;
             border-radius: 100px;
             background: var(--blue);
@@ -217,7 +211,7 @@
             font-size: 12px;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 7px 20px rgba(82, 107, 158, .2);
+            box-shadow: 0 7px 20px rgba(82,107,158,.2);
             transition: .25s ease;
         }
 
@@ -286,7 +280,7 @@
             transform: translateY(24px);
             transition:
                 opacity .7s ease,
-                transform .7s cubic-bezier(.2, .8, .2, 1);
+                transform .7s cubic-bezier(.2,.8,.2,1);
         }
 
         .reveal.visible {
@@ -308,7 +302,7 @@
             font-size: 14px;
             font-weight: 800;
             cursor: pointer;
-            box-shadow: 0 9px 22px rgba(82, 107, 158, .2);
+            box-shadow: 0 9px 22px rgba(82,107,158,.2);
             transition: .3s ease;
         }
 
@@ -341,28 +335,35 @@
             box-shadow: none;
         }
 
-        /* ===== HERO ===== */
+        /* ===== ПЕРВЫЙ ЭКРАН ===== */
 
         .hero {
-            min-height: 930px;
+            min-height: calc(100svh - 88px);
+            padding: 108px 0 42px;
             display: flex;
             align-items: center;
-            padding: 155px 0 105px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+            align-items: center;
+            gap: 58px;
         }
 
         .hero-content {
-            text-align: center;
+            text-align: left;
         }
 
         .hero-kicker {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 10px;
-            margin-bottom: 23px;
+            margin-bottom: 17px;
             color: var(--blue);
             font-family: "DM Mono", monospace;
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: .08em;
             text-transform: uppercase;
         }
@@ -372,32 +373,31 @@
             height: 9px;
             border-radius: 50%;
             background: var(--coral);
+            flex: 0 0 auto;
         }
 
         .hero-name {
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             color: var(--ink);
-            font-size: clamp(25px, 4vw, 38px);
+            font-size: clamp(25px, 3vw, 35px);
             font-weight: 800;
             letter-spacing: -.05em;
         }
 
         .hero-role {
-            margin-bottom: 27px;
+            margin-bottom: 21px;
             color: var(--blue);
-            font-size: clamp(15px, 2vw, 20px);
+            font-size: clamp(14px, 1.7vw, 18px);
             font-weight: 700;
         }
 
         .hero h1 {
-            max-width: 900px;
-            margin: 0 auto;
+            max-width: 600px;
             color: var(--ink);
-            font-size: clamp(50px, 8vw, 105px);
+            font-size: clamp(48px, 6.6vw, 91px);
             font-weight: 800;
-            line-height: .91;
+            line-height: .9;
             letter-spacing: -.09em;
-            text-align: center;
         }
 
         .hero h1 span {
@@ -405,32 +405,29 @@
         }
 
         .hero-text {
-            max-width: 700px;
-            margin: 30px auto;
+            max-width: 550px;
+            margin: 23px 0 25px;
             color: var(--muted);
-            font-size: 19px;
-            line-height: 1.8;
-            text-align: center;
+            font-size: 16px;
+            line-height: 1.7;
         }
 
         .hero-actions {
             display: flex;
-            align-items: center;
-            justify-content: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
         }
 
         .hero-visual {
             position: relative;
-            width: min(710px, 100%);
-            margin: 75px auto 0;
+            width: 100%;
         }
 
         .hero-photo {
             position: relative;
-            height: 430px;
-            border-radius: 32px;
+            height: min(62vh, 510px);
+            min-height: 350px;
+            border-radius: 30px;
             background: white;
             box-shadow: var(--shadow);
             transform: rotate(1deg);
@@ -439,9 +436,9 @@
         .hero-photo::before {
             content: "";
             position: absolute;
-            inset: 16px -18px -18px 18px;
+            inset: 15px -17px -17px 17px;
             border: 3px solid var(--yellow);
-            border-radius: 32px;
+            border-radius: 30px;
             transform: rotate(-4deg);
         }
 
@@ -449,35 +446,35 @@
             position: relative;
             z-index: 1;
             width: 100%;
-            height: 430px;
+            height: 100%;
             object-fit: cover;
-            object-position: center 30%;
-            border-radius: 32px;
+            object-position: center 28%;
+            border-radius: 30px;
         }
 
         .hero-tag {
             position: absolute;
-            right: -18px;
-            bottom: 22px;
+            right: -17px;
+            bottom: 20px;
             z-index: 3;
-            padding: 17px;
+            padding: 16px;
             border-radius: 17px;
             background: var(--ink);
             color: white;
-            font-size: 12px;
+            font-size: 11px;
             text-align: left;
             box-shadow: var(--shadow);
         }
 
         .hero-tag strong {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             color: var(--yellow);
             font-size: 25px;
             line-height: 1;
         }
 
-        /* ===== ЦВЕТНАЯ ПОЛОСА ===== */
+        /* ===== ПОЛОСА ===== */
 
         .color-strip {
             display: flex;
@@ -488,44 +485,29 @@
             flex: 1;
         }
 
-        .color-strip span:nth-child(1) {
-            background: var(--blue);
-        }
+        .color-strip span:nth-child(1) { background: var(--blue); }
+        .color-strip span:nth-child(2) { background: var(--yellow); }
+        .color-strip span:nth-child(3) { background: var(--coral); }
+        .color-strip span:nth-child(4) { background: var(--mint); }
+        .color-strip span:nth-child(5) { background: var(--violet); }
 
-        .color-strip span:nth-child(2) {
-            background: var(--yellow);
-        }
-
-        .color-strip span:nth-child(3) {
-            background: var(--coral);
-        }
-
-        .color-strip span:nth-child(4) {
-            background: var(--mint);
-        }
-
-        .color-strip span:nth-child(5) {
-            background: var(--violet);
-        }
-
-        /* ===== CASE ===== */
+        /* ===== КЕЙС ===== */
 
         .case-section {
             background: white;
-            border-top: 1px solid var(--line);
             border-bottom: 1px solid var(--line);
         }
 
         .case-grid {
             display: grid;
-            grid-template-columns: 1.1fr .9fr;
-            gap: 38px;
-            margin-top: 58px;
+            grid-template-columns: 1.08fr .92fr;
+            gap: 35px;
+            margin-top: 55px;
         }
 
         .case-image {
             position: relative;
-            min-height: 610px;
+            min-height: 560px;
             overflow: hidden;
             border-radius: var(--radius);
             background: #e8edf4;
@@ -537,7 +519,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: .6s ease;
+            transition: .5s ease;
         }
 
         .case-image:hover img {
@@ -546,9 +528,9 @@
 
         .case-caption {
             position: absolute;
-            left: 22px;
-            bottom: 22px;
-            padding: 11px 16px;
+            left: 20px;
+            bottom: 20px;
+            padding: 10px 15px;
             border-radius: 100px;
             background: rgba(255,255,255,.95);
             color: var(--ink);
@@ -560,7 +542,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 48px;
+            padding: 45px;
             border: 1px solid #f0df91;
             border-radius: var(--radius);
             background: linear-gradient(145deg, #fff8d9, #fffdf3);
@@ -568,53 +550,53 @@
         }
 
         .case-info h3 {
-            margin-bottom: 23px;
+            margin-bottom: 21px;
             color: var(--ink);
-            font-size: clamp(34px, 4vw, 53px);
+            font-size: clamp(32px, 4vw, 50px);
             line-height: 1;
             letter-spacing: -.07em;
         }
 
         .case-info p {
-            margin-bottom: 16px;
+            margin-bottom: 15px;
             color: var(--muted);
-            font-size: 17px;
-            line-height: 1.8;
+            font-size: 16px;
+            line-height: 1.75;
         }
 
         .case-facts {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin: 20px 0 28px;
+            gap: 10px;
+            margin: 18px 0 26px;
         }
 
         .fact {
-            padding: 15px;
+            padding: 14px;
             border: 1px solid rgba(222,202,111,.35);
-            border-radius: 15px;
+            border-radius: 14px;
             background: rgba(255,255,255,.72);
             color: var(--muted);
-            font-size: 12px;
+            font-size: 11px;
         }
 
         .fact strong {
             display: block;
             color: var(--ink);
-            font-size: 22px;
+            font-size: 20px;
         }
 
-        /* ===== OPTIONS ===== */
+        /* ===== ЧТО МОЖНО СОБРАТЬ ===== */
 
         .options-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 18px;
-            margin-top: 58px;
+            margin-top: 55px;
         }
 
         .option-card {
-            padding: 30px;
+            padding: 28px;
             border: 1px solid var(--line);
             border-radius: var(--radius);
             background: white;
@@ -631,9 +613,9 @@
         .option-icon {
             display: grid;
             place-items: center;
-            width: 58px;
-            height: 58px;
-            margin: 0 auto 22px;
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 21px;
             border-radius: 17px;
             background: #edf3ff;
             color: var(--blue);
@@ -665,8 +647,8 @@
         }
 
         .svg-icon {
-            width: 29px;
-            height: 29px;
+            width: 28px;
+            height: 28px;
             fill: none;
             stroke: currentColor;
             stroke-width: 1.7;
@@ -675,17 +657,17 @@
         }
 
         .option-card h3 {
-            margin-bottom: 10px;
-            font-size: 20px;
+            margin-bottom: 9px;
+            font-size: 19px;
         }
 
         .option-card p {
             color: var(--muted);
             font-size: 14px;
-            line-height: 1.7;
+            line-height: 1.65;
         }
 
-        /* ===== SIZES ===== */
+        /* ===== РАЗМЕРЫ ===== */
 
         .size-section {
             background: #fffdf8;
@@ -697,11 +679,11 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 15px;
-            margin-top: 58px;
+            margin-top: 55px;
         }
 
         .size-card {
-            padding: 27px 20px;
+            padding: 25px 18px;
             border: 1px solid var(--line);
             border-radius: var(--radius);
             background: white;
@@ -711,55 +693,54 @@
 
         .size-card.featured {
             border: 2px solid var(--yellow);
-            transform: translateY(-10px);
+            transform: translateY(-9px);
         }
 
         .size-card h3 {
-            margin-bottom: 14px;
-            font-size: 18px;
+            margin-bottom: 13px;
+            font-size: 17px;
         }
 
         .size-number {
             color: var(--blue);
             font-family: "DM Mono", monospace;
-            font-size: 19px;
+            font-size: 18px;
         }
 
         .size-card strong {
             display: block;
-            margin: 15px 0 5px;
+            margin: 13px 0 5px;
             color: var(--ink);
-            font-size: 28px;
+            font-size: 26px;
         }
 
         .size-card p {
             color: var(--muted);
-            font-size: 13px;
-            line-height: 1.55;
+            font-size: 12px;
+            line-height: 1.5;
         }
 
         .size-note {
             max-width: 760px;
-            margin: 30px auto 0;
+            margin: 28px auto 0;
             color: var(--muted);
             font-size: 13px;
             text-align: center;
         }
 
-        /* ===== PORTFOLIO ===== */
+        /* ===== ПОРТФОЛИО ===== */
 
         .portfolio-section {
             background: #eef2f8;
-            border-top: 1px solid var(--line);
             border-bottom: 1px solid var(--line);
         }
 
         .portfolio-note {
             max-width: 700px;
             margin: 20px auto 0;
-            padding: 15px 18px;
+            padding: 14px 18px;
             border-radius: 15px;
-            background: rgba(255,255,255,.78);
+            background: rgba(255,255,255,.8);
             color: var(--muted);
             font-size: 14px;
             text-align: center;
@@ -769,10 +750,10 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             align-items: center;
-            gap: 30px;
+            gap: 28px;
             max-width: 950px;
-            margin: 48px auto 45px;
-            padding: 20px;
+            margin: 45px auto 40px;
+            padding: 18px;
             border: 1px solid rgba(82,107,158,.2);
             border-radius: var(--radius);
             background: white;
@@ -781,8 +762,8 @@
 
         .latest-image {
             position: relative;
+            min-height: 350px;
             overflow: hidden;
-            min-height: 360px;
             border-radius: 18px;
             cursor: pointer;
         }
@@ -790,7 +771,7 @@
         .latest-image img {
             width: 100%;
             height: 100%;
-            min-height: 360px;
+            min-height: 350px;
             object-fit: cover;
             transition: .5s ease;
         }
@@ -845,7 +826,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 9px;
-            margin-bottom: 42px;
+            margin-bottom: 40px;
         }
 
         .filter {
@@ -915,11 +896,11 @@
 
         .artwork-info {
             position: absolute;
-            left: 15px;
-            right: 15px;
-            bottom: 15px;
-            padding: 13px 15px;
-            border-radius: 15px;
+            left: 14px;
+            right: 14px;
+            bottom: 14px;
+            padding: 12px 14px;
+            border-radius: 14px;
             background: rgba(255,255,255,.94);
             box-shadow: var(--shadow-small);
             opacity: 0;
@@ -935,7 +916,7 @@
         .artwork-info strong {
             display: block;
             color: var(--ink);
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .artwork-info span {
@@ -947,7 +928,7 @@
         .archive-box {
             max-width: 850px;
             margin: 45px auto 0;
-            padding: 30px;
+            padding: 28px;
             border: 1px dashed #cbd4e2;
             border-radius: var(--radius);
             background: rgba(255,255,255,.62);
@@ -955,13 +936,13 @@
         }
 
         .archive-box h3 {
-            margin-bottom: 10px;
-            font-size: 25px;
+            margin-bottom: 9px;
+            font-size: 24px;
         }
 
         .archive-box p {
             color: var(--muted);
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .archive-box span {
@@ -969,18 +950,18 @@
             font-weight: 700;
         }
 
-        /* ===== PROCESS ===== */
+        /* ===== ПРОЦЕСС ===== */
 
         .process {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 18px;
-            margin-top: 58px;
+            margin-top: 55px;
         }
 
         .process-item {
-            min-height: 245px;
-            padding: 29px;
+            min-height: 240px;
+            padding: 27px;
             border: 1px solid var(--line);
             border-radius: var(--radius);
             background: white;
@@ -994,23 +975,24 @@
         .process-item:nth-child(4) { border-top: 5px solid var(--mint); }
 
         .process-number {
-            margin-bottom: 32px;
+            margin-bottom: 29px;
             color: var(--blue);
             font-family: "DM Mono", monospace;
-            font-size: 13px;
+            font-size: 12px;
         }
 
         .process-item h3 {
             margin-bottom: 10px;
-            font-size: 20px;
+            font-size: 19px;
         }
 
         .process-item p {
             color: var(--muted);
-            font-size: 15px;
+            font-size: 14px;
+            line-height: 1.7;
         }
 
-        /* ===== ABOUT ===== */
+        /* ===== ОБО МНЕ ===== */
 
         .about-section {
             background: white;
@@ -1020,7 +1002,7 @@
             display: grid;
             grid-template-columns: .85fr 1.15fr;
             align-items: center;
-            gap: 75px;
+            gap: 70px;
         }
 
         .about-image {
@@ -1050,29 +1032,30 @@
             max-width: 650px;
             margin: 19px auto 0;
             color: var(--muted);
-            font-size: 18px;
+            font-size: 17px;
             line-height: 1.8;
         }
 
         .numbers {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            padding-top: 28px;
-            margin-top: 35px;
+            gap: 18px;
+            padding-top: 27px;
+            margin-top: 34px;
             border-top: 1px solid var(--line);
         }
 
         .number strong {
             display: block;
             color: var(--blue);
-            font-size: 31px;
+            font-size: 29px;
         }
 
         .number span {
             display: block;
             color: var(--muted);
-            font-size: 12px;
+            font-size: 11px;
+            line-height: 1.35;
         }
 
         /* ===== FAQ ===== */
@@ -1115,6 +1098,7 @@
             padding: 0 21px 20px;
             color: var(--muted);
             font-size: 15px;
+            line-height: 1.7;
         }
 
         .faq-item.open .faq-answer {
@@ -1185,13 +1169,13 @@
         }
 
         footer {
-            padding: 32px 0 90px;
+            padding: 32px 0;
             color: var(--muted);
             text-align: center;
             font-size: 12px;
         }
 
-        /* ===== ВЫБОР СВЯЗИ ===== */
+        /* ===== МОДАЛЬНОЕ ОКНО СВЯЗИ ===== */
 
         .contact-modal,
         .lightbox {
@@ -1359,20 +1343,51 @@
             transform: translateX(-50%);
         }
 
-        /* ===== АДАПТИВ ===== */
+        /* ===== ПЛАНШЕТ ===== */
 
         @media (max-width: 1050px) {
-            .case-grid,
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
             .hero {
                 min-height: auto;
+                padding: 125px 0 65px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 55px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-kicker {
+                justify-content: center;
+            }
+
+            .hero h1,
+            .hero-text {
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+
+            .hero-actions {
+                justify-content: center;
             }
 
             .hero-visual {
-                margin-top: 70px;
+                width: min(720px, 100%);
+                margin: 0 auto;
+            }
+
+            .hero-photo,
+            .hero-photo img {
+                height: 500px;
+            }
+
+            .case-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
             }
 
             .about-image {
@@ -1393,6 +1408,8 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        /* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
 
         @media (max-width: 850px) {
             .container {
@@ -1435,12 +1452,14 @@
             }
 
             .header {
-                padding: 4px 0;
+                height: 67px;
+                padding: 3px 0;
             }
 
             .header-inner {
-                min-height: 62px;
-                gap: 10px;
+                height: 67px;
+                min-height: 67px;
+                gap: 9px;
             }
 
             .site-logo {
@@ -1449,12 +1468,17 @@
             }
 
             .header-button {
-                padding: 10px 12px;
+                min-height: 40px;
+                padding: 0 12px;
                 font-size: 10px;
             }
 
             .section {
                 padding: 78px 0;
+            }
+
+            .section-label {
+                font-size: 10px;
             }
 
             .section-title {
@@ -1467,7 +1491,16 @@
             }
 
             .hero {
-                padding: 112px 0 85px;
+                min-height: auto;
+                padding: 93px 0 70px;
+            }
+
+            .hero-grid {
+                gap: 55px;
+            }
+
+            .hero-kicker {
+                font-size: 10px;
             }
 
             .hero-name {
@@ -1476,13 +1509,16 @@
 
             .hero-role {
                 font-size: 14px;
+                line-height: 1.45;
             }
 
             .hero h1 {
-                font-size: 55px;
+                font-size: 54px;
+                line-height: .94;
             }
 
             .hero-text {
+                margin: 24px auto;
                 font-size: 16px;
                 line-height: 1.7;
             }
@@ -1490,7 +1526,7 @@
             .hero-actions {
                 display: grid;
                 grid-template-columns: 1fr;
-                gap: 11px;
+                gap: 10px;
             }
 
             .hero-actions .btn {
@@ -1499,12 +1535,13 @@
 
             .hero-visual {
                 width: calc(100% - 8px);
-                margin-top: 65px;
+                margin-top: 0;
             }
 
             .hero-photo,
             .hero-photo img {
-                height: 350px;
+                height: 330px;
+                min-height: 330px;
                 border-radius: 25px;
             }
 
@@ -1516,17 +1553,22 @@
 
             .hero-tag {
                 right: 3px;
-                bottom: -31px;
+                bottom: -30px;
                 padding: 14px;
-                font-size: 11px;
+                font-size: 10px;
             }
 
             .hero-tag strong {
                 font-size: 22px;
             }
 
+            .case-grid {
+                gap: 24px;
+                margin-top: 38px;
+            }
+
             .case-image {
-                min-height: 360px;
+                min-height: 350px;
                 border-radius: 20px;
             }
 
@@ -1564,6 +1606,12 @@
                 grid-template-columns: 1fr;
             }
 
+            .service,
+            .option-card {
+                min-height: auto;
+                padding: 27px;
+            }
+
             .size-card.featured {
                 transform: none;
             }
@@ -1575,7 +1623,7 @@
 
             .latest-image,
             .latest-image img {
-                min-height: 320px;
+                min-height: 315px;
             }
 
             .latest-content {
@@ -1584,6 +1632,10 @@
 
             .latest-content h3 {
                 font-size: 37px;
+            }
+
+            .latest-content p {
+                font-size: 15px;
             }
 
             .filters {
@@ -1714,9 +1766,9 @@
 
         <a class="logo-link" href="#top">
             <img
+                class="site-logo"
                 src="logo.webp"
                 alt="KUBIK ART — Егор Черняков"
-                class="site-logo"
             >
         </a>
 
@@ -1740,7 +1792,7 @@
     <!-- ===== ПЕРВЫЙ ЭКРАН ===== -->
 
     <section class="hero">
-        <div class="container">
+        <div class="container hero-grid">
 
             <div class="hero-content reveal">
 
@@ -1827,7 +1879,7 @@
 
             <div class="case-grid">
 
-                <div class="case-image reveal" data-artwork-index="3">
+                <div class="case-image reveal" data-index="3">
                     <img
                         src="images/kartini/kartina4.webp"
                         alt="Картина из кубиков Рубика для Додо"
@@ -2029,8 +2081,7 @@
 
             <p class="section-description reveal">
                 Один кубик имеет размер 56 × 56 мм.
-                Размеры указаны для мозаичного полотна
-                без учёта рамки.
+                Размеры указаны для полотна без учёта рамки.
             </p>
 
             <div class="sizes">
@@ -2041,7 +2092,7 @@
                     <strong>120 кубиков</strong>
                     <p>
                         56 × 67,2 см<br>
-                        Для простого логотипа или символа
+                        Для простого логотипа
                     </p>
                 </article>
 
@@ -2109,11 +2160,9 @@
                 или представлена в архиве.
             </div>
 
-            <!-- Последняя работа -->
-
             <div class="latest-work reveal">
 
-                <div class="latest-image" data-artwork-index="26">
+                <div class="latest-image" data-index="26">
                     <img
                         src="images/kartini/Gagarin.webp"
                         alt="Портрет Юрия Гагарина из кубиков Рубика"
@@ -2141,7 +2190,7 @@
                         новой в моём портфолио.
                     </p>
 
-                    <button class="btn btn-yellow" data-latest-open>
+                    <button class="btn btn-yellow" data-latest-open style="margin-top: 24px;">
                         Рассмотреть работу
                     </button>
 
@@ -2177,7 +2226,7 @@
                 </h3>
 
                 <p>
-                    Здесь будут появляться работы, переданные заказчикам,
+                    Здесь будут появляться картины, переданные заказчикам,
                     фотографии с мероприятий и проекты прошлых лет.
                     <span>Новые материалы будут добавляться постепенно.</span>
                 </p>
@@ -2204,11 +2253,7 @@
 
                 <article class="process-item reveal">
                     <div class="process-number">01 / ОБСУЖДЕНИЕ</div>
-
-                    <h3>
-                        Обсудим задачу
-                    </h3>
-
+                    <h3>Обсудим задачу</h3>
                     <p>
                         Вы расскажете о компании, пространстве,
                         мероприятии и желаемом результате.
@@ -2217,11 +2262,7 @@
 
                 <article class="process-item reveal">
                     <div class="process-number">02 / ИДЕЯ</div>
-
-                    <h3>
-                        Подберём образ
-                    </h3>
-
+                    <h3>Подберём образ</h3>
                     <p>
                         Выберем логотип, фотографию, портрет,
                         персонажа или авторский эскиз.
@@ -2230,11 +2271,7 @@
 
                 <article class="process-item reveal">
                     <div class="process-number">03 / СОЗДАНИЕ</div>
-
-                    <h3>
-                        Соберу мозаику
-                    </h3>
-
+                    <h3>Соберу мозаику</h3>
                     <p>
                         Подберу цвета, рассчитаю композицию
                         и соберу изображение из кубиков.
@@ -2243,11 +2280,7 @@
 
                 <article class="process-item reveal">
                     <div class="process-number">04 / РЕЗУЛЬТАТ</div>
-
-                    <h3>
-                        Картина появится в пространстве
-                    </h3>
-
+                    <h3>Картина появится в пространстве</h3>
                     <p>
                         Готовая работа станет частью интерьера,
                         подарком или центром внимания на событии.
@@ -2300,7 +2333,6 @@
                 </p>
 
                 <div class="numbers reveal">
-
                     <div class="number">
                         <strong>12+</strong>
                         <span>лет в спидкубинге</span>
@@ -2320,7 +2352,6 @@
                         <strong>TOP-100</strong>
                         <span>библиотечных практик России</span>
                     </div>
-
                 </div>
 
             </div>
@@ -2679,6 +2710,8 @@
 
     renderPortfolio();
 
+    /* Фильтры */
+
     document.querySelectorAll(".filter").forEach(button => {
         button.addEventListener("click", () => {
             document.querySelectorAll(".filter").forEach(item => {
@@ -2690,7 +2723,7 @@
         });
     });
 
-    /* ===== ПОСЛЕДНЯЯ РАБОТА ===== */
+    /* Последняя работа */
 
     document.querySelector(".latest-image")
         .addEventListener("click", () => {
@@ -2702,7 +2735,7 @@
             openLightbox(26);
         });
 
-    /* ===== LIGHTBOX ===== */
+    /* Lightbox */
 
     const lightbox = document.getElementById("lightbox");
     const lightboxImage = document.getElementById("lightboxImage");
@@ -2746,10 +2779,14 @@
         .addEventListener("click", closeLightbox);
 
     document.getElementById("lightboxPrev")
-        .addEventListener("click", () => changeArtwork(-1));
+        .addEventListener("click", () => {
+            changeArtwork(-1);
+        });
 
     document.getElementById("lightboxNext")
-        .addEventListener("click", () => changeArtwork(1));
+        .addEventListener("click", () => {
+            changeArtwork(1);
+        });
 
     lightbox.addEventListener("click", event => {
         if (event.target === lightbox) {
@@ -2757,7 +2794,7 @@
         }
     });
 
-    /* ===== СВАЙПЫ ===== */
+    /* Свайпы */
 
     let touchStartX = 0;
     let touchEndX = 0;
@@ -2778,29 +2815,7 @@
         }
     }, { passive: true });
 
-    document.addEventListener("keydown", event => {
-        if (lightbox.classList.contains("active")) {
-            if (event.key === "Escape") {
-                closeLightbox();
-            }
-
-            if (event.key === "ArrowLeft") {
-                changeArtwork(-1);
-            }
-
-            if (event.key === "ArrowRight") {
-                changeArtwork(1);
-            }
-        }
-
-        if (contactModal.classList.contains("active")) {
-            if (event.key === "Escape") {
-                closeContactModal();
-            }
-        }
-    });
-
-    /* ===== FAQ ===== */
+    /* FAQ */
 
     document.querySelectorAll(".faq-question").forEach(button => {
         button.addEventListener("click", () => {
@@ -2808,7 +2823,7 @@
         });
     });
 
-    /* ===== МОДАЛЬНОЕ ОКНО СВЯЗИ ===== */
+    /* Окно выбора связи */
 
     const contactModal = document.getElementById("contactModal");
 
@@ -2838,7 +2853,7 @@
         }
     });
 
-    /* ===== КОПИРОВАНИЕ КОНТАКТОВ ===== */
+    /* Копирование контактов */
 
     document.getElementById("copyContacts")
         .addEventListener("click", async () => {
@@ -2853,8 +2868,7 @@
                 await navigator.clipboard.writeText(contacts);
                 message.textContent = "Контакты скопированы";
             } catch {
-                message.textContent =
-                    "Скопируйте контакты вручную";
+                message.textContent = "Скопируйте контакты вручную";
             }
 
             setTimeout(() => {
@@ -2862,7 +2876,23 @@
             }, 2500);
         });
 
-    /* ===== ШАПКА ===== */
+    /* Закрытие окон клавишей Escape */
+
+    document.addEventListener("keydown", event => {
+        if (event.key !== "Escape") {
+            return;
+        }
+
+        if (lightbox.classList.contains("active")) {
+            closeLightbox();
+        }
+
+        if (contactModal.classList.contains("active")) {
+            closeContactModal();
+        }
+    });
+
+    /* Фиксация шапки */
 
     const header = document.getElementById("header");
 
@@ -2870,7 +2900,7 @@
         header.classList.toggle("scrolled", window.scrollY > 30);
     });
 
-    /* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
+    /* Появление блоков */
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -2887,7 +2917,7 @@
         observer.observe(element);
     });
 
-    /* ===== ГОД ===== */
+    /* Текущий год */
 
     document.getElementById("year").textContent =
         new Date().getFullYear();
