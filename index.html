@@ -4,26 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>KUBIK ART — Егор Черняков</title>
+    <title>KUBIK ART — Егор Черняков | Картины из кубиков Рубика</title>
 
-    <meta
-        name="description"
-        content="Егор Черняков создаёт картины, логотипы и мозаики из кубиков Рубика для компаний, ресторанов, офисов и мероприятий."
-    >
+    <meta name="description" content="Егор Черняков создаёт картины, логотипы и мозаики из кубиков Рубика для компаний, ресторанов, офисов, фестивалей и общественных пространств.">
 
     <link rel="icon" href="logo.webp" type="image/webp">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital@0;1&display=swap"
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --ink: #1c2638;
+            --ink-soft: #40506a;
             --muted: #788397;
             --cream: #f7f4ee;
             --white: #fff;
@@ -56,7 +51,7 @@
             overflow-x: hidden;
             background:
                 radial-gradient(circle at 95% 0%, rgba(233,190,69,.18), transparent 25rem),
-                radial-gradient(circle at 0% 40%, rgba(82,107,158,.10), transparent 28rem),
+                radial-gradient(circle at 0% 40%, rgba(82,107,158,.1), transparent 28rem),
                 var(--cream);
             color: var(--ink);
             font-family: Inter, Arial, sans-serif;
@@ -72,9 +67,10 @@
             text-decoration: none;
         }
 
-        button {
+        button,
+        input,
+        select {
             font: inherit;
-            cursor: pointer;
         }
 
         img {
@@ -87,38 +83,36 @@
             margin: 0 auto;
         }
 
-        /* ===== ДЕКОР ===== */
-
-        .decor-cube {
+        .floating-cube {
             position: fixed;
             z-index: -1;
             width: 18px;
             height: 18px;
             border-radius: 5px;
-            transform: rotate(45deg);
             opacity: .2;
+            transform: rotate(45deg);
             pointer-events: none;
         }
 
-        .decor-cube:nth-child(1) {
+        .floating-cube:nth-child(1) {
             top: 18%;
             left: 5%;
             background: var(--blue);
         }
 
-        .decor-cube:nth-child(2) {
+        .floating-cube:nth-child(2) {
             top: 42%;
             right: 6%;
             background: var(--coral);
         }
 
-        .decor-cube:nth-child(3) {
+        .floating-cube:nth-child(3) {
             top: 70%;
             left: 8%;
             background: var(--yellow);
         }
 
-        .decor-cube:nth-child(4) {
+        .floating-cube:nth-child(4) {
             top: 86%;
             right: 12%;
             background: var(--mint);
@@ -170,12 +164,89 @@
             color: var(--blue-dark);
         }
 
-        .header-button,
+        .header-button {
+            min-height: 45px;
+            padding: 0 18px;
+            border: 0;
+            border-radius: 100px;
+            background: var(--blue);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* ===== COMMON ===== */
+
+        .section {
+            position: relative;
+            padding: 110px 0;
+        }
+
+        .section-label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 17px;
+            color: var(--blue);
+            font-family: "DM Mono", monospace;
+            font-size: 11px;
+            letter-spacing: .1em;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: "";
+            width: 30px;
+            height: 3px;
+            border-radius: 20px;
+            background: var(--yellow);
+        }
+
+        .section-title {
+            max-width: 900px;
+            margin: auto;
+            color: var(--ink);
+            font-size: clamp(40px, 6vw, 76px);
+            font-weight: 700;
+            line-height: .98;
+            letter-spacing: -.065em;
+            text-align: center;
+        }
+
+        .section-title em {
+            color: var(--blue);
+            font-style: normal;
+        }
+
+        .section-description {
+            max-width: 680px;
+            margin: 20px auto 0;
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-height: 53px;
+            min-height: 54px;
             padding: 0 24px;
             border: 0;
             border-radius: 15px;
@@ -183,18 +254,11 @@
             color: white;
             font-size: 14px;
             font-weight: 700;
+            cursor: pointer;
             box-shadow: var(--shadow-small);
             transition: .25s ease;
         }
 
-        .header-button {
-            min-height: 45px;
-            padding: 0 18px;
-            border-radius: 100px;
-            font-size: 12px;
-        }
-
-        .header-button:hover,
         .btn:hover {
             background: var(--blue-dark);
             transform: translateY(-3px);
@@ -217,73 +281,9 @@
         }
 
         .btn-outline:hover {
-            background: white;
             color: var(--blue-dark);
             border-color: var(--blue);
-        }
-
-        /* ===== ОБЩИЕ СТИЛИ ===== */
-
-        .section {
-            padding: 110px 0;
-        }
-
-        .section-label {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 17px;
-            color: var(--blue);
-            font: 11px "DM Mono", monospace;
-            letter-spacing: .1em;
-            text-align: center;
-            text-transform: uppercase;
-        }
-
-        .section-label::before,
-        .section-label::after {
-            content: "";
-            width: 30px;
-            height: 3px;
-            border-radius: 20px;
-            background: var(--yellow);
-        }
-
-        .section-title {
-            max-width: 900px;
-            margin: auto;
-            color: var(--ink);
-            font-size: clamp(40px, 6vw, 74px);
-            font-weight: 700;
-            line-height: .98;
-            letter-spacing: -.065em;
-            text-align: center;
-        }
-
-        .section-title em {
-            color: var(--blue);
-            font-style: normal;
-        }
-
-        .section-description {
-            max-width: 680px;
-            margin: 20px auto 0;
-            color: var(--muted);
-            font-size: 17px;
-            line-height: 1.75;
-            text-align: center;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(22px);
-            transition: opacity .7s ease, transform .7s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
+            background: white;
         }
 
         /* ===== HERO ===== */
@@ -310,11 +310,22 @@
         }
 
         .hero-kicker {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             margin-bottom: 16px;
             color: var(--blue);
-            font: 11px "DM Mono", monospace;
+            font-family: "DM Mono", monospace;
+            font-size: 11px;
             letter-spacing: .08em;
             text-transform: uppercase;
+        }
+
+        .hero-kicker i {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--coral);
         }
 
         .hero-name {
@@ -325,10 +336,12 @@
         }
 
         .hero-role {
+            max-width: 570px;
             margin-bottom: 21px;
             color: var(--blue);
             font-size: clamp(14px,1.7vw,18px);
             font-weight: 600;
+            line-height: 1.45;
         }
 
         .hero h1 {
@@ -340,16 +353,21 @@
             text-align: center;
         }
 
-        .hero h1 .soft-line {
+        .hero h1 .line-soft {
             display: block;
             color: var(--ink);
-            font: italic 500 .67em "Playfair Display", serif;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: .67em;
+            font-style: italic;
+            font-weight: 500;
+            letter-spacing: -.025em;
             line-height: 1.15;
         }
 
-        .hero h1 .accent-line {
+        .hero h1 .line-accent {
             display: block;
             color: var(--blue);
+            font-weight: 650;
         }
 
         .hero-text {
@@ -369,13 +387,13 @@
 
         .hero-visual {
             position: relative;
+            width: 100%;
         }
 
         .hero-photo {
             position: relative;
-            height: min(62vh,510px);
+            height: min(62vh, 510px);
             min-height: 350px;
-            overflow: hidden;
             border-radius: 30px;
             background: white;
             box-shadow: var(--shadow);
@@ -416,12 +434,30 @@
 
         .hero-tag strong {
             display: block;
+            margin-bottom: 5px;
             color: var(--yellow);
             font-size: 25px;
             line-height: 1;
         }
 
-        /* ===== КЕЙС ===== */
+        /* ===== STRIP ===== */
+
+        .color-strip {
+            display: flex;
+            height: 8px;
+        }
+
+        .color-strip span {
+            flex: 1;
+        }
+
+        .color-strip span:nth-child(1) { background: var(--blue); }
+        .color-strip span:nth-child(2) { background: var(--yellow); }
+        .color-strip span:nth-child(3) { background: var(--coral); }
+        .color-strip span:nth-child(4) { background: var(--mint); }
+        .color-strip span:nth-child(5) { background: var(--violet); }
+
+        /* ===== CASE ===== */
 
         .case-section {
             background: white;
@@ -457,6 +493,7 @@
             padding: 10px 15px;
             border-radius: 100px;
             background: rgba(255,255,255,.95);
+            color: var(--ink);
             font-size: 12px;
             font-weight: 700;
         }
@@ -473,18 +510,42 @@
         }
 
         .case-info h3 {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
             font-size: clamp(32px,4vw,50px);
+            font-weight: 650;
             line-height: 1;
+            letter-spacing: -.065em;
         }
 
         .case-info p {
-            margin-bottom: 14px;
+            margin-bottom: 15px;
             color: var(--muted);
             font-size: 16px;
         }
 
-        /* ===== КАРТОЧКИ ===== */
+        .case-facts {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 10px;
+            margin: 18px 0 25px;
+        }
+
+        .fact {
+            padding: 14px;
+            border: 1px solid rgba(222,202,111,.35);
+            border-radius: 14px;
+            background: rgba(255,255,255,.72);
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .fact strong {
+            display: block;
+            color: var(--ink);
+            font-size: 20px;
+        }
+
+        /* ===== CARDS ===== */
 
         .cards {
             display: grid;
@@ -509,9 +570,9 @@
         }
 
         .card-icon {
-            margin-bottom: 18px;
+            margin-bottom: 21px;
             color: var(--blue);
-            font-size: 32px;
+            font-size: 33px;
         }
 
         .card h3 {
@@ -524,7 +585,7 @@
             font-size: 14px;
         }
 
-        /* ===== РАЗМЕРЫ ===== */
+        /* ===== SIZES ===== */
 
         .size-section {
             background: #fffdf8;
@@ -558,12 +619,14 @@
 
         .size-number {
             color: var(--blue);
-            font: 18px "DM Mono", monospace;
+            font-family: "DM Mono", monospace;
+            font-size: 18px;
         }
 
         .size-card strong {
             display: block;
             margin: 13px 0 5px;
+            color: var(--ink);
             font-size: 26px;
         }
 
@@ -579,21 +642,10 @@
             text-align: center;
         }
 
-        /* ===== ПОРТФОЛИО ===== */
+        /* ===== PORTFOLIO ===== */
 
         .portfolio-section {
             background: #eef2f8;
-        }
-
-        .portfolio-note {
-            max-width: 700px;
-            margin: 20px auto;
-            padding: 14px 18px;
-            border-radius: 15px;
-            background: rgba(255,255,255,.8);
-            color: var(--muted);
-            font-size: 14px;
-            text-align: center;
         }
 
         .latest-work {
@@ -615,7 +667,6 @@
             min-height: 350px;
             overflow: hidden;
             border-radius: 18px;
-            background: #f4f6f9;
             cursor: pointer;
         }
 
@@ -624,18 +675,19 @@
             height: 100%;
             min-height: 350px;
             object-fit: contain;
+            background: #f4f6f9;
         }
 
         .latest-badge {
             position: absolute;
             top: 15px;
             left: 15px;
-            z-index: 3;
             padding: 9px 13px;
             border-radius: 100px;
             background: var(--yellow);
             color: var(--ink);
-            font: 10px "DM Mono", monospace;
+            font-family: "DM Mono", monospace;
+            font-size: 10px;
             text-transform: uppercase;
         }
 
@@ -645,15 +697,17 @@
         }
 
         .latest-date {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             color: var(--coral);
-            font: 11px "DM Mono", monospace;
+            font-family: "DM Mono", monospace;
+            font-size: 11px;
             text-transform: uppercase;
         }
 
         .latest-content h3 {
-            margin-bottom: 15px;
+            margin-bottom: 17px;
             font-size: clamp(30px,4vw,48px);
+            font-weight: 650;
             line-height: 1;
         }
 
@@ -662,12 +716,23 @@
             font-size: 15px;
         }
 
+        .portfolio-note {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 14px 18px;
+            border-radius: 15px;
+            background: rgba(255,255,255,.8);
+            color: var(--muted);
+            font-size: 14px;
+            text-align: center;
+        }
+
         .filters {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 9px;
-            margin-bottom: 35px;
+            margin-bottom: 38px;
         }
 
         .filter {
@@ -703,7 +768,7 @@
             background: #f8fafc;
             box-shadow: var(--shadow-small);
             cursor: pointer;
-            transition: .3s ease;
+            transition: .35s ease;
         }
 
         .artwork:hover {
@@ -724,15 +789,17 @@
             left: 12px;
             right: 12px;
             bottom: 12px;
-            padding: 11px;
+            padding: 11px 13px;
             border-radius: 13px;
             background: rgba(255,255,255,.95);
             opacity: 0;
+            transform: translateY(8px);
             transition: .3s ease;
         }
 
         .artwork:hover .artwork-info {
             opacity: 1;
+            transform: translateY(0);
         }
 
         .artwork-info strong {
@@ -742,34 +809,11 @@
 
         .artwork-info span {
             color: var(--blue);
-            font: 10px "DM Mono", monospace;
+            font-family: "DM Mono", monospace;
+            font-size: 10px;
         }
 
-        .archive-box {
-            max-width: 850px;
-            margin: 42px auto 0;
-            padding: 27px;
-            border: 1px dashed #cbd4e2;
-            border-radius: var(--radius);
-            text-align: center;
-        }
-
-        .archive-box h3 {
-            margin-bottom: 8px;
-            font-size: 23px;
-        }
-
-        .archive-box p {
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .archive-box span {
-            color: var(--blue);
-            font-weight: 700;
-        }
-
-        /* ===== ПРОЦЕСС ===== */
+        /* ===== PROCESS ===== */
 
         .process-section {
             background: var(--cream);
@@ -797,8 +841,8 @@
         .process-card {
             position: relative;
             z-index: 1;
-            min-height: 250px;
-            padding: 62px 24px 25px;
+            min-height: 255px;
+            padding: 62px 24px 26px;
             border: 1px solid var(--line);
             border-radius: var(--radius);
             background: white;
@@ -818,7 +862,8 @@
             border-radius: 50%;
             background: var(--blue);
             color: white;
-            font: 9px "DM Mono", monospace;
+            font-family: "DM Mono", monospace;
+            font-size: 9px;
             transform: translateX(-50%);
         }
 
@@ -836,7 +881,7 @@
         }
 
         .process-card h3 {
-            margin-bottom: 9px;
+            margin-bottom: 10px;
             font-size: 19px;
         }
 
@@ -883,7 +928,7 @@
 
         .about-text p {
             max-width: 650px;
-            margin: 18px auto 0;
+            margin: 19px auto 0;
             color: var(--muted);
             font-size: 17px;
         }
@@ -892,15 +937,15 @@
             display: grid;
             grid-template-columns: repeat(4,1fr);
             gap: 18px;
-            padding-top: 25px;
-            margin-top: 32px;
+            padding-top: 27px;
+            margin-top: 34px;
             border-top: 1px solid var(--line);
         }
 
         .number strong {
             display: block;
             color: var(--blue);
-            font-size: 28px;
+            font-size: 29px;
         }
 
         .number span {
@@ -925,13 +970,14 @@
 
         .faq-question {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
             width: 100%;
             padding: 18px 21px;
             border: 0;
             background: white;
             color: var(--ink);
+            cursor: pointer;
             font-size: 15px;
             font-weight: 700;
             text-align: left;
@@ -980,6 +1026,7 @@
             font-size: clamp(40px,5vw,64px);
             font-weight: 650;
             line-height: 1;
+            letter-spacing: -.07em;
         }
 
         .cta h2 em {
@@ -988,143 +1035,9 @@
 
         .cta p {
             max-width: 600px;
-            margin: 0 auto 23px;
+            margin: 0 auto 24px;
             color: rgba(255,255,255,.84);
-        }
-
-        .cta .contact-links {
-            margin-top: 20px;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 9px;
-        }
-
-        .contact-link {
-            padding: 10px 15px;
-            border: 1px solid rgba(255,255,255,.35);
-            border-radius: 100px;
-            color: white;
-            font-size: 12px;
-        }
-
-        footer {
-            padding: 30px 0;
-            color: var(--muted);
-            text-align: center;
-            font-size: 12px;
-        }
-
-        /* ===== ЭФФЕКТ СБОРКИ КАРТИНЫ ===== */
-
-        .mosaic-reveal {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mosaic-reveal > img {
-            position: relative;
-            z-index: 1;
-        }
-
-        .mosaic-overlay {
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: repeat(16,1fr);
-            grid-template-rows: repeat(10,1fr);
-            pointer-events: none;
-        }
-
-        .mosaic-cell {
-            background-repeat: no-repeat;
-            background-size: 1600% 1000%;
-            opacity: 1;
-            transform: scale(1.04);
-            transition:
-                opacity .5s ease,
-                transform .65s cubic-bezier(.2,.8,.2,1);
-        }
-
-        .mosaic-reveal.revealed .mosaic-cell {
-            opacity: 0;
-            transform: scale(1);
-        }
-
-        /* ===== LIGHTBOX ===== */
-
-        .lightbox {
-            position: fixed;
-            inset: 0;
-            z-index: 1100;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background: rgba(23,32,51,.94);
-            backdrop-filter: blur(13px);
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-image {
-            max-width: 93vw;
-            max-height: 86vh;
-            object-fit: contain;
-            border-radius: 14px;
-        }
-
-        .lightbox-close,
-        .lightbox-prev,
-        .lightbox-next {
-            position: absolute;
-            z-index: 2;
-            display: grid;
-            place-items: center;
-            width: 50px;
-            height: 50px;
-            border: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,.16);
-            color: white;
-            font-size: 25px;
-        }
-
-        .lightbox-close {
-            top: 22px;
-            right: 22px;
-        }
-
-        .lightbox-prev,
-        .lightbox-next {
-            top: 50%;
-        }
-
-        .lightbox-prev {
-            left: 25px;
-        }
-
-        .lightbox-next {
-            right: 25px;
-        }
-
-        .lightbox-caption {
-            position: absolute;
-            bottom: 24px;
-            left: 50%;
-            max-width: 75%;
-            padding: 10px 17px;
-            border-radius: 100px;
-            background: rgba(255,255,255,.14);
-            color: white;
-            font-size: 12px;
-            transform: translateX(-50%);
+            font-size: 16px;
         }
 
         /* ===== CONTACT MODAL ===== */
@@ -1176,6 +1089,7 @@
             background: transparent;
             color: var(--muted);
             font-size: 30px;
+            cursor: pointer;
         }
 
         .contact-options {
@@ -1196,6 +1110,8 @@
             color: var(--ink);
             text-align: left;
             text-decoration: none;
+            cursor: pointer;
+            transition: .25s ease;
         }
 
         .contact-option:hover {
@@ -1235,7 +1151,80 @@
             font-size: 12px;
         }
 
-        /* ===== BUTTON TO TOP ===== */
+        /* ===== LIGHTBOX ===== */
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 1100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(23,32,51,.94);
+            backdrop-filter: blur(13px);
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-image {
+            max-width: 93vw;
+            max-height: 86vh;
+            object-fit: contain;
+            border-radius: 14px;
+        }
+
+        .lightbox-close,
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            z-index: 2;
+            display: grid;
+            place-items: center;
+            width: 50px;
+            height: 50px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,.16);
+            color: white;
+            cursor: pointer;
+            font-size: 25px;
+        }
+
+        .lightbox-close {
+            top: 22px;
+            right: 22px;
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            top: 50%;
+        }
+
+        .lightbox-prev {
+            left: 25px;
+        }
+
+        .lightbox-next {
+            right: 25px;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            max-width: 75%;
+            padding: 10px 17px;
+            border-radius: 100px;
+            background: rgba(255,255,255,.14);
+            color: white;
+            font-size: 12px;
+            transform: translateX(-50%);
+        }
+
+        /* ===== КНОПКА НАВЕРХ ===== */
 
         .back-to-top {
             position: fixed;
@@ -1268,30 +1257,44 @@
         .back-to-top:hover {
             background: var(--blue);
             color: white;
+            transform: translateY(-3px);
         }
 
-        /* ===== ADAPTIVE ===== */
+        /* ===== MOBILE ===== */
 
         @media (max-width: 1050px) {
-            .hero-grid,
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 55px;
+            }
+
+            .hero-content {
+                max-width: 760px;
+                margin: 0 auto;
+            }
+
+            .hero-visual {
+                width: min(720px,100%);
+                margin: 0 auto;
+            }
+
             .case-grid,
             .about-grid {
                 grid-template-columns: 1fr;
             }
 
-            .hero-content {
-                max-width: 760px;
-                margin: auto;
+            .about-image {
+                width: min(600px,100%);
+                margin: 0 auto;
             }
 
-            .hero-visual {
-                width: min(720px,100%);
-                margin: auto;
-            }
-
-            .services,
             .options-grid,
-            .cards {
+            .cards,
+            .services {
                 grid-template-columns: repeat(2,1fr);
             }
 
@@ -1319,6 +1322,7 @@
 
             .header-inner {
                 height: 67px;
+                min-height: 67px;
                 gap: 8px;
             }
 
@@ -1346,16 +1350,23 @@
             }
 
             .hero {
-                min-height: auto;
-                padding: 90px 0 65px;
+                padding: 91px 0 65px;
             }
 
-            .hero h1 {
-                font-size: 51px;
+            .hero-kicker {
+                font-size: 9px;
+            }
+
+            .hero-name {
+                font-size: 23px;
             }
 
             .hero-role {
                 font-size: 13px;
+            }
+
+            .hero h1 {
+                font-size: 51px;
             }
 
             .hero-text {
@@ -1380,6 +1391,12 @@
             .hero-photo img {
                 height: 325px;
                 min-height: 325px;
+                border-radius: 23px;
+            }
+
+            .hero-photo::before {
+                inset: 10px -9px -10px 9px;
+                border-width: 2px;
                 border-radius: 23px;
             }
 
@@ -1410,9 +1427,9 @@
                 font-size: 15px;
             }
 
-            .services,
             .options-grid,
             .cards,
+            .services,
             .process-track,
             .sizes,
             .numbers {
@@ -1491,6 +1508,7 @@
 
             .process-track {
                 gap: 13px;
+                margin-top: 42px;
             }
 
             .process-track::before {
@@ -1519,14 +1537,6 @@
                 left: 28px;
             }
 
-            .about-grid {
-                gap: 50px;
-            }
-
-            .about-text p {
-                font-size: 15px;
-            }
-
             .cta {
                 padding: 62px 17px;
                 border-radius: 23px;
@@ -1547,10 +1557,6 @@
 
             .contact-link {
                 text-align: center;
-            }
-
-            .contact-modal-box {
-                padding: 29px 18px;
             }
 
             .back-to-top {
@@ -1588,10 +1594,10 @@
 
 <body>
 
-<div class="decor-cube"></div>
-<div class="decor-cube"></div>
-<div class="decor-cube"></div>
-<div class="decor-cube"></div>
+<div class="floating-cube"></div>
+<div class="floating-cube"></div>
+<div class="floating-cube"></div>
+<div class="floating-cube"></div>
 
 <header class="header" id="header">
     <div class="container header-inner">
@@ -1621,7 +1627,7 @@
 
 <main id="top">
 
-    <!-- ПЕРВЫЙ ЭКРАН -->
+    <!-- ===== ПЕРВЫЙ ЭКРАН ===== -->
 
     <section class="hero">
         <div class="container hero-grid">
@@ -1629,6 +1635,7 @@
             <div class="hero-content reveal">
 
                 <div class="hero-kicker">
+                    <i></i>
                     Авторские картины для компаний
                 </div>
 
@@ -1642,8 +1649,8 @@
 
                 <h1>
                     Вашу идею
-                    <span class="soft-line">соберу в</span>
-                    <span class="accent-line">картину.</span>
+                    <span class="line-soft">соберу в</span>
+                    <span class="line-accent">картину.</span>
                 </h1>
 
                 <p class="hero-text">
@@ -1690,7 +1697,7 @@
         <span></span>
     </div>
 
-    <!-- КЕЙС ДОДО -->
+    <!-- ===== КЕЙС ===== -->
 
     <section class="section case-section" id="works">
         <div class="container">
@@ -1711,7 +1718,7 @@
 
             <div class="case-grid">
 
-                <div class="case-image mosaic-target reveal">
+                <div class="case-image reveal" data-index="3">
                     <img
                         src="images/kartini/kartina4.webp"
                         alt="Картина из кубиков Рубика для Додо"
@@ -1743,6 +1750,28 @@
                         или центром внимания на мероприятии.
                     </p>
 
+                    <div class="case-facts">
+                        <div class="fact">
+                            <strong>Логотип</strong>
+                            для интерьера
+                        </div>
+
+                        <div class="fact">
+                            <strong>Портрет</strong>
+                            для подарка
+                        </div>
+
+                        <div class="fact">
+                            <strong>Мозаика</strong>
+                            для события
+                        </div>
+
+                        <div class="fact">
+                            <strong>Эскиз</strong>
+                            под задачу бренда
+                        </div>
+                    </div>
+
                     <button class="btn btn-yellow open-contact">
                         Заказать картину
                     </button>
@@ -1753,7 +1782,7 @@
         </div>
     </section>
 
-    <!-- ЧТО МОЖНО СОБРАТЬ -->
+    <!-- ===== ЧТО МОЖНО СОБРАТЬ ===== -->
 
     <section class="section" id="options">
         <div class="container">
@@ -1831,7 +1860,7 @@
         </div>
     </section>
 
-    <!-- РАЗМЕРЫ -->
+    <!-- ===== РАЗМЕРЫ ===== -->
 
     <section class="section size-section" id="sizes">
         <div class="container">
@@ -1903,7 +1932,7 @@
         </div>
     </section>
 
-    <!-- ПОРТФОЛИО -->
+    <!-- ===== ПОРТФОЛИО ===== -->
 
     <section class="section portfolio-section" id="portfolio">
         <div class="container">
@@ -1928,7 +1957,7 @@
 
             <div class="latest-work reveal">
 
-                <div class="latest-image mosaic-target">
+                <div class="latest-image" data-index="26">
                     <img
                         src="images/kartini/Gagarin.webp"
                         alt="Портрет Юрия Гагарина из кубиков Рубика"
@@ -1956,7 +1985,7 @@
                         новой в моём портфолио.
                     </p>
 
-                    <button class="btn btn-yellow latest-open" style="margin-top:22px;">
+                    <button class="btn btn-yellow" data-latest-open style="margin-top:22px;">
                         Рассмотреть работу
                     </button>
 
@@ -1999,7 +2028,7 @@
         </div>
     </section>
 
-    <!-- ПРОЦЕСС -->
+    <!-- ===== ПРОЦЕСС ===== -->
 
     <section class="section process-section">
         <div class="container">
@@ -2060,7 +2089,7 @@
         </div>
     </section>
 
-    <!-- ОБО МНЕ -->
+    <!-- ===== ОБО МНЕ ===== -->
 
     <section class="section about-section" id="about">
         <div class="container about-grid">
@@ -2102,6 +2131,7 @@
                 </p>
 
                 <div class="numbers reveal">
+
                     <div class="number">
                         <strong>12+</strong>
                         <span>лет в спидкубинге</span>
@@ -2121,13 +2151,14 @@
                         <strong>TOP-100</strong>
                         <span>библиотечных практик России</span>
                     </div>
+
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- ===== FAQ ===== -->
 
     <section class="section">
         <div class="container">
@@ -2198,7 +2229,7 @@
         </div>
     </section>
 
-    <!-- КОНТАКТЫ -->
+    <!-- ===== CTA ===== -->
 
     <section class="section" id="contacts">
         <div class="container">
@@ -2443,7 +2474,7 @@
             }
 
             const item = document.createElement("article");
-            item.className = "artwork";
+            item.className = "artwork reveal";
 
             item.innerHTML = `
                 <img
@@ -2463,6 +2494,10 @@
             });
 
             portfolioGrid.appendChild(item);
+
+            setTimeout(() => {
+                item.classList.add("visible");
+            }, 25);
         });
     }
 
@@ -2479,80 +2514,19 @@
         });
     });
 
-    /* ===== ЭФФЕКТ СБОРКИ КАРТИНЫ ===== */
+    /* Новая работа */
 
-    function createMosaicEffect(element) {
-        const image = element.querySelector("img");
-
-        if (!image || element.dataset.mosaicCreated === "true") {
-            return;
-        }
-
-        element.dataset.mosaicCreated = "true";
-        element.classList.add("mosaic-reveal");
-
-        const overlay = document.createElement("div");
-        overlay.className = "mosaic-overlay";
-
-        const columns = 16;
-        const rows = 10;
-
-        for (let row = 0; row < rows; row++) {
-            for (let column = 0; column < columns; column++) {
-                const cell = document.createElement("div");
-                cell.className = "mosaic-cell";
-
-                const x = (column / (columns - 1)) * 100;
-                const y = (row / (rows - 1)) * 100;
-
-                cell.style.backgroundImage =
-                    `url("${image.src}")`;
-
-                cell.style.backgroundPosition =
-                    `${x}% ${y}%`;
-
-                overlay.appendChild(cell);
-            }
-        }
-
-        element.appendChild(overlay);
-
-        const cells = Array.from(
-            overlay.querySelectorAll(".mosaic-cell")
-        );
-
-        cells.sort(() => Math.random() - .5);
-
-        const revealObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                }
-
-                cells.forEach((cell, index) => {
-                    setTimeout(() => {
-                        cell.style.opacity = "0";
-                        cell.style.transform = "scale(1)";
-                    }, index * 10);
-                });
-
-                setTimeout(() => {
-                    element.classList.add("revealed");
-                }, cells.length * 10 + 300);
-
-                revealObserver.unobserve(element);
-            });
-        }, {
-            threshold: .25
+    document.querySelector(".latest-image")
+        .addEventListener("click", () => {
+            openLightbox(26);
         });
 
-        revealObserver.observe(element);
-    }
+    document.querySelector("[data-latest-open]")
+        .addEventListener("click", () => {
+            openLightbox(26);
+        });
 
-    document.querySelectorAll(".mosaic-target")
-        .forEach(createMosaicEffect);
-
-    /* ===== LIGHTBOX ===== */
+    /* Lightbox */
 
     const lightbox = document.getElementById("lightbox");
     const lightboxImage = document.getElementById("lightboxImage");
@@ -2592,21 +2566,6 @@
         openLightbox(currentIndex);
     }
 
-    document.querySelector(".case-image")
-        .addEventListener("click", () => {
-            openLightbox(3);
-        });
-
-    document.querySelector(".latest-image")
-        .addEventListener("click", () => {
-            openLightbox(26);
-        });
-
-    document.querySelector("[data-latest-open]")
-        .addEventListener("click", () => {
-            openLightbox(26);
-        });
-
     document.getElementById("lightboxClose")
         .addEventListener("click", closeLightbox);
 
@@ -2626,7 +2585,7 @@
         }
     });
 
-    /* ===== FAQ ===== */
+    /* FAQ */
 
     document.querySelectorAll(".faq-question").forEach(button => {
         button.addEventListener("click", () => {
@@ -2634,7 +2593,7 @@
         });
     });
 
-    /* ===== КОНТАКТЫ ===== */
+    /* Окно связи */
 
     const contactModal = document.getElementById("contactModal");
 
@@ -2664,7 +2623,7 @@
         }
     });
 
-    /* ===== КОПИРОВАНИЕ КОНТАКТОВ ===== */
+    /* Копирование контактов */
 
     document.getElementById("copyContacts")
         .addEventListener("click", async () => {
@@ -2679,8 +2638,7 @@
                 await navigator.clipboard.writeText(contacts);
                 message.textContent = "Контакты скопированы";
             } catch {
-                message.textContent =
-                    "Скопируйте контакты вручную";
+                message.textContent = "Скопируйте контакты вручную";
             }
 
             setTimeout(() => {
@@ -2688,15 +2646,16 @@
             }, 2500);
         });
 
-    /* ===== КНОПКА НАВЕРХ ===== */
+    /* Кнопка наверх */
 
     const backToTop = document.getElementById("backToTop");
 
     window.addEventListener("scroll", () => {
-        backToTop.classList.toggle(
-            "visible",
-            window.scrollY > 500
-        );
+        if (window.scrollY > 500) {
+            backToTop.classList.add("visible");
+        } else {
+            backToTop.classList.remove("visible");
+        }
     });
 
     backToTop.addEventListener("click", () => {
@@ -2706,18 +2665,15 @@
         });
     });
 
-    /* ===== ШАПКА ===== */
+    /* Шапка */
 
     const header = document.getElementById("header");
 
     window.addEventListener("scroll", () => {
-        header.classList.toggle(
-            "scrolled",
-            window.scrollY > 30
-        );
+        header.classList.toggle("scrolled", window.scrollY > 30);
     });
 
-    /* ===== АНИМАЦИЯ БЛОКОВ ===== */
+    /* Анимация появления */
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -2734,7 +2690,7 @@
         observer.observe(element);
     });
 
-    /* ===== ESCAPE ===== */
+    /* Клавиша Escape */
 
     document.addEventListener("keydown", event => {
         if (event.key !== "Escape") {
@@ -2750,7 +2706,26 @@
         }
     });
 
-    /* ===== ГОД ===== */
+    /* Свайпы */
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    lightbox.addEventListener("touchstart", event => {
+        touchStartX = event.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener("touchend", event => {
+        touchEndX = event.changedTouches[0].screenX;
+
+        if (touchEndX < touchStartX - 50) {
+            changeArtwork(1);
+        }
+
+        if (touchEndX > touchStartX + 50) {
+            changeArtwork(-1);
+        }
+    }, { passive: true });
 
     document.getElementById("year").textContent =
         new Date().getFullYear();
