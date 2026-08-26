@@ -6,13 +6,28 @@
 
     <title>KUBIK ART — Егор Черняков | Картины из кубиков Рубика</title>
 
-    <meta name="description" content="Егор Черняков создаёт картины, логотипы и мозаики из кубиков Рубика для компаний, ресторанов, офисов, фестивалей и общественных пространств.">
+    <meta
+        name="description"
+        content="Егор Черняков — автор картин из кубиков Рубика, спидкубер и педагог. Создание логотипов, портретов и мозаик для компаний, ресторанов, офисов и мероприятий."
+    >
+
+    <meta property="og:title" content="KUBIK ART — картины из кубиков Рубика">
+    <meta
+        property="og:description"
+        content="Авторские картины, логотипы и мозаики из кубиков Рубика для компаний и мероприятий."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="logo.webp">
 
     <link rel="icon" href="logo.webp" type="image/webp">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
         :root {
@@ -32,8 +47,8 @@
             --mint: #73a98d;
             --violet: #887bae;
 
-            --shadow-soft: 0 8px 25px rgba(35, 45, 70, .07);
-            --shadow: 0 22px 65px rgba(35, 45, 70, .14);
+            --shadow-small: 0 8px 25px rgba(35, 45, 70, .07);
+            --shadow: 0 22px 65px rgba(35, 45, 70, .13);
 
             --radius: 24px;
             --container: 1180px;
@@ -53,8 +68,16 @@
             min-width: 320px;
             overflow-x: hidden;
             background:
-                radial-gradient(circle at 95% 0%, rgba(233,190,69,.18), transparent 25rem),
-                radial-gradient(circle at 0% 40%, rgba(82,107,158,.10), transparent 28rem),
+                radial-gradient(
+                    circle at 95% 0%,
+                    rgba(233, 190, 69, .18),
+                    transparent 25rem
+                ),
+                radial-gradient(
+                    circle at 0% 40%,
+                    rgba(82, 107, 158, .10),
+                    transparent 28rem
+                ),
                 var(--cream);
             color: var(--ink);
             font-family: Inter, Arial, sans-serif;
@@ -132,16 +155,16 @@
             right: 0;
             z-index: 50;
             padding: 5px 0;
-            background: rgba(247,244,238,.88);
+            background: rgba(247, 244, 238, .88);
             border-bottom: 1px solid transparent;
             backdrop-filter: blur(18px);
             transition: .3s ease;
         }
 
         .header.scrolled {
-            background: rgba(255,255,255,.96);
+            background: rgba(255, 255, 255, .96);
             border-color: var(--line);
-            box-shadow: 0 5px 25px rgba(35,45,70,.06);
+            box-shadow: 0 5px 25px rgba(35, 45, 70, .06);
         }
 
         .header-inner {
@@ -194,7 +217,7 @@
             font-size: 12px;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 7px 20px rgba(82,107,158,.2);
+            box-shadow: 0 7px 20px rgba(82, 107, 158, .2);
             transition: .25s ease;
         }
 
@@ -215,13 +238,13 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            margin-bottom: 18px;
             color: var(--blue);
             font-family: "DM Mono", monospace;
             font-size: 11px;
             letter-spacing: .1em;
             text-align: center;
             text-transform: uppercase;
-            margin-bottom: 18px;
         }
 
         .section-label::before,
@@ -263,7 +286,7 @@
             transform: translateY(24px);
             transition:
                 opacity .7s ease,
-                transform .7s cubic-bezier(.2,.8,.2,1);
+                transform .7s cubic-bezier(.2, .8, .2, 1);
         }
 
         .reveal.visible {
@@ -285,7 +308,7 @@
             font-size: 14px;
             font-weight: 800;
             cursor: pointer;
-            box-shadow: 0 9px 22px rgba(82,107,158,.2);
+            box-shadow: 0 9px 22px rgba(82, 107, 158, .2);
             transition: .3s ease;
         }
 
@@ -308,7 +331,7 @@
             background: white;
             color: var(--ink);
             border: 1px solid var(--line);
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-small);
         }
 
         .btn-outline:hover {
@@ -336,7 +359,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 22px;
+            margin-bottom: 23px;
             color: var(--blue);
             font-family: "DM Mono", monospace;
             font-size: 12px;
@@ -374,6 +397,7 @@
             font-weight: 800;
             line-height: .91;
             letter-spacing: -.09em;
+            text-align: center;
         }
 
         .hero h1 span {
@@ -391,6 +415,7 @@
 
         .hero-actions {
             display: flex;
+            align-items: center;
             justify-content: center;
             flex-wrap: wrap;
             gap: 12px;
@@ -426,6 +451,7 @@
             width: 100%;
             height: 430px;
             object-fit: cover;
+            object-position: center 30%;
             border-radius: 32px;
         }
 
@@ -451,7 +477,7 @@
             line-height: 1;
         }
 
-        /* ===== ПОЛОСА ===== */
+        /* ===== ЦВЕТНАЯ ПОЛОСА ===== */
 
         .color-strip {
             display: flex;
@@ -462,13 +488,27 @@
             flex: 1;
         }
 
-        .color-strip span:nth-child(1) { background: var(--blue); }
-        .color-strip span:nth-child(2) { background: var(--yellow); }
-        .color-strip span:nth-child(3) { background: var(--coral); }
-        .color-strip span:nth-child(4) { background: var(--mint); }
-        .color-strip span:nth-child(5) { background: var(--violet); }
+        .color-strip span:nth-child(1) {
+            background: var(--blue);
+        }
 
-        /* ===== КЕЙС ===== */
+        .color-strip span:nth-child(2) {
+            background: var(--yellow);
+        }
+
+        .color-strip span:nth-child(3) {
+            background: var(--coral);
+        }
+
+        .color-strip span:nth-child(4) {
+            background: var(--mint);
+        }
+
+        .color-strip span:nth-child(5) {
+            background: var(--violet);
+        }
+
+        /* ===== CASE ===== */
 
         .case-section {
             background: white;
@@ -564,7 +604,7 @@
             font-size: 22px;
         }
 
-        /* ===== ЧТО МОЖНО СОБРАТЬ ===== */
+        /* ===== OPTIONS ===== */
 
         .options-grid {
             display: grid;
@@ -578,7 +618,7 @@
             border: 1px solid var(--line);
             border-radius: var(--radius);
             background: white;
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-small);
             text-align: center;
             transition: .3s ease;
         }
@@ -645,7 +685,7 @@
             line-height: 1.7;
         }
 
-        /* ===== РАЗМЕРЫ ===== */
+        /* ===== SIZES ===== */
 
         .size-section {
             background: #fffdf8;
@@ -665,7 +705,7 @@
             border: 1px solid var(--line);
             border-radius: var(--radius);
             background: white;
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-small);
             text-align: center;
         }
 
@@ -688,6 +728,7 @@
         .size-card strong {
             display: block;
             margin: 15px 0 5px;
+            color: var(--ink);
             font-size: 28px;
         }
 
@@ -705,7 +746,7 @@
             text-align: center;
         }
 
-        /* ===== ПОРТФОЛИО ===== */
+        /* ===== PORTFOLIO ===== */
 
         .portfolio-section {
             background: #eef2f8;
@@ -735,7 +776,7 @@
             border: 1px solid rgba(82,107,158,.2);
             border-radius: var(--radius);
             background: white;
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-small);
         }
 
         .latest-image {
@@ -787,6 +828,7 @@
 
         .latest-content h3 {
             margin-bottom: 17px;
+            color: var(--ink);
             font-size: clamp(30px, 4vw, 48px);
             line-height: 1;
             letter-spacing: -.06em;
@@ -803,7 +845,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 9px;
-            margin: 0 0 42px;
+            margin-bottom: 42px;
         }
 
         .filter {
@@ -839,7 +881,7 @@
             border: 5px solid white;
             border-radius: 20px;
             background: #dce2eb;
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-small);
             cursor: pointer;
             transition: .4s ease;
         }
@@ -879,7 +921,7 @@
             padding: 13px 15px;
             border-radius: 15px;
             background: rgba(255,255,255,.94);
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-small);
             opacity: 0;
             transform: translateY(9px);
             transition: .3s ease;
@@ -892,6 +934,7 @@
 
         .artwork-info strong {
             display: block;
+            color: var(--ink);
             font-size: 14px;
         }
 
@@ -901,7 +944,32 @@
             font-size: 10px;
         }
 
-        /* ===== ПРОЦЕСС ===== */
+        .archive-box {
+            max-width: 850px;
+            margin: 45px auto 0;
+            padding: 30px;
+            border: 1px dashed #cbd4e2;
+            border-radius: var(--radius);
+            background: rgba(255,255,255,.62);
+            text-align: center;
+        }
+
+        .archive-box h3 {
+            margin-bottom: 10px;
+            font-size: 25px;
+        }
+
+        .archive-box p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .archive-box span {
+            color: var(--blue);
+            font-weight: 700;
+        }
+
+        /* ===== PROCESS ===== */
 
         .process {
             display: grid;
@@ -916,7 +984,7 @@
             border: 1px solid var(--line);
             border-radius: var(--radius);
             background: white;
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-small);
             text-align: center;
         }
 
@@ -942,7 +1010,7 @@
             font-size: 15px;
         }
 
-        /* ===== ОБО МНЕ ===== */
+        /* ===== ABOUT ===== */
 
         .about-section {
             background: white;
@@ -1094,6 +1162,28 @@
             font-size: 18px;
         }
 
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 26px;
+        }
+
+        .contact-link {
+            padding: 11px 17px;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 100px;
+            color: white;
+            font-size: 13px;
+            transition: .25s ease;
+        }
+
+        .contact-link:hover {
+            border-color: var(--yellow);
+            background: rgba(255,255,255,.13);
+        }
+
         footer {
             padding: 32px 0 90px;
             color: var(--muted);
@@ -1101,7 +1191,7 @@
             font-size: 12px;
         }
 
-        /* ===== МОДАЛЬНОЕ ОКНО СВЯЗИ ===== */
+        /* ===== ВЫБОР СВЯЗИ ===== */
 
         .contact-modal,
         .lightbox {
@@ -1269,7 +1359,7 @@
             transform: translateX(-50%);
         }
 
-        /* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
+        /* ===== АДАПТИВ ===== */
 
         @media (max-width: 1050px) {
             .case-grid,
@@ -1354,7 +1444,6 @@
             }
 
             .site-logo {
-                width: auto;
                 height: 58px;
                 max-width: 215px;
             }
@@ -1548,13 +1637,16 @@
                 font-size: 8px;
             }
 
-            .calculator-box,
-            .contact-modal-box {
-                padding: 27px 20px;
+            .archive-box {
+                padding: 25px 18px;
             }
 
-            .calculator-grid {
-                grid-template-columns: 1fr !important;
+            .about-grid {
+                gap: 55px;
+            }
+
+            .about-text p {
+                font-size: 16px;
             }
 
             .cta {
@@ -1577,6 +1669,11 @@
 
             .contact-link {
                 text-align: center;
+                font-size: 12px;
+            }
+
+            .contact-modal-box {
+                padding: 30px 20px;
             }
 
             .lightbox-prev,
@@ -1640,7 +1737,7 @@
 
 <main id="top">
 
-    <!-- ПЕРВЫЙ ЭКРАН -->
+    <!-- ===== ПЕРВЫЙ ЭКРАН ===== -->
 
     <section class="hero">
         <div class="container">
@@ -1686,8 +1783,8 @@
             <div class="hero-visual reveal">
                 <div class="hero-photo">
                     <img
-                        src="images/kartini/kartina4.webp"
-                        alt="Авторская картина из кубиков Рубика для Додо"
+                        src="images/photo.webp"
+                        alt="Егор Черняков с кубиком Рубика"
                     >
                 </div>
 
@@ -1709,7 +1806,7 @@
         <span></span>
     </div>
 
-    <!-- КЕЙС ДОДО -->
+    <!-- ===== КЕЙС ДОДО ===== -->
 
     <section class="section case-section" id="works">
         <div class="container">
@@ -1730,7 +1827,7 @@
 
             <div class="case-grid">
 
-                <div class="case-image reveal" data-index="3">
+                <div class="case-image reveal" data-artwork-index="3">
                     <img
                         src="images/kartini/kartina4.webp"
                         alt="Картина из кубиков Рубика для Додо"
@@ -1794,7 +1891,7 @@
         </div>
     </section>
 
-    <!-- ЧТО МОЖНО СОБРАТЬ -->
+    <!-- ===== ЧТО МОЖНО СОБРАТЬ ===== -->
 
     <section class="section" id="options">
         <div class="container">
@@ -1916,7 +2013,7 @@
         </div>
     </section>
 
-    <!-- РАЗМЕРЫ -->
+    <!-- ===== РАЗМЕРЫ ===== -->
 
     <section class="section size-section" id="sizes">
         <div class="container">
@@ -1981,7 +2078,7 @@
             </div>
 
             <p class="size-note reveal">
-                Помогу подобрать подходящее количество кубиков
+                Помогу подобрать нужное количество кубиков
                 по исходному изображению, месту размещения
                 и желаемой детализации.
             </p>
@@ -1989,7 +2086,7 @@
         </div>
     </section>
 
-    <!-- ПОРТФОЛИО -->
+    <!-- ===== ПОРТФОЛИО ===== -->
 
     <section class="section portfolio-section" id="portfolio">
         <div class="container">
@@ -2016,7 +2113,7 @@
 
             <div class="latest-work reveal">
 
-                <div class="latest-image" data-index="26">
+                <div class="latest-image" data-artwork-index="26">
                     <img
                         src="images/kartini/Gagarin.webp"
                         alt="Портрет Юрия Гагарина из кубиков Рубика"
@@ -2053,6 +2150,7 @@
             </div>
 
             <div class="filters reveal">
+
                 <button class="filter active" data-filter="all">
                     Все работы
                 </button>
@@ -2068,15 +2166,18 @@
                 <button class="filter" data-filter="events">
                     События
                 </button>
+
             </div>
 
             <div class="portfolio-grid" id="portfolioGrid"></div>
 
             <div class="archive-box reveal">
-                <h3>Архив созданных проектов</h3>
+                <h3>
+                    Архив созданных проектов
+                </h3>
 
                 <p>
-                    В архиве находятся картины, переданные заказчикам,
+                    Здесь будут появляться работы, переданные заказчикам,
                     фотографии с мероприятий и проекты прошлых лет.
                     <span>Новые материалы будут добавляться постепенно.</span>
                 </p>
@@ -2085,7 +2186,7 @@
         </div>
     </section>
 
-    <!-- ПРОЦЕСС -->
+    <!-- ===== ПРОЦЕСС ===== -->
 
     <section class="section">
         <div class="container">
@@ -2103,7 +2204,11 @@
 
                 <article class="process-item reveal">
                     <div class="process-number">01 / ОБСУЖДЕНИЕ</div>
-                    <h3>Обсудим задачу</h3>
+
+                    <h3>
+                        Обсудим задачу
+                    </h3>
+
                     <p>
                         Вы расскажете о компании, пространстве,
                         мероприятии и желаемом результате.
@@ -2112,7 +2217,11 @@
 
                 <article class="process-item reveal">
                     <div class="process-number">02 / ИДЕЯ</div>
-                    <h3>Подберём образ</h3>
+
+                    <h3>
+                        Подберём образ
+                    </h3>
+
                     <p>
                         Выберем логотип, фотографию, портрет,
                         персонажа или авторский эскиз.
@@ -2121,7 +2230,11 @@
 
                 <article class="process-item reveal">
                     <div class="process-number">03 / СОЗДАНИЕ</div>
-                    <h3>Соберу мозаику</h3>
+
+                    <h3>
+                        Соберу мозаику
+                    </h3>
+
                     <p>
                         Подберу цвета, рассчитаю композицию
                         и соберу изображение из кубиков.
@@ -2130,7 +2243,11 @@
 
                 <article class="process-item reveal">
                     <div class="process-number">04 / РЕЗУЛЬТАТ</div>
-                    <h3>Картина появится в пространстве</h3>
+
+                    <h3>
+                        Картина появится в пространстве
+                    </h3>
+
                     <p>
                         Готовая работа станет частью интерьера,
                         подарком или центром внимания на событии.
@@ -2141,17 +2258,17 @@
         </div>
     </section>
 
-    <!-- ОБО МНЕ -->
+    <!-- ===== ОБО МНЕ ===== -->
 
     <section class="section about-section" id="about">
         <div class="container about-grid">
 
             <div class="about-image reveal">
-    <img
-        src="images/photo.webp"
-        alt="Егор Черняков с кубиком Рубика"
-    >
-</div>
+                <img
+                    src="images/kartini/kartina10.webp"
+                    alt="Большая мозаика из кубиков Рубика"
+                >
+            </div>
 
             <div class="about-text">
 
@@ -2183,6 +2300,7 @@
                 </p>
 
                 <div class="numbers reveal">
+
                     <div class="number">
                         <strong>12+</strong>
                         <span>лет в спидкубинге</span>
@@ -2202,13 +2320,14 @@
                         <strong>TOP-100</strong>
                         <span>библиотечных практик России</span>
                     </div>
+
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- ===== FAQ ===== -->
 
     <section class="section">
         <div class="container">
@@ -2279,7 +2398,7 @@
         </div>
     </section>
 
-    <!-- КОНТАКТЫ -->
+    <!-- ===== КОНТАКТЫ ===== -->
 
     <section class="section" id="contacts">
         <div class="container">
@@ -2314,15 +2433,30 @@
                         Телефон
                     </a>
 
-                    <a class="contact-link" href="https://vk.com/che_egor" target="_blank">
+                    <a
+                        class="contact-link"
+                        href="https://vk.com/che_egor"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         ВКонтакте
                     </a>
 
-                    <a class="contact-link" href="https://t.me/espeedcuber" target="_blank">
+                    <a
+                        class="contact-link"
+                        href="https://t.me/espeedcuber"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         Telegram
                     </a>
 
-                    <a class="contact-link" href="https://max.ru/u/f9LHodD0cOKYeNDN_fK5W_vjtNJ2-1oHZKi_bjzNkFE8CbE98yosq2eLEsA" target="_blank">
+                    <a
+                        class="contact-link"
+                        href="https://max.ru/u/f9LHodD0cOKYeNDN_fK5W_vjtNJ2-1oHZKi_bjzNkFE8CbE98yosq2eLEsA"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         MAX
                     </a>
                 </div>
@@ -2339,7 +2473,7 @@
     </div>
 </footer>
 
-<!-- ОКНО ВЫБОРА СВЯЗИ -->
+<!-- ===== МОДАЛЬНОЕ ОКНО СВЯЗИ ===== -->
 
 <div class="contact-modal" id="contactModal">
     <div class="contact-modal-box">
@@ -2445,7 +2579,7 @@
     </div>
 </div>
 
-<!-- LIGHTBOX -->
+<!-- ===== LIGHTBOX ===== -->
 
 <div class="lightbox" id="lightbox">
 
@@ -2623,6 +2757,27 @@
         }
     });
 
+    /* ===== СВАЙПЫ ===== */
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    lightbox.addEventListener("touchstart", event => {
+        touchStartX = event.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener("touchend", event => {
+        touchEndX = event.changedTouches[0].screenX;
+
+        if (touchEndX < touchStartX - 50) {
+            changeArtwork(1);
+        }
+
+        if (touchEndX > touchStartX + 50) {
+            changeArtwork(-1);
+        }
+    }, { passive: true });
+
     document.addEventListener("keydown", event => {
         if (lightbox.classList.contains("active")) {
             if (event.key === "Escape") {
@@ -2645,28 +2800,15 @@
         }
     });
 
-    /* ===== СВАЙПЫ ===== */
+    /* ===== FAQ ===== */
 
-    let touchStartX = 0;
-    let touchEndX = 0;
+    document.querySelectorAll(".faq-question").forEach(button => {
+        button.addEventListener("click", () => {
+            button.closest(".faq-item").classList.toggle("open");
+        });
+    });
 
-    lightbox.addEventListener("touchstart", event => {
-        touchStartX = event.changedTouches[0].screenX;
-    }, { passive: true });
-
-    lightbox.addEventListener("touchend", event => {
-        touchEndX = event.changedTouches[0].screenX;
-
-        if (touchEndX < touchStartX - 50) {
-            changeArtwork(1);
-        }
-
-        if (touchEndX > touchStartX + 50) {
-            changeArtwork(-1);
-        }
-    }, { passive: true });
-
-    /* ===== КОНТАКТЫ ===== */
+    /* ===== МОДАЛЬНОЕ ОКНО СВЯЗИ ===== */
 
     const contactModal = document.getElementById("contactModal");
 
@@ -2711,7 +2853,8 @@
                 await navigator.clipboard.writeText(contacts);
                 message.textContent = "Контакты скопированы";
             } catch {
-                message.textContent = "Скопируйте контакты вручную";
+                message.textContent =
+                    "Скопируйте контакты вручную";
             }
 
             setTimeout(() => {
@@ -2719,15 +2862,7 @@
             }, 2500);
         });
 
-    /* ===== FAQ ===== */
-
-    document.querySelectorAll(".faq-question").forEach(button => {
-        button.addEventListener("click", () => {
-            button.closest(".faq-item").classList.toggle("open");
-        });
-    });
-
-    /* ===== HEADER ===== */
+    /* ===== ШАПКА ===== */
 
     const header = document.getElementById("header");
 
@@ -2735,7 +2870,7 @@
         header.classList.toggle("scrolled", window.scrollY > 30);
     });
 
-    /* ===== АНИМАЦИЯ ===== */
+    /* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
