@@ -164,6 +164,7 @@
             color: var(--blue-dark);
         }
 
+        /* ===== КНОПКИ В ШАПКЕ ===== */
         .header-button {
             min-height: 45px;
             padding: 0 18px;
@@ -174,6 +175,19 @@
             font-size: 12px;
             font-weight: 700;
             cursor: pointer;
+            margin-left: auto; 
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: var(--blue);
+            background: none;
+            border: none;
+            padding: 5px;
+            z-index: 1001;
+            margin-left: 15px; /* Отступ между меню и бургером */
         }
 
         /* ===== COMMON ===== */
@@ -1260,21 +1274,25 @@
             transform: translateY(-3px);
         }
 
-        /* ===== БУРГЕР-МЕНЮ (ДОБАВЛЕНО) ===== */
-        .menu-toggle {
-            display: none;
-            font-size: 26px;
-            cursor: pointer;
-            color: var(--blue);
-            background: none;
-            border: none;
-            padding: 5px;
-            z-index: 1001;
-        }
+        /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ (МЕНЮ) ===== */
 
+        /* Показываем бургер на планшетах и телефонах */
         @media (max-width: 1050px) {
             .menu-toggle {
                 display: block;
+                margin-left: auto;
+            }
+
+            /* Ссылки, которые должны быть всегда видны (прячем их в бургер на совсем маленьких) */
+            .nav .hide-mobile {
+                display: none;
+            }
+
+            /* Ссылки, которые остаются видимыми */
+            .nav .show-mobile {
+                display: inline-block;
+                font-size: 11px;
+                margin-right: 15px;
             }
 
             .nav {
@@ -1308,9 +1326,11 @@
                 color: var(--ink);
             }
 
-            .header-button {
-                margin-left: auto;
-                margin-right: 15px;
+            /* Внутри выпадающего меню показываем все ссылки */
+            .nav.active a {
+                display: block !important;
+                font-size: 16px !important;
+                margin-right: 0 !important;
             }
 
             .menu-overlay {
@@ -1318,7 +1338,6 @@
                 position: fixed;
                 inset: 0;
                 background: rgba(28,38,56,.5);
-                backdrop-filter: blur(4px);
                 z-index: 999;
             }
 
@@ -1328,338 +1347,34 @@
         }
 
         @media (max-width: 560px) {
-            .menu-toggle {
-                font-size: 24px;
-            }
-        }
-
-        /* ===== MOBILE ===== */
-
-        @media (max-width: 1050px) {
-            .hero {
-                min-height: auto;
-            }
-
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 55px;
-            }
-
-            .hero-content {
-                max-width: 760px;
-                margin: 0 auto;
-            }
-
-            .hero-visual {
-                width: min(720px,100%);
-                margin: 0 auto;
-            }
-
-            .case-grid,
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image {
-                width: min(600px,100%);
-                margin: 0 auto;
-            }
-
-            .options-grid,
-            .cards,
-            .services {
-                grid-template-columns: repeat(2,1fr);
-            }
-
-            .process-track {
-                grid-template-columns: repeat(2,1fr);
-            }
-
-            .process-track::before {
-                display: none;
-            }
-
-            .sizes {
-                grid-template-columns: repeat(2,1fr);
-            }
-        }
-
-        @media (max-width: 560px) {
-            .container {
-                width: calc(100% - 32px);
-            }
-
-            .header {
-                height: 67px;
-            }
-
             .header-inner {
                 height: 67px;
-                min-height: 67px;
-                gap: 8px;
             }
 
             .site-logo {
                 height: 55px;
-                max-width: 205px;
+                max-width: 150px; /* Уменьшаем логотип, чтобы влезли пункты */
             }
 
             .header-button {
                 min-height: 39px;
                 padding: 0 11px;
                 font-size: 9px;
+                margin-left: auto;
             }
 
-            .section {
-                padding: 72px 0;
+            .menu-toggle {
+                font-size: 22px;
+                margin-left: 10px; /* Делаем отступ между меню и бургером */
             }
 
-            .section-title {
-                font-size: 41px;
+            /* На маленьких экранах оставляем только 1 пункт или прячем все в бургер, если не влезает */
+            .nav .show-mobile {
+                display: none; 
             }
 
-            .section-description {
-                font-size: 15px;
-            }
-
-            .hero {
-                padding: 91px 0 65px;
-            }
-
-            .hero-kicker {
-                font-size: 9px;
-            }
-
-            .hero-name {
-                font-size: 23px;
-            }
-
-            .hero-role {
-                font-size: 13px;
-            }
-
-            .hero h1 {
-                font-size: 51px;
-            }
-
-            .hero-text {
-                font-size: 15px;
-            }
-
-            .hero-actions {
-                display: grid;
-                grid-template-columns: 1fr;
-                width: 100%;
-            }
-
-            .hero-actions .btn {
-                width: 100%;
-            }
-
-            .hero-visual {
-                margin-top: 55px;
-            }
-
-            .hero-photo,
-            .hero-photo img {
-                height: 325px;
-                min-height: 325px;
-                border-radius: 23px;
-            }
-
-            .hero-photo::before {
-                inset: 10px -9px -10px 9px;
-                border-width: 2px;
-                border-radius: 23px;
-            }
-
-            .hero-tag {
-                right: 3px;
-                bottom: -28px;
-                padding: 12px;
-                font-size: 9px;
-            }
-
-            .hero-tag strong {
-                font-size: 21px;
-            }
-
-            .case-image {
-                min-height: 330px;
-            }
-
-            .case-info {
-                padding: 25px 18px;
-            }
-
-            .case-info h3 {
-                font-size: 35px;
-            }
-
-            .case-info p {
-                font-size: 15px;
-            }
-
-            .options-grid,
-            .cards,
-            .services,
-            .process-track,
-            .sizes,
-            .numbers {
-                grid-template-columns: 1fr;
-            }
-
-            .size-card.featured {
-                transform: none;
-            }
-
-            .latest-work {
-                grid-template-columns: 1fr;
-                padding: 10px;
-            }
-
-            .latest-image,
-            .latest-image img {
-                min-height: 300px;
-            }
-
-            .latest-content {
-                padding: 20px 10px 25px;
-            }
-
-            .latest-content h3 {
-                font-size: 36px;
-            }
-
-            .filters {
-                justify-content: flex-start;
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                padding-bottom: 7px;
-                scrollbar-width: none;
-            }
-
-            .filters::-webkit-scrollbar {
-                display: none;
-            }
-
-            .filter {
-                flex: 0 0 auto;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: repeat(2,minmax(0,1fr));
-                gap: 9px;
-            }
-
-            .artwork {
-                height: 205px;
-                border-width: 3px;
-                border-radius: 14px;
-            }
-
-            .artwork img {
-                padding: 4px;
-            }
-
-            .artwork-info {
-                left: 6px;
-                right: 6px;
-                bottom: 6px;
-                padding: 8px;
-                opacity: 1;
-                transform: none;
-            }
-
-            .artwork-info strong {
-                font-size: 9px;
-            }
-
-            .artwork-info span {
-                font-size: 8px;
-            }
-
-            .process-track {
-                gap: 13px;
-                margin-top: 42px;
-            }
-
-            .process-track::before {
+            .nav.active .show-mobile {
                 display: block;
-                top: 27px;
-                bottom: 27px;
-                left: 28px;
-                right: auto;
-                width: 2px;
-                height: auto;
-                background: linear-gradient(
-                    180deg,
-                    var(--blue),
-                    var(--yellow),
-                    var(--coral),
-                    var(--mint)
-                );
-            }
-
-            .process-card {
-                min-height: auto;
-                padding: 57px 22px 24px;
-            }
-
-            .process-dot {
-                left: 28px;
-            }
-
-            .cta {
-                padding: 62px 17px;
-                border-radius: 23px;
-            }
-
-            .cta h2 {
-                font-size: 42px;
-            }
-
-            .cta p {
-                font-size: 15px;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .contact-link {
-                text-align: center;
-            }
-
-            .back-to-top {
-                right: 16px;
-                bottom: 16px;
-                width: 45px;
-                height: 45px;
-            }
-
-            .lightbox-prev,
-            .lightbox-next {
-                top: auto;
-                bottom: 22px;
-            }
-
-            .lightbox-prev {
-                left: 22px;
-            }
-
-            .lightbox-next {
-                right: 22px;
-            }
-
-            .lightbox-caption {
-                bottom: 35px;
-                max-width: 50%;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                font-size: 10px;
             }
         }
     </style>
@@ -1683,17 +1398,20 @@
             >
         </a>
 
+        <!-- Видимые ссылки на мобильном -->
+        <nav class="nav" id="nav">
+            <a href="#works" class="show-mobile">Картины</a>
+            <a href="#portfolio" class="show-mobile">Портфолио</a>
+            
+            <!-- Ссылки, скрытые в бургер -->
+            <a href="#options" class="hide-mobile">Что собрать</a>
+            <a href="#sizes" class="hide-mobile">Размеры</a>
+            <a href="#about" class="hide-mobile">Обо мне</a>
+        </nav>
+
         <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">
             ☰
         </button>
-
-        <nav class="nav" id="nav">
-            <a href="#works">Картины</a>
-            <a href="#options">Что собрать</a>
-            <a href="#sizes">Размеры</a>
-            <a href="#portfolio">Портфолио</a>
-            <a href="#about">Обо мне</a>
-        </nav>
 
         <button class="header-button open-contact">
             Обсудить проект
@@ -2752,7 +2470,7 @@
         header.classList.toggle("scrolled", window.scrollY > 30);
     });
 
-    /* ===== БУРГЕР-МЕНЮ (ДОБАВЛЕНО) ===== */
+    /* ===== БУРГЕР-МЕНЮ ===== */
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('nav');
     const menuOverlay = document.getElementById('menuOverlay');
