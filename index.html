@@ -6,10 +6,7 @@
 
     <title>KUBIK ART — Егор Черняков | Картины из кубиков Рубика</title>
 
-    <meta
-        name="description"
-        content="Егор Черняков создаёт картины, логотипы и мозаики из кубиков Рубика для компаний, ресторанов, офисов, фестивалей и общественных пространств."
-    >
+    <meta name="description" content="Егор Черняков создаёт картины, логотипы и мозаики из кубиков Рубика для компаний, ресторанов, офисов, фестивалей и общественных пространств.">
 
     <link rel="icon" href="logo.webp" type="image/webp">
 
@@ -40,7 +37,7 @@
             --violet: #887bae;
 
             --shadow-small: 0 8px 25px rgba(35,45,70,.07);
-            --shadow: 0 22px 65px rgba(35,45,70,.13);
+            --shadow: 0 22px 65px rgba(35,45,70,.14);
 
             --radius: 24px;
             --container: 1180px;
@@ -93,7 +90,7 @@
             margin: 0 auto;
         }
 
-        /* ===== ДЕКОР ===== */
+        /* Декоративные элементы */
 
         .floating-cube {
             position: fixed;
@@ -130,7 +127,7 @@
             background: var(--mint);
         }
 
-        /* ===== ШАПКА ===== */
+        /* Шапка */
 
         .header {
             position: fixed;
@@ -159,32 +156,20 @@
             height: 88px;
         }
 
-        .logo-link {
-            display: flex;
-            align-items: center;
-            height: 100%;
-            flex: 0 0 auto;
-        }
-
         .site-logo {
+            display: block;
             width: auto;
             height: 76px;
             max-width: 310px;
             object-fit: contain;
-            object-position: left center;
         }
 
         .nav {
             display: flex;
-            align-items: center;
             gap: 25px;
             color: var(--muted);
             font-size: 13px;
             font-weight: 600;
-        }
-
-        .nav a {
-            transition: .25s ease;
         }
 
         .nav a:hover {
@@ -204,7 +189,7 @@
             box-shadow: 0 7px 20px rgba(82,107,158,.2);
         }
 
-        /* ===== ОБЩИЕ СТИЛИ ===== */
+        /* Общие стили */
 
         .section {
             position: relative;
@@ -274,7 +259,6 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 9px;
             min-height: 54px;
             padding: 0 24px;
             border: 0;
@@ -285,7 +269,7 @@
             font-weight: 800;
             cursor: pointer;
             box-shadow: 0 9px 22px rgba(82,107,158,.2);
-            transition: .3s ease;
+            transition: .25s ease;
         }
 
         .btn:hover {
@@ -317,7 +301,7 @@
             box-shadow: none;
         }
 
-        /* ===== HERO ===== */
+        /* Первый экран */
 
         .hero {
             min-height: calc(100svh - 88px);
@@ -365,7 +349,7 @@
         }
 
         .hero-role {
-            margin-bottom: 20px;
+            margin-bottom: 21px;
             color: var(--blue);
             font-size: clamp(14px,1.7vw,18px);
             font-weight: 700;
@@ -442,7 +426,6 @@
             background: var(--ink);
             color: white;
             font-size: 11px;
-            text-align: left;
             box-shadow: var(--shadow);
         }
 
@@ -454,7 +437,7 @@
             line-height: 1;
         }
 
-        /* ===== ПОЛОСА ===== */
+        /* Цветная полоса */
 
         .color-strip {
             display: flex;
@@ -471,7 +454,7 @@
         .color-strip span:nth-child(4) { background: var(--mint); }
         .color-strip span:nth-child(5) { background: var(--violet); }
 
-        /* ===== КЕЙС ===== */
+        /* Кейс */
 
         .case-section {
             background: white;
@@ -559,17 +542,17 @@
             font-size: 20px;
         }
 
-        /* ===== КАРТОЧКИ ===== */
+        /* Карточки */
 
-        .options-grid {
+        .cards {
             display: grid;
             grid-template-columns: repeat(3,1fr);
             gap: 18px;
             margin-top: 55px;
         }
 
-        .option-card {
-            padding: 28px;
+        .card {
+            padding: 30px;
             border: 1px solid var(--line);
             border-radius: var(--radius);
             background: white;
@@ -578,60 +561,45 @@
             transition: .3s ease;
         }
 
-        .option-card:hover {
+        .card:hover {
             transform: translateY(-6px);
             box-shadow: var(--shadow);
         }
 
-        .option-icon {
+        .card-icon {
             display: grid;
             place-items: center;
             width: 55px;
             height: 55px;
-            margin: 0 auto 20px;
+            margin: 0 auto 23px;
             border-radius: 17px;
             background: #edf3ff;
             color: var(--blue);
-            font-size: 25px;
+            font-size: 26px;
         }
 
-        .option-card:nth-child(2) .option-icon {
+        .card:nth-child(2) .card-icon {
             background: #fff5ce;
             color: #ad8300;
         }
 
-        .option-card:nth-child(3) .option-icon {
+        .card:nth-child(3) .card-icon {
             background: #ffebea;
             color: var(--coral);
         }
 
-        .option-card:nth-child(4) .option-icon {
-            background: #eaf8f0;
-            color: var(--mint);
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
         }
 
-        .option-card:nth-child(5) .option-icon {
-            background: #eeeaff;
-            color: var(--violet);
-        }
-
-        .option-card:nth-child(6) .option-icon {
-            background: #fff1e9;
-            color: #d17a43;
-        }
-
-        .option-card h3 {
-            margin-bottom: 9px;
-            font-size: 19px;
-        }
-
-        .option-card p {
+        .card p {
             color: var(--muted);
             font-size: 14px;
-            line-height: 1.65;
+            line-height: 1.7;
         }
 
-        /* ===== РАЗМЕРЫ ===== */
+        /* Размеры */
 
         .size-section {
             background: #fffdf8;
@@ -672,7 +640,6 @@
         .size-card strong {
             display: block;
             margin: 13px 0 5px;
-            color: var(--ink);
             font-size: 26px;
         }
 
@@ -682,7 +649,7 @@
             line-height: 1.5;
         }
 
-        /* ===== ПОРТФОЛИО ===== */
+        /* Портфолио */
 
         .portfolio-section {
             background: #eef2f8;
@@ -694,7 +661,7 @@
             align-items: center;
             gap: 28px;
             max-width: 950px;
-            margin: 45px auto 40px;
+            margin: 45px auto;
             padding: 18px;
             border: 1px solid rgba(82,107,158,.2);
             border-radius: var(--radius);
@@ -746,7 +713,6 @@
 
         .latest-content h3 {
             margin-bottom: 17px;
-            color: var(--ink);
             font-size: clamp(30px,4vw,48px);
             line-height: 1;
             letter-spacing: -.06em;
@@ -755,6 +721,17 @@
         .latest-content p {
             color: var(--muted);
             font-size: 15px;
+        }
+
+        .portfolio-note {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 14px 18px;
+            border-radius: 15px;
+            background: rgba(255,255,255,.8);
+            color: var(--muted);
+            font-size: 14px;
+            text-align: center;
         }
 
         .filters {
@@ -843,36 +820,7 @@
             font-size: 10px;
         }
 
-        .archive-box {
-            max-width: 850px;
-            margin: 45px auto 0;
-            padding: 28px;
-            border: 1px dashed #cbd4e2;
-            border-radius: var(--radius);
-            background: rgba(255,255,255,.62);
-            text-align: center;
-        }
-
-        .archive-box h3 {
-            margin-bottom: 9px;
-            font-size: 24px;
-        }
-
-        .archive-box p {
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .archive-box span {
-            color: var(--blue);
-            font-weight: 700;
-        }
-
         /* ===== ПРОЦЕСС ===== */
-
-        .process-section {
-            background: var(--cream);
-        }
 
         .process-track {
             position: relative;
@@ -902,7 +850,7 @@
         .process-card {
             position: relative;
             z-index: 1;
-            min-height: 260px;
+            min-height: 255px;
             padding: 62px 24px 26px;
             border: 1px solid var(--line);
             border-radius: var(--radius);
@@ -949,7 +897,6 @@
         .process-card p {
             color: var(--muted);
             font-size: 14px;
-            line-height: 1.7;
         }
 
         /* ===== ОБО МНЕ ===== */
@@ -993,7 +940,6 @@
             margin: 19px auto 0;
             color: var(--muted);
             font-size: 17px;
-            line-height: 1.8;
         }
 
         .numbers {
@@ -1066,7 +1012,7 @@
         /* ===== CTA ===== */
 
         .cta {
-            padding: 66px 30px;
+            padding: 70px 25px;
             border-radius: 30px;
             background: linear-gradient(135deg,#526b9e,#667fae 55%,#887bae);
             color: white;
@@ -1075,7 +1021,6 @@
         }
 
         .cta .section-label {
-            margin-bottom: 13px;
             color: var(--yellow);
         }
 
@@ -1086,9 +1031,9 @@
 
         .cta h2 {
             max-width: 800px;
-            margin: 0 auto 14px;
+            margin: 0 auto 15px;
             color: white;
-            font-size: clamp(38px,5vw,62px);
+            font-size: clamp(40px,5vw,65px);
             line-height: 1;
             letter-spacing: -.07em;
         }
@@ -1100,7 +1045,7 @@
 
         .cta p {
             max-width: 600px;
-            margin: 0 auto 22px;
+            margin: 0 auto 24px;
             color: rgba(255,255,255,.84);
             font-size: 16px;
         }
@@ -1124,6 +1069,208 @@
             font-size: 12px;
         }
 
+        footer {
+            padding: 30px 0;
+            color: var(--muted);
+            text-align: center;
+            font-size: 12px;
+        }
+
+        /* ===== МОДАЛЬНОЕ ОКНО ===== */
+
+        .contact-modal {
+            position: fixed !important;
+            inset: 0 !important;
+            z-index: 1000 !important;
+            display: none !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            padding: 20px !important;
+            background: rgba(23,32,51,.78) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-modal.active {
+            display: flex !important;
+        }
+
+        .contact-modal-box {
+            position: relative !important;
+            display: block !important;
+            width: min(470px,100%) !important;
+            height: auto !important;
+            max-height: 90vh !important;
+            overflow-y: auto !important;
+            padding: 35px !important;
+            border-radius: var(--radius) !important;
+            background: white !important;
+            box-shadow: var(--shadow) !important;
+            color: var(--ink) !important;
+            text-align: center !important;
+        }
+
+        .contact-modal-box h2 {
+            margin-bottom: 10px;
+            font-size: 30px;
+        }
+
+        .contact-modal-box > p {
+            margin-bottom: 24px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            z-index: 3;
+            border: 0;
+            background: transparent;
+            color: var(--muted);
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .contact-options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .contact-option {
+            display: flex !important;
+            align-items: center !important;
+            gap: 14px !important;
+            width: 100% !important;
+            min-height: 66px !important;
+            padding: 14px !important;
+            border: 1px solid var(--line) !important;
+            border-radius: 15px !important;
+            background: white !important;
+            color: var(--ink) !important;
+            cursor: pointer;
+            text-align: left !important;
+            text-decoration: none !important;
+        }
+
+        .contact-option:hover {
+            border-color: var(--blue) !important;
+            background: #f5f7fb !important;
+        }
+
+        .contact-option-icon {
+            display: grid;
+            place-items: center;
+            width: 38px;
+            height: 38px;
+            flex: 0 0 auto;
+            border-radius: 12px;
+            background: #edf3ff;
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .contact-option strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .contact-option small {
+            display: block;
+            margin-top: 2px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .copy-message {
+            min-height: 20px;
+            margin-top: 15px;
+            color: var(--mint);
+            font-size: 12px;
+        }
+
+        /* ===== LIGHTBOX ===== */
+
+        .lightbox {
+            position: fixed !important;
+            inset: 0 !important;
+            z-index: 1100 !important;
+            display: none !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            padding: 20px !important;
+            background: rgba(23,32,51,.94) !important;
+            backdrop-filter: blur(13px);
+        }
+
+        .lightbox.active {
+            display: flex !important;
+        }
+
+        .lightbox-image {
+            display: block !important;
+            max-width: 93vw !important;
+            max-height: 86vh !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+            border-radius: 14px !important;
+        }
+
+        .lightbox-close,
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            z-index: 2;
+            display: grid;
+            place-items: center;
+            width: 50px;
+            height: 50px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,.16);
+            color: white;
+            cursor: pointer;
+            font-size: 25px;
+        }
+
+        .lightbox-close {
+            top: 22px;
+            right: 22px;
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            top: 50%;
+        }
+
+        .lightbox-prev {
+            left: 25px;
+        }
+
+        .lightbox-next {
+            right: 25px;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            max-width: 75%;
+            padding: 10px 17px;
+            border-radius: 100px;
+            background: rgba(255,255,255,.14);
+            color: white;
+            font-size: 12px;
+            text-align: center;
+            transform: translateX(-50%);
+        }
+
         /* ===== КНОПКА НАВЕРХ ===== */
 
         .back-to-top {
@@ -1137,7 +1284,7 @@
             height: 48px;
             border: 1px solid rgba(82,107,158,.45);
             border-radius: 50%;
-            background: rgba(255,255,255,.9);
+            background: rgba(255,255,255,.92);
             color: var(--blue);
             font-size: 22px;
             cursor: pointer;
@@ -1145,7 +1292,6 @@
             visibility: hidden;
             transform: translateY(10px);
             box-shadow: var(--shadow-small);
-            backdrop-filter: blur(10px);
             transition: .3s ease;
         }
 
@@ -1158,11 +1304,10 @@
         .back-to-top:hover {
             background: var(--blue);
             color: white;
-            border-color: var(--blue);
             transform: translateY(-3px);
         }
 
-        /* ===== ADAPTIVE ===== */
+        /* ===== АДАПТИВ ===== */
 
         @media (max-width: 1050px) {
             .hero {
@@ -1208,8 +1353,8 @@
                 margin: 0 auto;
             }
 
-            .options-grid,
-            .services {
+            .services,
+            .options-grid {
                 grid-template-columns: repeat(2,1fr);
             }
 
@@ -1219,6 +1364,10 @@
 
             .process-track::before {
                 display: none;
+            }
+
+            .sizes {
+                grid-template-columns: repeat(2,1fr);
             }
         }
 
@@ -1231,12 +1380,14 @@
                 display: none;
             }
 
-            .portfolio-grid {
-                grid-template-columns: repeat(3,minmax(0,1fr));
+            .site-logo {
+                height: 62px;
+                max-width: 230px;
             }
 
-            .artwork {
-                height: 245px;
+            .header-button {
+                padding: 0 13px;
+                font-size: 10px;
             }
 
             .latest-work {
@@ -1245,11 +1396,15 @@
 
             .latest-image,
             .latest-image img {
-                min-height: 380px;
+                min-height: 350px;
             }
 
-            .sizes {
-                grid-template-columns: repeat(2,1fr);
+            .portfolio-grid {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+            }
+
+            .artwork {
+                height: 220px;
             }
         }
 
@@ -1265,51 +1420,50 @@
             .header-inner {
                 height: 67px;
                 min-height: 67px;
-                gap: 9px;
+                gap: 8px;
             }
 
             .site-logo {
-                height: 57px;
-                max-width: 210px;
+                height: 55px;
+                max-width: 205px;
             }
 
             .header-button {
-                min-height: 40px;
-                padding: 0 12px;
-                font-size: 10px;
+                min-height: 39px;
+                padding: 0 11px;
+                font-size: 9px;
             }
 
             .section {
-                padding: 75px 0;
+                padding: 72px 0;
             }
 
             .section-title {
-                font-size: 42px;
+                font-size: 41px;
             }
 
             .section-description {
-                font-size: 16px;
+                font-size: 15px;
             }
 
             .hero {
-                padding: 92px 0 65px;
+                padding: 90px 0 65px;
             }
 
             .hero-name {
-                font-size: 24px;
+                font-size: 23px;
             }
 
             .hero-role {
-                font-size: 14px;
-                line-height: 1.45;
+                font-size: 13px;
             }
 
             .hero h1 {
-                font-size: 52px;
+                font-size: 51px;
             }
 
             .hero-text {
-                font-size: 16px;
+                font-size: 15px;
             }
 
             .hero-actions {
@@ -1322,22 +1476,21 @@
             }
 
             .hero-visual {
-                width: calc(100% - 8px);
-                margin-top: 56px;
+                margin-top: 55px;
             }
 
             .hero-photo,
             .hero-photo img {
                 height: 325px;
                 min-height: 325px;
-                border-radius: 24px;
+                border-radius: 23px;
             }
 
             .hero-tag {
                 right: 3px;
-                bottom: -30px;
-                padding: 13px;
-                font-size: 10px;
+                bottom: -28px;
+                padding: 12px;
+                font-size: 9px;
             }
 
             .hero-tag strong {
@@ -1345,7 +1498,8 @@
             }
 
             .case-image {
-                min-height: 340px;
+                min-height: 330px;
+                border-radius: 20px;
             }
 
             .case-info {
@@ -1353,15 +1507,15 @@
             }
 
             .case-info h3 {
-                font-size: 36px;
+                font-size: 35px;
             }
 
             .case-info p {
                 font-size: 15px;
             }
 
-            .options-grid,
             .services,
+            .options-grid,
             .process-track,
             .sizes,
             .numbers {
@@ -1372,22 +1526,9 @@
                 transform: none;
             }
 
-            .latest-work {
-                margin-top: 35px;
-                padding: 10px;
-            }
-
             .latest-image,
             .latest-image img {
                 min-height: 300px;
-            }
-
-            .latest-content {
-                padding: 20px 10px 25px;
-            }
-
-            .latest-content h3 {
-                font-size: 36px;
             }
 
             .filters {
@@ -1407,14 +1548,13 @@
             }
 
             .portfolio-grid {
-                grid-template-columns: repeat(2,minmax(0,1fr));
                 gap: 9px;
             }
 
             .artwork {
-                height: 215px;
+                height: 205px;
                 border-width: 3px;
-                border-radius: 15px;
+                border-radius: 14px;
             }
 
             .artwork img {
@@ -1440,7 +1580,7 @@
 
             .process-track {
                 gap: 13px;
-                margin-top: 40px;
+                margin-top: 42px;
             }
 
             .process-track::before {
@@ -1469,6 +1609,14 @@
                 left: 28px;
             }
 
+            .about-grid {
+                gap: 50px;
+            }
+
+            .about-text p {
+                font-size: 15px;
+            }
+
             .cta {
                 padding: 62px 17px;
                 border-radius: 23px;
@@ -1482,24 +1630,8 @@
                 font-size: 15px;
             }
 
-            .contact-links {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .contact-link {
-                text-align: center;
-            }
-
             .contact-modal-box {
-                padding: 28px 18px;
-            }
-
-            .back-to-top {
-                right: 16px;
-                bottom: 16px;
-                width: 45px;
-                height: 45px;
+                padding: 29px 18px !important;
             }
 
             .lightbox-prev,
@@ -1524,6 +1656,13 @@
                 white-space: nowrap;
                 font-size: 10px;
             }
+
+            .back-to-top {
+                right: 16px;
+                bottom: 16px;
+                width: 45px;
+                height: 45px;
+            }
         }
     </style>
 </head>
@@ -1538,11 +1677,11 @@
 <header class="header" id="header">
     <div class="container header-inner">
 
-        <a class="logo-link" href="#top">
+        <a href="#top" class="logo-link">
             <img
-                class="site-logo"
                 src="logo.webp"
                 alt="KUBIK ART — Егор Черняков"
+                class="site-logo"
             >
         </a>
 
@@ -1563,7 +1702,7 @@
 
 <main id="top">
 
-    <!-- ===== HERO ===== -->
+    <!-- ===== ПЕРВЫЙ ЭКРАН ===== -->
 
     <section class="hero">
         <div class="container hero-grid">
@@ -1735,10 +1874,10 @@
                 пространством, событием или задачей.
             </p>
 
-            <div class="options-grid">
+            <div class="cards">
 
-                <article class="option-card reveal">
-                    <div class="option-icon">▦</div>
+                <article class="card reveal">
+                    <div class="card-icon">▦</div>
                     <h3>Логотип компании</h3>
                     <p>
                         Соберу фирменный знак для офиса,
@@ -1746,8 +1885,8 @@
                     </p>
                 </article>
 
-                <article class="option-card reveal">
-                    <div class="option-icon">◉</div>
+                <article class="card reveal">
+                    <div class="card-icon">◉</div>
                     <h3>Портрет</h3>
                     <p>
                         Создам портрет человека, исторической личности,
@@ -1755,8 +1894,8 @@
                     </p>
                 </article>
 
-                <article class="option-card reveal">
-                    <div class="option-icon">◇</div>
+                <article class="card reveal">
+                    <div class="card-icon">◇</div>
                     <h3>Фирменный персонаж</h3>
                     <p>
                         Соберу талисман, персонажа или образ,
@@ -1764,8 +1903,8 @@
                     </p>
                 </article>
 
-                <article class="option-card reveal">
-                    <div class="option-icon">□</div>
+                <article class="card reveal">
+                    <div class="card-icon">□</div>
                     <h3>Картина для интерьера</h3>
                     <p>
                         Подберу композицию, которая будет хорошо смотреться
@@ -1773,8 +1912,8 @@
                     </p>
                 </article>
 
-                <article class="option-card reveal">
-                    <div class="option-icon">▣</div>
+                <article class="card reveal">
+                    <div class="card-icon">▣</div>
                     <h3>Подарок для компании</h3>
                     <p>
                         Создам персональную работу для партнёра,
@@ -1782,8 +1921,8 @@
                     </p>
                 </article>
 
-                <article class="option-card reveal">
-                    <div class="option-icon">▤</div>
+                <article class="card reveal">
+                    <div class="card-icon">▤</div>
                     <h3>Большая мозаика</h3>
                     <p>
                         Соберу масштабное панно для фестиваля,
@@ -1852,7 +1991,7 @@
                     <strong>1200 кубиков</strong>
                     <p>
                         168 × 224 см<br>
-                        Для выставок и пространств
+                        Для больших пространств
                     </p>
                 </article>
 
@@ -1965,7 +2104,7 @@
 
     <!-- ===== ПРОЦЕСС ===== -->
 
-    <section class="section process-section">
+    <section class="section">
         <div class="container">
 
             <div class="section-label reveal">
@@ -1986,7 +2125,11 @@
 
                 <article class="process-card reveal">
                     <div class="process-dot">01</div>
-                    <h3>Обсудим задачу</h3>
+
+                    <h3>
+                        Обсудим задачу
+                    </h3>
+
                     <p>
                         Вы расскажете о компании, пространстве,
                         мероприятии и желаемом результате.
@@ -1995,7 +2138,11 @@
 
                 <article class="process-card reveal">
                     <div class="process-dot">02</div>
-                    <h3>Подберём образ</h3>
+
+                    <h3>
+                        Подберём образ
+                    </h3>
+
                     <p>
                         Выберем логотип, фотографию, портрет,
                         персонажа или авторский эскиз.
@@ -2004,7 +2151,11 @@
 
                 <article class="process-card reveal">
                     <div class="process-dot">03</div>
-                    <h3>Соберу мозаику</h3>
+
+                    <h3>
+                        Соберу мозаику
+                    </h3>
+
                     <p>
                         Подберу цвета, рассчитаю композицию
                         и соберу изображение из кубиков.
@@ -2013,7 +2164,11 @@
 
                 <article class="process-card reveal">
                     <div class="process-dot">04</div>
-                    <h3>Работа появится в пространстве</h3>
+
+                    <h3>
+                        Работа появится в пространстве
+                    </h3>
+
                     <p>
                         Готовая картина станет частью интерьера,
                         подарком или центром внимания на событии.
@@ -2224,17 +2379,11 @@
     </div>
 </footer>
 
-<!-- Кнопка наверх -->
-
-<button
-    class="back-to-top"
-    id="backToTop"
-    aria-label="Вернуться наверх"
->
+<button class="back-to-top" id="backToTop" aria-label="Наверх">
     ↑
 </button>
 
-<!-- ОКНО СВЯЗИ -->
+<!-- ===== МОДАЛЬНОЕ ОКНО СВЯЗИ ===== -->
 
 <div class="contact-modal" id="contactModal">
     <div class="contact-modal-box">
@@ -2254,7 +2403,10 @@
 
         <div class="contact-options">
 
-            <a class="contact-option" href="mailto:cherniakov-egor@yandex.ru">
+            <a
+                class="contact-option"
+                href="mailto:cherniakov-egor@yandex.ru"
+            >
                 <span class="contact-option-icon">✉</span>
 
                 <span>
@@ -2305,7 +2457,10 @@
                 </span>
             </a>
 
-            <a class="contact-option" href="tel:+79214089944">
+            <a
+                class="contact-option"
+                href="tel:+79214089944"
+            >
                 <span class="contact-option-icon">☎</span>
 
                 <span>
@@ -2314,7 +2469,11 @@
                 </span>
             </a>
 
-            <button class="contact-option" id="copyContacts" type="button">
+            <button
+                class="contact-option"
+                id="copyContacts"
+                type="button"
+            >
                 <span class="contact-option-icon">К</span>
 
                 <span>
@@ -2330,7 +2489,7 @@
     </div>
 </div>
 
-<!-- LIGHTBOX -->
+<!-- ===== LIGHTBOX ===== -->
 
 <div class="lightbox" id="lightbox">
 
@@ -2424,7 +2583,7 @@
 
             setTimeout(() => {
                 item.classList.add("visible");
-            }, 20);
+            }, 25);
         });
     }
 
@@ -2442,6 +2601,18 @@
             renderPortfolio(button.dataset.filter);
         });
     });
+
+    /* Последняя работа */
+
+    document.querySelector(".latest-image")
+        .addEventListener("click", () => {
+            openLightbox(26);
+        });
+
+    document.querySelector("[data-latest-open]")
+        .addEventListener("click", () => {
+            openLightbox(26);
+        });
 
     /* Lightbox */
 
@@ -2482,21 +2653,6 @@
 
         openLightbox(currentIndex);
     }
-
-    document.querySelector(".case-image")
-        .addEventListener("click", () => {
-            openLightbox(3);
-        });
-
-    document.querySelector(".latest-image")
-        .addEventListener("click", () => {
-            openLightbox(26);
-        });
-
-    document.querySelector("[data-latest-open]")
-        .addEventListener("click", () => {
-            openLightbox(26);
-        });
 
     document.getElementById("lightboxClose")
         .addEventListener("click", closeLightbox);
@@ -2546,7 +2702,7 @@
         });
     });
 
-    /* Окно связи */
+    /* Выбор способа связи */
 
     const contactModal = document.getElementById("contactModal");
 
@@ -2599,7 +2755,7 @@
             }, 2500);
         });
 
-    /* Кнопка «Наверх» */
+    /* Кнопка наверх */
 
     const backToTop = document.getElementById("backToTop");
 
@@ -2643,7 +2799,7 @@
         observer.observe(element);
     });
 
-    /* Клавиша Escape */
+    /* Escape */
 
     document.addEventListener("keydown", event => {
         if (event.key !== "Escape") {
