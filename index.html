@@ -1260,6 +1260,79 @@
             transform: translateY(-3px);
         }
 
+        /* ===== БУРГЕР-МЕНЮ (ДОБАВЛЕНО) ===== */
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: var(--blue);
+            background: none;
+            border: none;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        @media (max-width: 1050px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--cream);
+                border-left: 1px solid var(--line);
+                box-shadow: -10px 0 30px rgba(35,45,70,.1);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 90px 30px 30px;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                gap: 0;
+            }
+
+            .nav.active {
+                right: 0;
+            }
+
+            .nav a {
+                display: block;
+                width: 100%;
+                padding: 15px 0;
+                border-bottom: 1px solid var(--line);
+                font-size: 16px;
+                color: var(--ink);
+            }
+
+            .header-button {
+                margin-left: auto;
+                margin-right: 15px;
+            }
+
+            .menu-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(28,38,56,.5);
+                backdrop-filter: blur(4px);
+                z-index: 999;
+            }
+
+            .menu-overlay.active {
+                display: block;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .menu-toggle {
+                font-size: 24px;
+            }
+        }
+
         /* ===== MOBILE ===== */
 
         @media (max-width: 1050px) {
@@ -1610,7 +1683,11 @@
             >
         </a>
 
-        <nav class="nav">
+        <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">
+            ☰
+        </button>
+
+        <nav class="nav" id="nav">
             <a href="#works">Картины</a>
             <a href="#options">Что собрать</a>
             <a href="#sizes">Размеры</a>
@@ -1624,6 +1701,8 @@
 
     </div>
 </header>
+
+<div class="menu-overlay" id="menuOverlay"></div>
 
 <main id="top">
 
@@ -2671,6 +2750,32 @@
 
     window.addEventListener("scroll", () => {
         header.classList.toggle("scrolled", window.scrollY > 30);
+    });
+
+    /* ===== БУРГЕР-МЕНЮ (ДОБАВЛЕНО) ===== */
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('nav');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    function toggleMenu() {
+        navMenu.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.classList.toggle('locked');
+    }
+
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    menuOverlay.addEventListener('click', toggleMenu);
+
+    document.querySelectorAll('#nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
     });
 
     /* Анимация появления */
